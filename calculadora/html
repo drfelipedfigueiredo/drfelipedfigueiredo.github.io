@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guia Infantil</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--verde:#4F5B4A;
+--off:#F8F7F5;
+--dour:#C2A46D;
+}
+
+body{
+margin:0;
+background:var(--off);
+font-family:Montserrat;
+color:#333;
+padding-top:40px;
+}
+
+/* BADGE TOPO */
+#avisoTopo{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:10px;
+text-align:center;
+font-size:12px;
+background:#4F5B4A;
+color:#fff;
+z-index:9999;
+opacity:1;
+transition:opacity 1s ease;
+}
+
+/* CONTAINER */
+.container{
+max-width:620px;
+margin:auto;
+padding:40px 20px;
+}
+
+h1{
+font-family:Playfair Display;
+text-align:center;
+color:var(--verde);
+}
+
+.subtitle{
+text-align:center;
+color:#777;
+margin-bottom:25px;
+}
+
+.row{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+input{
+flex:1;
+padding:14px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+.group{
+margin-top:25px;
+}
+
+.group h2{
+font-size:16px;
+color:var(--verde);
+margin-bottom:10px;
+}
+
+.grid{
+display:grid;
+gap:10px;
+}
+
+.card{
+border:1px solid var(--verde);
+padding:14px;
+border-radius:12px;
+cursor:pointer;
+text-align:center;
+transition:0.2s;
+}
+
+.card:hover{
+background:var(--verde);
+color:#fff;
+}
+
+.result{
+margin-top:25px;
+background:#fff;
+padding:20px;
+border-radius:14px;
+border:1px solid #eee;
+}
+
+.main{
+font-size:22px;
+color:var(--dour);
+margin:10px 0;
+}
+
+.small{
+font-size:14px;
+color:#555;
+line-height:1.5;
+}
+
+.alert{
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+background:#fff4f4;
+border:1px solid #ffd6d6;
+color:#a33;
+font-size:13px;
+}
+
+.back{
+display:block;
+margin-top:30px;
+text-align:center;
+padding:12px;
+border:1px solid var(--verde);
+border-radius:10px;
+text-decoration:none;
+color:var(--verde);
+}
+</style>
+</head>
+
+<body>
+
+<!-- BADGE -->
+<div id="avisoTopo">
+Esta página está em desenvolvimento e em fase de testes. Utilize com orientação médica.
+</div>
+
+<div class="container">
+
+<h1>Guia Infantil</h1>
+<div class="subtitle">Informe o peso da criança</div>
+
+<div class="row">
+<input type="number" id="peso" placeholder="Peso (kg)">
+<input type="number" id="idade" placeholder="Idade (anos)">
+</div>
+
+<!-- FEBRE -->
+<div class="group">
+<h2>Febre / Dor</h2>
+<div class="grid">
+<div class="card" onclick="calc('dipirona')">Dipirona</div>
+<div class="card" onclick="calc('paracetamol')">Paracetamol</div>
+<div class="card" onclick="calc('ibuprofeno')">Ibuprofeno</div>
+</div>
+</div>
+
+<!-- TOSSE -->
+<div class="group">
+<h2>Tosse</h2>
+<div class="grid">
+<div class="card" onclick="calc('hedera')">Hedera helix</div>
+<div class="card" onclick="calc('soro_nasal')">Soro nasal</div>
+</div>
+</div>
+
+<!-- ALERGIA -->
+<div class="group">
+<h2>Alergia</h2>
+<div class="grid">
+<div class="card" onclick="calc('desloratadina')">Desloratadina</div>
+<div class="card" onclick="calc('loratadina')">Loratadina</div>
+<div class="card" onclick="calc('cetirizina')">Cetirizina</div>
+</div>
+</div>
+
+<!-- DIARREIA -->
+<div class="group">
+<h2>Diarreia / Vômitos</h2>
+<div class="grid">
+<div class="card" onclick="calc('sro')">Soro de reidratação</div>
+<div class="card" onclick="calc('probio')">Probiótico</div>
+</div>
+</div>
+
+<!-- GASES -->
+<div class="group">
+<h2>Gases</h2>
+<div class="grid">
+<div class="card" onclick="calc('simeticona')">Simeticona</div>
+</div>
+</div>
+
+<!-- PELE -->
+<div class="group">
+<h2>Pele / Assaduras</h2>
+<div class="grid">
+<div class="card" onclick="calc('zinco')">Óxido de zinco</div>
+</div>
+</div>
+
+<div class="result" id="resultado">
+Selecione uma opção
+</div>
+
+<div class="alert">
+<strong>Procure atendimento médico se houver:</strong><br><br>
+• Febre por mais de 72 horas<br>
+• Recusa alimentar persistente<br>
+• Sonolência excessiva<br>
+• Vômitos repetidos<br>
+• Dificuldade para respirar
+</div>
+
+<a href="https://drfelipedfigueiredo.github.io/drfelipedfigueiredo/" class="back">
+Voltar ao início
+</a>
+
+<div style="margin-top:25px;font-size:12px;color:#666;text-align:center;">
+Esta ferramenta possui caráter informativo e não substitui avaliação médica.
+Utilize medicamentos apenas com orientação do médico assistente.
+Em caso de emergência, procure atendimento imediato.
+</div>
+
+</div>
+
+<script>
+
+/* FADE DO AVISO */
+setTimeout(() => {
+let aviso = document.getElementById("avisoTopo");
+if(aviso){
+aviso.style.opacity="0";
+setTimeout(()=>aviso.style.display="none",1000);
+}
+},5000);
+
+/* CÁLCULOS */
+function calc(tipo){
+
+let peso=parseFloat(document.getElementById("peso").value);
+let idade=parseFloat(document.getElementById("idade").value);
+let res=document.getElementById("resultado");
+
+if(!peso){
+res.innerHTML="Informe o peso da criança.";
+return;
+}
+
+/* DIPIRONA */
+if(tipo=="dipirona"){
+if(peso<5){
+res.innerHTML="Não usar em menores de 5 kg.";
+return;
+}
+let dose=peso*12.5;
+res.innerHTML=`<h3>Dipirona</h3>
+<div class="main">${(dose/50).toFixed(1)} mL</div>
+<div class="small">ou ${(dose/25).toFixed(0)} gotas a cada 6h</div>`;
+}
+
+/* PARACETAMOL */
+if(tipo=="paracetamol"){
+let dose=peso*15;
+res.innerHTML=`<h3>Paracetamol</h3>
+<div class="main">${(dose/32).toFixed(1)} mL</div>
+<div class="small">a cada 6h</div>`;
+}
+
+/* IBUPROFENO */
+if(tipo=="ibuprofeno"){
+if(idade<0.5){
+res.innerHTML="Não usar em menores de 6 meses.";
+return;
+}
+let dose=peso*10;
+res.innerHTML=`<h3>Ibuprofeno</h3>
+<div class="main">${(dose/50).toFixed(1)} mL</div>
+<div class="small">a cada 8h</div>`;
+}
+
+/* HEDERA */
+if(tipo=="hedera"){
+res.innerHTML=`<h3>Hedera helix</h3>
+<div class="main">2,5 a 5 mL</div>
+<div class="small">até 3x ao dia</div>`;
+}
+
+/* SORO NASAL */
+if(tipo=="soro_nasal"){
+res.innerHTML=`<h3>Soro nasal</h3>
+<div class="main">Uso livre</div>
+<div class="small">pode usar várias vezes ao dia</div>`;
+}
+
+/* ALERGIA */
+if(tipo=="desloratadina"){
+let dose=peso*0.1;
+res.innerHTML=`<h3>Desloratadina</h3>
+<div class="main">${(dose/0.5).toFixed(1)} mL/dia</div>`;
+}
+
+if(tipo=="loratadina"){
+res.innerHTML=`<h3>Loratadina</h3>
+<div class="main">5 a 10 mg/dia</div>`;
+}
+
+if(tipo=="cetirizina"){
+res.innerHTML=`<h3>Cetirizina</h3>
+<div class="main">2,5 a 5 mg/dia</div>`;
+}
+
+/* GI */
+if(tipo=="sro"){
+let vol=peso*75;
+res.innerHTML=`<h3>Soro de reidratação</h3>
+<div class="main">${vol.toFixed(0)} mL em 4-6h</div>`;
+}
+
+if(tipo=="probio"){
+res.innerHTML=`<h3>Probiótico</h3>
+<div class="main">1 a 2 doses/dia</div>`;
+}
+
+/* GASES */
+if(tipo=="simeticona"){
+res.innerHTML=`<h3>Simeticona</h3>
+<div class="main">10 a 20 gotas</div>`;
+}
+
+/* PELE */
+if(tipo=="zinco"){
+res.innerHTML=`<h3>Óxido de zinco</h3>
+<div class="main">Aplicar a cada troca de fralda</div>`;
+}
+
+}
+
+</script>
+
+</body>
+</html>
