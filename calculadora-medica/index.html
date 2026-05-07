@@ -401,6 +401,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     <button class="nav-item" onclick="goSection('opioides')">Equivalência de opioides <span>›</span></button>
     <button class="nav-item" onclick="goSection('emergencia')">Emergência / Drogas críticas <span>›</span></button>
     <button class="nav-item" onclick="goSection('trombolise')">Trombólise IAM / AVC <span>›</span></button>
+    <button class="nav-item" onclick="goSection('vacinas')">Vacinas / Profilaxia <span>›</span></button>
     <button class="nav-item" onclick="goSection('sinais')">Sinais vitais pediátricos <span>›</span></button>
   </div>
 
@@ -562,6 +563,14 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
           <option value="tapentadol_vo">Tapentadol VO</option>
           <option value="buprenorfina_sl">Buprenorfina SL</option>
           <option value="buprenorfina_td">Buprenorfina transdérmica mcg/h</option>
+
+          <option value="fentanil_ev">Fentanil EV mcg/dia</option>
+          <option value="sufentanil_ev">Sufentanil EV mcg/dia</option>
+          <option value="alfentanil_ev">Alfentanil EV mcg/dia</option>
+          <option value="remifentanil_ev">Remifentanil EV mcg/kg/min</option>
+          <option value="morfina_ev">Morfina EV</option>
+          <option value="tramadol_ev">Tramadol EV</option>
+          <option value="nalbufina_ev">Nalbufina EV/IM/SC</option>
           <option value="fentanil_transdermico">Fentanil transdérmico mcg/h</option>
           <option value="fentanil_ev">Fentanil EV mcg/dia</option>
           <option value="nalbufina_ev">Nalbufina EV/IM/SC</option>
@@ -587,6 +596,14 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
           <option value="tapentadol_vo">Tapentadol VO</option>
           <option value="buprenorfina_sl">Buprenorfina SL</option>
           <option value="buprenorfina_td">Buprenorfina transdérmica mcg/h</option>
+
+          <option value="fentanil_ev">Fentanil EV mcg/dia</option>
+          <option value="sufentanil_ev">Sufentanil EV mcg/dia</option>
+          <option value="alfentanil_ev">Alfentanil EV mcg/dia</option>
+          <option value="remifentanil_ev">Remifentanil EV mcg/kg/min</option>
+          <option value="morfina_ev">Morfina EV</option>
+          <option value="tramadol_ev">Tramadol EV</option>
+          <option value="nalbufina_ev">Nalbufina EV/IM/SC</option>
           <option value="fentanil_transdermico">Fentanil transdérmico mcg/h</option>
           <option value="fentanil_ev">Fentanil EV mcg/dia</option>
           <option value="nalbufina_ev">Nalbufina EV/IM/SC</option>
@@ -781,14 +798,72 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     </div>
 
     <div class="alg-card">
-      <h4>Anticoagulação associada — enoxaparina</h4>
+      <h4>Anticoagulação associada — enoxaparina na fase aguda do IAM com supra</h4>
       <ul class="list">
-        <li><strong>IAM com supra tratado com fibrinolítico:</strong> enoxaparina pode ser usada com bolus EV seguido de SC conforme idade, peso e função renal.</li>
+        <li><strong>Uso nesta aba restrito ao IAM com supra tratado com fibrinolítico.</strong></li>
         <li><strong>&lt;75 anos:</strong> 30 mg EV em bolus + 1 mg/kg SC 12/12h, com máximo de 100 mg nas primeiras duas doses SC.</li>
         <li><strong>≥75 anos:</strong> sem bolus EV; 0,75 mg/kg SC 12/12h, máximo 75 mg nas primeiras duas doses SC.</li>
         <li><strong>ClCr &lt;30 mL/min:</strong> ajustar para 1 mg/kg SC 1x/dia, conforme protocolo.</li>
-        <li><strong>AVC isquêmico após trombólise:</strong> não usar anticoagulante/antiagregante nas primeiras 24 h; repetir imagem antes. Enoxaparina profilática para fase venosa/TEV geralmente só após 24 h e após excluir sangramento, conforme protocolo.</li>
-        <li><strong>Profilaxia venosa no AVC imobilizado:</strong> enoxaparina 40 mg SC 1x/dia no adulto usual; ajustar em baixo peso, idoso, DRC e risco hemorrágico.</li>
+        <li><strong>AVC isquêmico:</strong> não usar enoxaparina nesta aba para trombólise do AVC. Após trombólise, não administrar anticoagulante/antiagregante nas primeiras 24 h e repetir imagem antes de iniciar profilaxia/tratamento.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section id="vacinas" class="section">
+  <div class="card">
+    <h3>Calendário vacinal e profilaxias de urgência</h3>
+    <div class="alert">
+      Referência de apoio. Conferir PNI/Ministério da Saúde vigente, rede local, histórico vacinal, idade, gestação, imunossupressão e contraindicações específicas.
+    </div>
+
+    <div class="alg-card">
+      <h4>Calendário vacinal — resumo operacional</h4>
+      <ul class="list">
+        <li><strong>Ao nascer:</strong> BCG e Hepatite B.</li>
+        <li><strong>2, 4 e 6 meses:</strong> vacinas combinadas do calendário infantil conforme PNI vigente.</li>
+        <li><strong>12 a 15 meses:</strong> tríplice viral, reforços e vacinas indicadas por faixa etária.</li>
+        <li><strong>4 anos:</strong> reforços de DTP/pólio/varicela conforme calendário.</li>
+        <li><strong>Adolescentes:</strong> HPV, meningocócica ACWY e reforços conforme idade/grupo.</li>
+        <li><strong>Adultos/idosos/gestantes:</strong> dT/dTpa, Hepatite B, influenza, COVID-19 e demais conforme risco.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Profilaxia antitetânica na urgência</h4>
+      <ul class="list">
+        <li>Classificar ferimento: limpo/superficial versus contaminado, profundo, mordedura, queimadura, esmagamento, solo/fezes/saliva ou tecido desvitalizado.</li>
+        <li>Esquema desconhecido/incompleto em ferimento de risco: indicar vacina + imunoglobulina antitetânica humana.</li>
+        <li><strong>Imunoglobulina antitetânica humana:</strong> 250 UI IM; considerar 500 UI em risco extremamente elevado, ferida infectada, tratamento cirúrgico tardio ou ferida profunda/contaminada.</li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div>
+        <label>Peso para profilaxia antirrábica, em kg</label>
+        <input id="pesoRaiva" type="number" step="0.1" placeholder="Ex.: 70">
+      </div>
+      <div>
+        <label>Produto disponível</label>
+        <select id="produtoRaiva">
+          <option value="ighar">Imunoglobulina humana antirrábica — 20 UI/kg</option>
+          <option value="sar">Soro antirrábico — 40 UI/kg</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn primary" onclick="calcularRaiva()">Calcular antirrábica</button>
+    <div id="resultadoRaiva"></div>
+
+    <div class="alg-card">
+      <h4>Profilaxia antirrábica — pontos críticos</h4>
+      <ul class="list">
+        <li>Lavar vigorosamente com água e sabão o mais cedo possível.</li>
+        <li>Classificar exposição: acidente leve, grave, animal observável ou não, espécie e situação epidemiológica.</li>
+        <li>Infiltrar o máximo possível da imunoglobulina/soro ao redor e dentro da lesão.</li>
+        <li>Aplicar volume restante IM em local anatômico distante da vacina.</li>
+        <li>Nunca aplicar vacina e imunoglobulina/soro no mesmo local anatômico.</li>
       </ul>
     </div>
   </div>
@@ -1349,7 +1424,7 @@ const meds = [
 },
 {
   nome:"Prometazina",
-  classe:"Anti-histamínico / antiemético sedativo",
+  classe:"Anti-histamínico 1ª geração sedativo",
   dose:0.25,
   unidade:"mg/kg/dose",
   intervalo:"8–12/12h",
@@ -1633,6 +1708,2347 @@ const meds = [
     {nome:"Extrato/gotas/spray — concentração variável", conc:0, tipo:"gotas"}
   ],
   alertas:["Risco de alergia, especialmente em pacientes com alergia a produtos apícolas/pólen.","Concentrações variam; usar bula do produto."]
+},
+{
+  nome:"Aciclovir",
+  classe:"Antiviral",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Ácido acetilsalicílico",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Ácido tranexâmico",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Adenosina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Albendazol",
+  classe:"Antiparasitário",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Albumina",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Amicacina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Aminofilina",
+  classe:"Respiratório / broncodilatador",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Monitorar taquicardia, tremor, hipocalemia e resposta clínica no broncoespasmo."]
+},
+{
+  nome:"Ampicilina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Ampicilina + sulbactam",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Benzilpenicilina / Penicilina G",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Bicarbonato de sódio",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Biperideno",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Bisacodil",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Bupivacaína",
+  classe:"Anestesia / IOT",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Carvão ativado",
+  classe:"Antídoto / intoxicação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Cefadroxil",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Cefalotina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Cefazolina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Cefepima",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Cefotaxima",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Ceftazidima",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Cefuroxima",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Cetorolaco",
+  classe:"AINE / anti-inflamatório",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Evitar em dengue suspeita, DRC/desidratação, sangramento digestivo, plaquetopenia e alto risco cardiovascular."]
+},
+{
+  nome:"Ciprofloxacino",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Cisatracúrio",
+  classe:"Anestesia / IOT",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Claritromicina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Clindamicina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Clonazepam",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Clonidina",
+  classe:"Outros medicamentos úteis",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Clopidogrel",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Cloreto de cálcio",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Colchicina",
+  classe:"AINE / anti-inflamatório",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Evitar em dengue suspeita, DRC/desidratação, sangramento digestivo, plaquetopenia e alto risco cardiovascular."]
+},
+{
+  nome:"Dexametasona colírio",
+  classe:"Corticoide",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em infecção sistêmica não tratada, hiperglicemia, hipertensão e uso prolongado."]
+},
+{
+  nome:"Dexmedetomidina",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Difenidramina",
+  classe:"Anti-histamínico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Atenção a sedação, efeito anticolinérgico nos de 1ª geração e ajuste renal/hepático quando aplicável."]
+},
+{
+  nome:"Digoxina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Dobutamina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Dopamina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Doxiciclina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Efedrina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Enoxaparina",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Epinefrina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Ertapenem",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Escopolamina",
+  classe:"Outros medicamentos úteis",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Escopolamina + dipirona",
+  classe:"Outros medicamentos úteis",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Esmolol",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Esomeprazol",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Fenitoína",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Fenobarbital",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Fenoterol",
+  classe:"Respiratório / broncodilatador",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Monitorar taquicardia, tremor, hipocalemia e resposta clínica no broncoespasmo."]
+},
+{
+  nome:"Fexofenadina",
+  classe:"Anti-histamínico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Atenção a sedação, efeito anticolinérgico nos de 1ª geração e ajuste renal/hepático quando aplicável."]
+},
+{
+  nome:"Fluconazol",
+  classe:"Antifúngico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Flumazenil",
+  classe:"Antídoto / intoxicação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Fosfomicina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Furosemida",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Gabapentina",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Gentamicina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Glicose",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Glucagon",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Gluconato de cálcio",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Granisetrona",
+  classe:"Antiemético / procinético",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Atenção a reação extrapiramidal e prolongamento de QT conforme fármaco."]
+},
+{
+  nome:"Guaifenesina",
+  classe:"Mucolítico / expectorante",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Haloperidol",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Heparina",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Hidralazina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Hidrato de cloral",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Hidroclorotiazida",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Ipratrópio + fenoterol",
+  classe:"Respiratório / broncodilatador",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Monitorar taquicardia, tremor, hipocalemia e resposta clínica no broncoespasmo."]
+},
+{
+  nome:"Ivermectina",
+  classe:"Antiparasitário",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Lactulose",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Lamotrigina",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Levetiracetam",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Levofloxacino",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Levomepromazina",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Lidocaína",
+  classe:"Anestesia / IOT",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Lidocaína + epinefrina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Linezolida",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Loperamida",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Lorazepam",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Losartana",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Manitol",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Meropenem",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Metadona",
+  classe:"Opioide / analgesia forte",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Metilprednisolona",
+  classe:"Corticoide",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em infecção sistêmica não tratada, hiperglicemia, hipertensão e uso prolongado."]
+},
+{
+  nome:"Metoprolol",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Metronidazol",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Micafungina",
+  classe:"Antifúngico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Midazolam oral",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Milrinona",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Montelucaste",
+  classe:"Respiratório / broncodilatador",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Monitorar taquicardia, tremor, hipocalemia e resposta clínica no broncoespasmo."]
+},
+{
+  nome:"Mupirocina",
+  classe:"Tópico / dermatológico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"N-acetilcisteína",
+  classe:"Mucolítico / expectorante",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Nalbufina",
+  classe:"Opioide / analgesia forte",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Naloxona",
+  classe:"Antídoto / intoxicação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Nitazoxanida",
+  classe:"Antiparasitário",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Nitrofurantoína",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Nitroglicerina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Nitroprussiato",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Noradrenalina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Omeprazol",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Oseltamivir",
+  classe:"Antiviral",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Oxacilina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Oxcarbazepina",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Oxicodona",
+  classe:"Opioide / analgesia forte",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Pantoprazol",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Paracetamol + codeína",
+  classe:"Opioide / analgesia forte",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Parecoxibe",
+  classe:"AINE / anti-inflamatório",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Evitar em dengue suspeita, DRC/desidratação, sangramento digestivo, plaquetopenia e alto risco cardiovascular."]
+},
+{
+  nome:"Penicilina G potássica",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Piperacilina + tazobactam",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Polimixina B",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Propranolol",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Protamina",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Racecadotril",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Ranitidina",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Famotidina",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Remifentanil",
+  classe:"Opioide / analgesia forte",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Rivaroxabana",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Ropivacaína",
+  classe:"Anestesia / IOT",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Saccharomyces boulardii",
+  classe:"Fitoterápico / probiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Concentrações variam entre fabricantes; conferir bula e risco de alergia/interações."]
+},
+{
+  nome:"Simeticona",
+  classe:"Gastrointestinal",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
+},
+{
+  nome:"Sulfametoxazol + trimetoprima",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Sulfato de magnésio",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Tenoxicam",
+  classe:"AINE / anti-inflamatório",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Evitar em dengue suspeita, DRC/desidratação, sangramento digestivo, plaquetopenia e alto risco cardiovascular."]
+},
+{
+  nome:"Terbutalina",
+  classe:"Respiratório / broncodilatador",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Monitorar taquicardia, tremor, hipocalemia e resposta clínica no broncoespasmo."]
+},
+{
+  nome:"Tiamina",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Tiopental",
+  classe:"Anestesia / IOT",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Tirofibana",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Tramadol + paracetamol",
+  classe:"Opioide / analgesia forte",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Valaciclovir",
+  classe:"Antiviral",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional."]
+},
+{
+  nome:"Valproato de sódio",
+  classe:"Neurológico / sedação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Risco de sedação/depressão respiratória; usar com monitorização e preparo de via aérea quando indicado."]
+},
+{
+  nome:"Vancomicina",
+  classe:"Antibiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Ajustar ao foco infeccioso, gravidade, alergias e função renal; revisar cultura/descalonamento."]
+},
+{
+  nome:"Varfarina",
+  classe:"Hemostasia / anticoagulação",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Cautela em sangramento ativo, coagulopatia, plaquetopenia, DRC e procedimentos invasivos."]
+},
+{
+  nome:"Vasopressina",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Verapamil",
+  classe:"Cardiovascular / vasoativo",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Uso com monitorização; atenção a hipotensão, bradicardia/taquiarritmias e extravasamento em vasoativos."]
+},
+{
+  nome:"Vitamina K / Fitomenadiona",
+  classe:"Eletrólitos / metabólicos",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Dupla checagem obrigatória; risco de erro de concentração, extravasamento e distúrbios eletrolíticos."]
+},
+{
+  nome:"Kaloba / Pelargonium sidoides",
+  classe:"Fitoterápico / probiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Concentrações variam entre fabricantes; conferir bula e risco de alergia/interações."]
+},
+{
+  nome:"Probióticos Lactobacillus/Bifidobacterium",
+  classe:"Fitoterápico / probiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Concentrações variam entre fabricantes; conferir bula e risco de alergia/interações."]
+},
+{
+  nome:"Psyllium / Plantago",
+  classe:"Fitoterápico / probiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Concentrações variam entre fabricantes; conferir bula e risco de alergia/interações."]
+},
+{
+  nome:"Cassia angustifolia / Senna",
+  classe:"Fitoterápico / probiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Concentrações variam entre fabricantes; conferir bula e risco de alergia/interações."]
+},
+{
+  nome:"Camomila",
+  classe:"Fitoterápico / probiótico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Concentrações variam entre fabricantes; conferir bula e risco de alergia/interações."]
+},
+{
+  nome:"Levocetirizina",
+  classe:"Anti-histamínico",
+  dose:0,
+  unidade:"dose por protocolo/bula",
+  intervalo:"Conforme indicação",
+  teto:0,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Conforme apresentação",
+  apresentacoes:[
+    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+  ],
+  alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Atenção a sedação, efeito anticolinérgico nos de 1ª geração e ajuste renal/hepático quando aplicável."]
+},
+{
+  nome:"Adrenalina PCR",
+  classe:"Emergência cardiovascular",
+  dose:0.01,
+  unidade:"mg/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:1,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"IV / IO",
+  apresentacoes:[
+    {nome:"Adrenalina 0,1 mg/mL", conc:0.1, tipo:"mL"}
+  ],
+  alertas:["PCR: usar concentração 0,1 mg/mL; repetir a cada 3–5 min conforme protocolo.", "Dupla checagem obrigatória."]
+},
+{
+  nome:"Adrenalina anafilaxia",
+  classe:"Emergência / anafilaxia",
+  dose:0.01,
+  unidade:"mg/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:0.5,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"IM",
+  apresentacoes:[
+    {nome:"Adrenalina 1 mg/mL", conc:1, tipo:"mL"}
+  ],
+  alertas:["Anafilaxia: aplicar IM na face anterolateral da coxa.", "Até 11 anos, limitar usualmente a 0,3 mL; adulto até 0,5 mL."]
+},
+{
+  nome:"NaCl 3% bolus",
+  classe:"Eletrólito hipertônico",
+  dose:3,
+  unidade:"mL/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:150,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"NaCl 3%", conc:0, tipo:"mL"}
+  ],
+  alertas:["Hiponatremia sintomática/hipertensão intracraniana conforme protocolo.", "Monitorar sódio, osmolaridade e quadro neurológico."]
+},
+{
+  nome:"Glicose 10% hipoglicemia pediátrica",
+  classe:"Correção de hipoglicemia",
+  dose:2,
+  unidade:"mL/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:100,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Solução glicosada 10%", conc:0, tipo:"mL"}
+  ],
+  alertas:["Hipoglicemia pediátrica: SG 10% 2 mL/kg EV.", "Reavaliar glicemia em 15 minutos e manter aporte contínuo conforme resposta."]
+},
+{
+  nome:"Glicose 50% adulto",
+  classe:"Correção de hipoglicemia",
+  dose:25,
+  unidade:"g dose usual",
+  intervalo:"Conforme indicação",
+  teto:25,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Glicose 50% 25 g/50 mL", conc:0, tipo:"mL"}
+  ],
+  alertas:["Adulto: usar com cautela pelo risco de flebite/extravasamento.", "Reavaliar glicemia e manter aporte."]
+},
+{
+  nome:"Noradrenalina BIC",
+  classe:"Vasopressor",
+  dose:0.05,
+  unidade:"mcg/kg/min inicial",
+  intervalo:"Conforme indicação",
+  teto:2,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV contínuo",
+  apresentacoes:[
+    {nome:"Noradrenalina 1 mg/mL", conc:1, tipo:"mL"}
+  ],
+  alertas:["Titular por meta pressórica/perfusão.", "Preferir acesso central; monitorar extravasamento."]
+},
+{
+  nome:"Dobutamina BIC",
+  classe:"Inotrópico",
+  dose:5,
+  unidade:"mcg/kg/min inicial",
+  intervalo:"Conforme indicação",
+  teto:20,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV contínuo",
+  apresentacoes:[
+    {nome:"Dobutamina 12,5 mg/mL", conc:12.5, tipo:"mL"}
+  ],
+  alertas:["Titular conforme resposta hemodinâmica.", "Monitorar arritmias e hipotensão."]
+},
+{
+  nome:"Dopamina BIC",
+  classe:"Vasoativo / inotrópico",
+  dose:5,
+  unidade:"mcg/kg/min inicial",
+  intervalo:"Conforme indicação",
+  teto:20,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV contínuo",
+  apresentacoes:[
+    {nome:"Dopamina 5 mg/mL", conc:5, tipo:"mL"}
+  ],
+  alertas:["Uso em bomba de infusão.", "Risco de taquiarritmias e extravasamento."]
+},
+{
+  nome:"Sufentanil EV",
+  classe:"Opioide EV",
+  dose:0.1,
+  unidade:"mcg/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:10,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Sufentanil 5 mcg/mL", conc:5, tipo:"mL"},
+    {nome:"Sufentanil 50 mcg/mL", conc:50, tipo:"mL"}
+  ],
+  alertas:["Potente; uso anestésico/intensivo.", "Risco de depressão respiratória; via aérea e monitorização."]
+},
+{
+  nome:"Alfentanil EV",
+  classe:"Opioide EV",
+  dose:10,
+  unidade:"mcg/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:1000,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Alfentanil 0,5 mg/mL", conc:500, tipo:"mL"}
+  ],
+  alertas:["Uso anestésico/procedimental.", "Risco de depressão respiratória; monitorização."]
+},
+{
+  nome:"Remifentanil EV",
+  classe:"Opioide EV",
+  dose:0.05,
+  unidade:"mcg/kg/min inicial",
+  intervalo:"Conforme indicação",
+  teto:2,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV contínuo",
+  apresentacoes:[
+    {nome:"Remifentanil frasco 1 mg/2 mg/5 mg", fixo:1, tipo:"frasco"}
+  ],
+  alertas:["Uso em infusão contínua com monitorização e via aérea.", "Metabolismo ultracurto; preparar bomba."]
+},
+{
+  nome:"Tramadol EV",
+  classe:"Opioide EV/IM",
+  dose:1,
+  unidade:"mg/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:100,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV / IM",
+  apresentacoes:[
+    {nome:"Tramadol 50 mg/mL", conc:50, tipo:"mL"}
+  ],
+  alertas:["Risco de náuseas, convulsões e síndrome serotoninérgica.", "Cautela com ISRS/IRSN/IMAO e epilepsia."]
+},
+{
+  nome:"Nalbufina EV",
+  classe:"Opioide agonista-antagonista",
+  dose:0.1,
+  unidade:"mg/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:10,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV / IM / SC",
+  apresentacoes:[
+    {nome:"Nalbufina 10 mg/mL", conc:10, tipo:"mL"}
+  ],
+  alertas:["Pode precipitar abstinência em usuários de opioide agonista puro.", "Risco de sedação/depressão respiratória."]
+},
+{
+  nome:"Metadona EV",
+  classe:"Opioide EV/VO",
+  dose:0.05,
+  unidade:"mg/kg/dose",
+  intervalo:"Conforme indicação",
+  teto:10,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV / VO",
+  apresentacoes:[
+    {nome:"Metadona 10 mg/mL", conc:10, tipo:"mL"}
+  ],
+  alertas:["Conversão complexa e não linear; alto risco.", "Atenção a QT longo e acúmulo."]
 }];
 
 const emerg = {
@@ -1649,7 +4065,7 @@ const emerg = {
   rocuronio:{nome:"Rocurônio RSI", dose:1, unidade:"mg/kg", teto:100, conc:10, obs:"Bloqueador. Não sedativo."},
   fentanil_bolus:{nome:"Fentanil bolus", dose:1, unidade:"mcg/kg", teto:100, conc:50, obs:"Concentração 50 mcg/mL. Infundir lentamente."},
   nacl3:{nome:"NaCl 3%", dose:3, unidade:"mL/kg", teto:150, conc:null, obs:"Hiponatremia sintomática/hipertensão intracraniana conforme protocolo. Monitorar sódio."},
-  glicose10:{nome:"Glicose 10%", dose:5, unidade:"mL/kg", teto:250, conc:null, obs:"Hipoglicemia pediátrica. Rechecar glicemia."}
+  glicose10:{nome:"Glicose 10%", dose:2, unidade:"mL/kg", teto:100, conc:null, obs:"Hipoglicemia pediátrica: SG 10% 2 mL/kg EV, reavaliar glicemia em 15 minutos e manter aporte conforme resposta/protocolo."}
 };
 
 const opioides = {
@@ -1657,14 +4073,19 @@ const opioides = {
   morfina_ev:{nome:"Morfina EV", fator:3, unidade:"mg/dia"},
   oxicodona_vo:{nome:"Oxicodona VO", fator:1.5, unidade:"mg/dia"},
   hidromorfona_vo:{nome:"Hidromorfona VO", fator:4, unidade:"mg/dia"},
-  metadona_vo:{nome:"Metadona VO", fator:3, unidade:"mg/dia", alerta:"Conversão com metadona é não linear e de alto risco. Usar apenas como estimativa inicial e preferir cálculo específico por faixa de MME."},
+  metadona_vo:{nome:"Metadona VO", fator:3, unidade:"mg/dia", alerta:"Conversão com metadona é não linear e de alto risco; usar tabela específica por MME e especialista."},
+  metadona_ev:{nome:"Metadona EV", fator:6, unidade:"mg/dia", alerta:"Conversão de metadona EV é de alto risco e deve ser individualizada."},
   tramadol_vo:{nome:"Tramadol VO", fator:0.1, unidade:"mg/dia"},
+  tramadol_ev:{nome:"Tramadol EV", fator:0.1, unidade:"mg/dia"},
   codeina_vo:{nome:"Codeína VO", fator:0.15, unidade:"mg/dia"},
   tapentadol_vo:{nome:"Tapentadol VO", fator:0.4, unidade:"mg/dia"},
-  buprenorfina_sl:{nome:"Buprenorfina SL", fator:30, unidade:"mg/dia", alerta:"Conversão aproximada; formulações e indicações variam. Conferir bula e contexto."},
+  buprenorfina_sl:{nome:"Buprenorfina SL", fator:30, unidade:"mg/dia", alerta:"Conversão aproximada; pode limitar efeito de opioides agonistas plenos."},
   buprenorfina_td:{nome:"Buprenorfina transdérmica", fator:1.8, unidade:"mcg/h", alerta:"Conversão aproximada por adesivo; titulação lenta."},
   fentanil_transdermico:{nome:"Fentanil transdérmico", fator:2.4, unidade:"mcg/h"},
   fentanil_ev:{nome:"Fentanil EV", fator:0.3, unidade:"mcg/dia", alerta:"Conversão parenteral contínua; exige monitorização e contexto hospitalar."},
+  sufentanil_ev:{nome:"Sufentanil EV", fator:3, unidade:"mcg/dia", alerta:"Muito potente; conversão aproximada e uso anestésico/intensivo."},
+  alfentanil_ev:{nome:"Alfentanil EV", fator:0.03, unidade:"mcg/dia", alerta:"Uso anestésico/procedimental; conversão aproximada."},
+  remifentanil_ev:{nome:"Remifentanil EV", fator:0, unidade:"mcg/kg/min", alerta:"Não recomendado para conversão equianalgésica diária; ultracurto e titulado em bomba."},
   nalbufina_ev:{nome:"Nalbufina EV/IM/SC", fator:1, unidade:"mg/dia", alerta:"Agonista-antagonista; pode precipitar abstinência em dependência de opioide puro."},
   petidina_ev:{nome:"Petidina/Meperidina EV/IM", fator:0.1, unidade:"mg/dia", alerta:"Evitar uso rotineiro; metabólito neurotóxico, maior risco em DRC e idosos."}
 };
@@ -2154,6 +4575,11 @@ function calcularOpioide(){
     return;
   }
 
+  if(origem.fator === 0 || destino.fator === 0){
+    out.innerHTML = `<div class="alert">Remifentanil EV não deve ser convertido por equivalência diária simples. É ultracurto e titulado em mcg/kg/min com monitorização anestésica/intensiva.</div>`;
+    return;
+  }
+
   let mme = dose * origem.fator;
   let destinoDose = mme / destino.fator;
   let ajustada = destinoDose * (1-red);
@@ -2304,6 +4730,33 @@ function atualizarTromboAviso(){
       <option value="alteplase">Alteplase</option>
     `;
   }
+}
+
+
+function calcularRaiva(){
+  const peso = parseFloat(document.getElementById("pesoRaiva").value);
+  const produto = document.getElementById("produtoRaiva").value;
+  const out = document.getElementById("resultadoRaiva");
+  if(!peso || peso <= 0){
+    out.innerHTML = `<div class="alert">Informe um peso válido.</div>`;
+    return;
+  }
+  const doseUiKg = produto === "ighar" ? 20 : 40;
+  const nome = produto === "ighar" ? "Imunoglobulina humana antirrábica" : "Soro antirrábico";
+  const total = peso * doseUiKg;
+  out.innerHTML = `
+    <div class="result">
+      <h4>${nome}</h4>
+      <div class="dose-box">
+        <strong>Dose:</strong> ${doseUiKg} UI/kg<br>
+        <strong>Peso:</strong> ${peso.toFixed(1)} kg<br>
+        <strong>Total calculado:</strong> ${total.toFixed(0)} UI
+      </div>
+      <div class="alert">
+        Infiltrar o máximo possível ao redor/dentro da lesão. Aplicar eventual restante IM em local distante da vacina.
+        Não aplicar no mesmo sítio anatômico da vacina. Conferir protocolo local e disponibilidade.
+      </div>
+    </div>`;
 }
 
 function acceptTerms(){
