@@ -6,196 +6,1617 @@
 
 <title>Calculadora Médica</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---verde:#4F5B4A;
---dourado:#C2A46D;
---off:#F8F7F5;
---off2:#EAE6DF;
---texto:#2F332D;
+  --verde:#4F5B4A;
+  --verde2:#66725E;
+  --dourado:#C2A46D;
+  --off:#F8F7F5;
+  --off2:#EAE6DF;
+  --texto:#2F332D;
+  --cinza:#70756E;
+  --vermelho:#A94442;
+  --vermelho-bg:#FFF1F0;
+  --verde-bg:#EEF3EC;
+  --dour-bg:#F7F1E4;
+  --sombra:0 18px 45px rgba(0,0,0,.12);
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-font-family:'Montserrat',sans-serif;
-background:linear-gradient(180deg,var(--off),var(--off2));
-color:var(--texto);
+  margin:0;
+  font-family:'Montserrat',sans-serif;
+  background:linear-gradient(180deg,var(--off),var(--off2));
+  color:var(--texto);
+  min-height:100vh;
 }
 
+body.menu-open{overflow:hidden}
+
 .topbar{
-height:68px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#fff;
-border-bottom:1px solid rgba(194,164,109,.35);
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(248,247,245,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(194,164,109,.35);
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 18px;
+}
+
+.menu-btn{
+  position:absolute;
+  left:18px;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border:1px solid rgba(194,164,109,.7);
+  border-radius:14px;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  padding:0 11px;
+  cursor:pointer;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+}
+
+.menu-btn span{
+  height:2px;
+  background:var(--verde);
+  border-radius:20px;
+  display:block;
+}
+
+.brand{
+  text-align:center;
+  line-height:1.1;
 }
 
 .brand h1{
-margin:0;
-font-family:'Playfair Display',serif;
-color:var(--verde);
-font-size:24px;
+  margin:0;
+  font-family:'Playfair Display',serif;
+  color:var(--verde);
+  font-size:25px;
+  font-weight:600;
+}
+
+.drawer-backdrop{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  z-index:40;
+}
+
+.drawer{
+  position:fixed;
+  top:0;
+  left:-330px;
+  width:310px;
+  max-width:88vw;
+  height:100vh;
+  background:linear-gradient(180deg,#fff,var(--off));
+  z-index:50;
+  box-shadow:var(--sombra);
+  transition:.28s ease;
+  padding:24px 20px;
+  overflow:auto;
+}
+
+body.menu-open .drawer{left:0}
+body.menu-open .drawer-backdrop{display:block}
+
+.drawer-header{
+  border-bottom:1px solid rgba(194,164,109,.45);
+  padding-bottom:18px;
+  margin-bottom:16px;
+}
+
+.drawer-header h2{
+  margin:0;
+  font-family:'Playfair Display',serif;
+  color:var(--verde);
+  font-size:24px;
+}
+
+.drawer-header p{
+  margin:8px 0 0;
+  color:var(--cinza);
+  font-size:12px;
+  line-height:1.4;
+}
+
+.nav-section{margin:18px 0}
+
+.nav-title{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--dourado);
+  margin:0 0 8px;
+  font-weight:700;
+}
+
+.nav-item{
+  width:100%;
+  border:0;
+  background:#fff;
+  color:var(--verde);
+  border-radius:14px;
+  padding:13px 14px;
+  margin:7px 0;
+  text-align:left;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.nav-item:hover{background:var(--verde-bg)}
+
+.close-drawer{
+  margin-top:16px;
+  width:100%;
+  padding:13px;
+  border:1px solid rgba(194,164,109,.7);
+  background:transparent;
+  color:var(--verde);
+  border-radius:14px;
+  font-weight:700;
+  cursor:pointer;
 }
 
 .container{
-max-width:980px;
-margin:auto;
-padding:24px;
+  max-width:980px;
+  margin:auto;
+  padding:26px 16px 60px;
+}
+
+.section{
+  display:none;
+  animation:fade .25s ease;
+}
+
+.section.active{display:block}
+
+@keyframes fade{
+  from{opacity:.4; transform:translateY(6px)}
+  to{opacity:1; transform:none}
 }
 
 .card{
-background:#fff;
-border-radius:24px;
-padding:24px;
-margin-bottom:20px;
-border:1px solid rgba(194,164,109,.35);
+  background:#fff;
+  border-radius:24px;
+  padding:22px;
+  margin:16px 0;
+  border:1px solid rgba(194,164,109,.35);
+  box-shadow:0 14px 35px rgba(0,0,0,.08);
+}
+
+.card h2,
+.card h3{
+  margin:0 0 15px;
+  font-family:'Playfair Display',serif;
+  color:var(--verde);
+  font-size:29px;
+}
+
+.card h4{
+  color:var(--verde);
+  margin:18px 0 8px;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:12px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+@media(max-width:760px){
+  .grid,.grid-3{grid-template-columns:1fr}
+  .brand h1{font-size:22px}
 }
 
 label{
-display:block;
-margin-bottom:6px;
-color:var(--verde);
-font-size:12px;
-font-weight:600;
+  display:block;
+  font-size:12px;
+  color:var(--verde);
+  margin:0 0 6px;
+  font-weight:700;
 }
 
-input,select{
-width:100%;
-padding:14px;
-border-radius:14px;
-border:1px solid rgba(79,91,74,.25);
-font-family:'Montserrat',sans-serif;
+input,select,textarea{
+  width:100%;
+  padding:14px 13px;
+  border:1px solid rgba(79,91,74,.25);
+  border-radius:14px;
+  font-family:'Montserrat',sans-serif;
+  background:#fff;
+  color:var(--texto);
+  outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:var(--dourado);
+  box-shadow:0 0 0 3px rgba(194,164,109,.17);
 }
 
 .btn{
-width:100%;
-margin-top:14px;
-padding:15px;
-border-radius:16px;
-border:1px solid var(--verde);
-background:var(--verde);
-color:#fff;
-font-weight:700;
-cursor:pointer;
+  width:100%;
+  border:1.5px solid var(--dourado);
+  background:#fff;
+  color:var(--verde);
+  border-radius:16px;
+  padding:15px;
+  font-weight:800;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:12px;
+}
+
+.btn.primary{
+  background:var(--verde);
+  color:#fff;
+  border-color:var(--verde);
+}
+
+.btn.danger{
+  background:var(--vermelho);
+  color:#fff;
+  border-color:var(--vermelho);
+}
+
+.result{
+  margin-top:18px;
+  padding:18px;
+  border-radius:20px;
+  background:var(--verde-bg);
+  border:1px solid rgba(79,91,74,.25);
+}
+
+.result h4{
+  margin:0 0 10px;
+  color:var(--verde);
+}
+
+.dose-box{
+  background:#fff;
+  border:1px solid rgba(194,164,109,.55);
+  border-radius:18px;
+  padding:14px;
+  margin:10px 0;
+}
+
+.dose-box strong{color:var(--verde)}
+
+.alert{
+  background:var(--vermelho-bg);
+  color:var(--vermelho);
+  border:1px solid rgba(169,68,66,.25);
+  border-radius:18px;
+  padding:14px;
+  margin:12px 0;
+  line-height:1.45;
+  font-size:13px;
+}
+
+.note{
+  background:var(--dour-bg);
+  border:1px solid rgba(194,164,109,.45);
+  color:#6B5730;
+  border-radius:18px;
+  padding:14px;
+  margin:12px 0;
+  line-height:1.45;
+  font-size:13px;
+}
+
+.list{
+  padding-left:18px;
+  line-height:1.65;
+  color:var(--texto);
+}
+
+.alg-card{
+  background:linear-gradient(180deg,#fff,var(--off));
+  border:1px solid rgba(194,164,109,.45);
+  border-radius:20px;
+  padding:16px;
+  margin:12px 0;
+}
+
+.alg-card h4{
+  margin:0 0 8px;
+  color:var(--verde);
+}
+
+.badge{
+  display:inline-block;
+  background:var(--verde);
+  color:#fff;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:11px;
+  margin:3px 4px 3px 0;
+}
+
+.footer{
+  text-align:center;
+  color:var(--cinza);
+  font-size:11px;
+  margin-top:30px;
+  line-height:1.5;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+
+.modal-box{
+  max-width:680px;
+  background:#fff;
+  border-radius:28px;
+  padding:26px;
+  box-shadow:var(--sombra);
+  border:1px solid rgba(194,164,109,.6);
+}
+
+.modal-box h2{
+  margin:0 0 10px;
+  font-family:'Playfair Display',serif;
+  color:var(--verde);
+}
+
+.modal-box p,.modal-box li{
+  font-size:13px;
+  line-height:1.55;
+  color:var(--texto);
+}
+
+.modal-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+@media(max-width:540px){
+  .modal-actions{grid-template-columns:1fr}
+}
+
+.small{
+  font-size:11px;
+  color:var(--cinza);
+}
+
+hr{
+  border:0;
+  border-top:1px solid rgba(194,164,109,.35);
+  margin:18px 0;
 }
 </style>
 </head>
 
 <body>
 
-<header class="topbar">
-<div class="brand">
-<h1>Calculadora Médica</h1>
+<div class="modal" id="termsModal">
+  <div class="modal-box">
+    <h2>Uso restrito com orientação médica</h2>
+    <p>
+      Esta calculadora é ferramenta auxiliar de apoio clínico, destinada a profissionais habilitados.
+      As doses exibidas devem ser obrigatoriamente conferidas com bula, protocolo institucional, condição clínica,
+      idade, peso, função renal/hepática, alergias, via disponível e julgamento médico.
+    </p>
+    <ul>
+      <li>Não substitui prescrição médica individualizada.</li>
+      <li>Medicamentos de emergência, sedativos, opioides, eletrólitos concentrados e drogas vasoativas exigem dupla checagem.</li>
+      <li>Em pediatria, sempre conferir idade mínima, peso mínimo, apresentação e teto por dose.</li>
+      <li>Se a dose por peso ultrapassar o teto, a calculadora reduz ao teto e exibe alerta.</li>
+    </ul>
+    <div class="modal-actions">
+      <button class="btn primary" onclick="acceptTerms()">Aceitar e continuar</button>
+      <button class="btn danger" onclick="denyTerms()">Negar e fechar</button>
+    </div>
+  </div>
 </div>
+
+<div class="drawer-backdrop" onclick="toggleMenu(false)"></div>
+
+<aside class="drawer">
+  <div class="drawer-header">
+    <h2>Menu Médico</h2>
+    <p>Calculadoras, algoritmos e ferramentas rápidas para apoio clínico.</p>
+  </div>
+
+  <div class="nav-section">
+    <p class="nav-title">Calculadoras</p>
+    <button class="nav-item" onclick="goSection('calc')">Calculadora de doses <span>›</span></button>
+    <button class="nav-item" onclick="goSection('hidratacao')">Holliday-Segar / Solução <span>›</span></button>
+    <button class="nav-item" onclick="goSection('opioides')">Equivalência de opioides <span>›</span></button>
+    <button class="nav-item" onclick="goSection('emergencia')">Emergência / Drogas críticas <span>›</span></button>
+  </div>
+
+  <div class="nav-section">
+    <p class="nav-title">Algoritmos</p>
+    <button class="nav-item" onclick="goSection('pals')">PALS pediátrico <span>›</span></button>
+    <button class="nav-item" onclick="goSection('acls')">ACLS adulto <span>›</span></button>
+    <button class="nav-item" onclick="goSection('atls')">ATLS / Trauma <span>›</span></button>
+  </div>
+
+  <div class="nav-section">
+    <p class="nav-title">Guias</p>
+    <button class="nav-item" onclick="goSection('antibioticos')">Antibióticos <span>›</span></button>
+    <button class="nav-item" onclick="goSection('alertas')">Alertas de segurança <span>›</span></button>
+  </div>
+
+  <button class="close-drawer" onclick="toggleMenu(false)">Fechar menu</button>
+</aside>
+
+<header class="topbar">
+  <button class="menu-btn" onclick="toggleMenu(true)" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="brand">
+    <h1>Calculadora Médica</h1>
+  </div>
 </header>
 
 <main class="container">
 
-<section class="card">
+<section id="calc" class="section active">
+  <div class="card">
+    <h2>Calculadora de doses</h2>
 
-<h2>Calculadora de doses</h2>
+    <div class="grid">
+      <div>
+        <label>Peso do paciente, em kg</label>
+        <input id="peso" type="number" step="0.1" placeholder="Ex.: 18">
+      </div>
 
-<div class="grid">
+      <div>
+        <label>Idade</label>
+        <input id="idade" type="number" step="1" placeholder="Ex.: 4">
+      </div>
 
-<div>
-<label>Peso do paciente (kg)</label>
-<input type="number" id="peso">
-</div>
+      <div>
+        <label>Unidade da idade</label>
+        <select id="idadeUnidade">
+          <option value="anos">Anos</option>
+          <option value="meses">Meses</option>
+        </select>
+      </div>
 
-<div>
-<label>Medicamento</label>
-<select id="medicamento">
-<option>Dipirona</option>
-<option>Paracetamol</option>
-<option>Ibuprofeno</option>
-<option>Ondansetrona</option>
-<option>Midazolam intranasal</option>
-<option>Atropina</option>
-<option>Etomidato</option>
-<option>Cetamina</option>
-<option>Fentanil</option>
-<option>Suxametônio</option>
-<option>Rocurônio</option>
-</select>
-</div>
+      <div>
+        <label>Medicamento</label>
+        <select id="medicamento"></select>
+      </div>
+    </div>
 
-</div>
+    <button class="btn primary" onclick="calcularDose()">Calcular dose</button>
 
-<button class="btn">
-Calcular dose
-</button>
+    <div id="resultadoDose"></div>
 
+    <div class="note">
+      Regra aplicada: quando a dose por peso ultrapassa o teto por dose, a calculadora reduz automaticamente para o teto e exibe alerta.
+    </div>
+  </div>
 </section>
 
-<section class="card">
+<section id="hidratacao" class="section">
+  <div class="card">
+    <h3>Holliday-Segar / Montagem de solução</h3>
 
-<h2>Holliday-Segar / Montagem de solução</h2>
+    <div class="grid">
+      <div>
+        <label>Peso, em kg</label>
+        <input id="pesoHid" type="number" step="0.1" placeholder="Ex.: 12">
+      </div>
 
-<div class="grid">
+      <div>
+        <label>Percentual da hidratação de manutenção</label>
+        <select id="percHid">
+          <option value="0.5">50%</option>
+          <option value="0.6">60%</option>
+          <option value="0.7">70%</option>
+          <option value="0.8">80%</option>
+          <option value="0.9">90%</option>
+          <option value="1" selected>100%</option>
+          <option value="1.1">110%</option>
+          <option value="1.2">120%</option>
+          <option value="1.3">130%</option>
+          <option value="1.5">150%</option>
+        </select>
+      </div>
+    </div>
 
-<div>
-<label>Peso (kg)</label>
-<input type="number" id="pesoHid">
-</div>
+    <hr>
 
-<div>
-<label>% da hidratação</label>
-<select>
-<option>50%</option>
-<option>60%</option>
-<option>70%</option>
-<option>80%</option>
-<option>90%</option>
-<option selected>100%</option>
-<option>120%</option>
-<option>150%</option>
-</select>
-</div>
+    <h4>Eletrólitos da solução</h4>
 
-<div>
-<label>% de sódio</label>
-<input type="number" value="40">
-</div>
+    <div class="grid">
+      <div>
+        <label>Necessidade diária de sódio considerada</label>
+        <input id="naNecessidade" type="number" step="0.1" value="3">
+        <span class="small">Padrão: 3 mEq/kg/dia. Ajuste conforme protocolo.</span>
+      </div>
 
-<div>
-<label>% de potássio</label>
-<input type="number" value="20">
-</div>
+      <div>
+        <label>Percentual do sódio diário a repor</label>
+        <input id="naPercentual" type="number" step="1" value="40">
+        <span class="small">Padrão solicitado: 40%.</span>
+      </div>
 
-<div>
-<label>Fonte de sódio</label>
-<select>
-<option>NaCl 10%</option>
-<option>NaCl 20%</option>
-</select>
-</div>
+      <div>
+        <label>Fonte de sódio</label>
+        <select id="naFonte">
+          <option value="1.71">NaCl 10% — 1,71 mEq/mL</option>
+          <option value="3.42">NaCl 20% — 3,42 mEq/mL</option>
+        </select>
+      </div>
 
-<div>
-<label>Fonte de potássio</label>
-<select>
-<option>KCl 19,1%</option>
-<option>KCl 10%</option>
-</select>
-</div>
+      <div>
+        <label>Necessidade diária de potássio considerada</label>
+        <input id="kNecessidade" type="number" step="0.1" value="2">
+        <span class="small">Padrão: 2 mEq/kg/dia. Ajuste conforme protocolo.</span>
+      </div>
 
-</div>
+      <div>
+        <label>Percentual do potássio diário a repor</label>
+        <input id="kPercentual" type="number" step="1" value="20">
+        <span class="small">Padrão solicitado: 20%.</span>
+      </div>
 
-<button class="btn">
-Calcular solução
-</button>
+      <div>
+        <label>Fonte de potássio</label>
+        <select id="kFonte">
+          <option value="2.56">KCl 19,1% — 2,56 mEq/mL</option>
+          <option value="1.34">KCl 10% — 1,34 mEq/mL</option>
+        </select>
+      </div>
+    </div>
 
+    <button class="btn primary" onclick="calcularHidratacao()">Calcular e montar solução</button>
+
+    <div id="resultadoHid"></div>
+
+    <div class="note">
+      Holliday-Segar: 100 mL/kg para os primeiros 10 kg; 50 mL/kg para os próximos 10 kg;
+      20 mL/kg acima de 20 kg. Ajustar conforme clínica, perdas, sódio, risco de SIADH e protocolo institucional.
+    </div>
+  </div>
 </section>
+
+<section id="opioides" class="section">
+  <div class="card">
+    <h3>Equivalência de opioides</h3>
+
+    <div class="alert">
+      Conversão aproximada para apoio clínico. Reduzir dose do novo opioide em 25–50% por tolerância cruzada incompleta,
+      especialmente em idosos, fragilidade, DRC, insuficiência hepática, DPOC, apneia do sono ou associação com sedativos.
+    </div>
+
+    <div class="grid">
+      <div>
+        <label>Opioide atual</label>
+        <select id="opioideOrigem">
+          <option value="morfina_vo">Morfina VO</option>
+          <option value="morfina_ev">Morfina EV</option>
+          <option value="oxicodona_vo">Oxicodona VO</option>
+          <option value="hidromorfona_vo">Hidromorfona VO</option>
+          <option value="tramadol_vo">Tramadol VO</option>
+          <option value="codeina_vo">Codeína VO</option>
+          <option value="fentanil_transdermico">Fentanil transdérmico mcg/h</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Dose total diária atual</label>
+        <input id="opioideDose" type="number" step="0.1" placeholder="Ex.: 30">
+      </div>
+
+      <div>
+        <label>Converter para</label>
+        <select id="opioideDestino">
+          <option value="morfina_vo">Morfina VO</option>
+          <option value="morfina_ev">Morfina EV</option>
+          <option value="oxicodona_vo">Oxicodona VO</option>
+          <option value="hidromorfona_vo">Hidromorfona VO</option>
+          <option value="tramadol_vo">Tramadol VO</option>
+          <option value="codeina_vo">Codeína VO</option>
+          <option value="fentanil_transdermico">Fentanil transdérmico mcg/h</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Redução por tolerância cruzada</label>
+        <select id="reducaoOpioide">
+          <option value="0.25">Reduzir 25%</option>
+          <option value="0.33">Reduzir 33%</option>
+          <option value="0.50">Reduzir 50%</option>
+          <option value="0">Sem redução</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn primary" onclick="calcularOpioide()">Calcular equivalência</button>
+
+    <div id="resultadoOpioide"></div>
+  </div>
+</section>
+
+<section id="emergencia" class="section">
+  <div class="card">
+    <h3>Emergência / drogas críticas</h3>
+
+    <div class="grid">
+      <div>
+        <label>Peso, em kg</label>
+        <input id="pesoEmerg" type="number" step="0.1" placeholder="Ex.: 20">
+      </div>
+
+      <div>
+        <label>Droga</label>
+        <select id="drogaEmerg">
+          <option value="adrenalina_pcr">Adrenalina PCR IV/IO 0,1 mg/mL</option>
+          <option value="adrenalina_anafilaxia">Adrenalina IM anafilaxia 1 mg/mL</option>
+          <option value="atropina">Atropina bradicardia</option>
+          <option value="adenosina1">Adenosina 1ª dose</option>
+          <option value="adenosina2">Adenosina 2ª dose</option>
+          <option value="amiodarona">Amiodarona PCR</option>
+          <option value="midazolam_in">Midazolam intranasal</option>
+          <option value="etomidato">Etomidato IOT</option>
+          <option value="cetamina">Cetamina IOT</option>
+          <option value="suxametonio">Suxametônio</option>
+          <option value="rocuronio">Rocurônio RSI</option>
+          <option value="fentanil_bolus">Fentanil bolus</option>
+          <option value="nacl3">NaCl 3% hiponatremia sintomática</option>
+          <option value="glicose10">Glicose 10% hipoglicemia pediátrica</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn primary" onclick="calcularEmergencia()">Calcular emergência</button>
+    <div id="resultadoEmerg"></div>
+  </div>
+</section>
+
+<section id="pals" class="section">
+  <div class="card">
+    <h3>PALS — algoritmos pediátricos</h3>
+
+    <div class="alg-card">
+      <h4>PCR pediátrica</h4>
+      <span class="badge">C-A-B</span><span class="badge">RCP alta qualidade</span><span class="badge">Desfibrilar se chocável</span>
+      <ul class="list">
+        <li>Compressões fortes, rápidas, retorno completo do tórax e mínima pausa.</li>
+        <li>Oxigênio, monitor/desfibrilador, acesso IV/IO.</li>
+        <li>Adrenalina IV/IO: 0,01 mg/kg de 0,1 mg/mL, máximo 1 mg.</li>
+        <li>Ritmo chocável: desfibrilação 2 J/kg, depois 4 J/kg, depois ≥4 J/kg até máximo adulto.</li>
+        <li>Amiodarona: 5 mg/kg em FV/TV sem pulso refratária, máximo 300 mg.</li>
+        <li>Procurar e tratar Hs e Ts.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Bradicardia com instabilidade</h4>
+      <ul class="list">
+        <li>Oxigênio, ventilação se necessário, monitorização e acesso.</li>
+        <li>Se FC baixa com má perfusão apesar de oxigenação: iniciar RCP se FC &lt;60/min com sinais de choque.</li>
+        <li>Adrenalina 0,01 mg/kg IV/IO.</li>
+        <li>Atropina 0,02 mg/kg se aumento de tônus vagal ou bloqueio AV primário.</li>
+        <li>Considerar marcapasso transcutâneo em bloqueio AV ou refratariedade.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Crise convulsiva</h4>
+      <ul class="list">
+        <li>ABCDE, lateralização, aspiração se necessário, glicemia capilar.</li>
+        <li>Crise ≥5 min: benzodiazepínico.</li>
+        <li>Midazolam intranasal 0,2–0,3 mg/kg, máximo 10 mg.</li>
+        <li>Sem resposta: segunda linha com levetiracetam, fenitoína/fosfenitoína ou fenobarbital conforme protocolo.</li>
+        <li>Preparar via aérea em depressão respiratória ou estado epiléptico refratário.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="acls" class="section">
+  <div class="card">
+    <h3>ACLS — adulto</h3>
+
+    <div class="alg-card">
+      <h4>PCR adulto</h4>
+      <ul class="list">
+        <li>RCP de alta qualidade e desfibrilação precoce se ritmo chocável.</li>
+        <li>Adrenalina 1 mg IV/IO a cada 3–5 min.</li>
+        <li>FV/TV sem pulso refratária: amiodarona 300 mg, depois 150 mg.</li>
+        <li>Via aérea avançada sem interromper compressões; capnografia quando disponível.</li>
+        <li>Tratar causas reversíveis: Hs e Ts.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Bradicardia sintomática</h4>
+      <ul class="list">
+        <li>Atropina 1 mg IV, repetir a cada 3–5 min, máximo 3 mg.</li>
+        <li>Se refratária: marcapasso transcutâneo, dopamina ou adrenalina em infusão.</li>
+        <li>Considerar causa medicamentosa: beta-bloqueador, bloqueador de cálcio, digoxina, hipercalemia.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Taquicardia com pulso</h4>
+      <ul class="list">
+        <li>Instável: cardioversão sincronizada.</li>
+        <li>QRS estreito regular estável: manobra vagal e adenosina.</li>
+        <li>QRS largo: avaliar TV, amiodarona/procainamida conforme cenário e protocolo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="atls" class="section">
+  <div class="card">
+    <h3>ATLS / Trauma — abordagem inicial</h3>
+
+    <div class="alg-card">
+      <h4>Primary survey — ABCDE</h4>
+      <ul class="list">
+        <li><strong>A:</strong> via aérea com proteção cervical.</li>
+        <li><strong>B:</strong> ventilação, pneumotórax hipertensivo, tórax instável, feridas abertas.</li>
+        <li><strong>C:</strong> circulação e controle de hemorragia externa.</li>
+        <li><strong>D:</strong> avaliação neurológica rápida, pupilas, Glasgow, glicemia.</li>
+        <li><strong>E:</strong> exposição completa e prevenção de hipotermia.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Choque hemorrágico</h4>
+      <ul class="list">
+        <li>Controle de sangramento externo imediato.</li>
+        <li>Acesso calibroso ou intraósseo.</li>
+        <li>Reposição balanceada com hemoderivados quando indicado.</li>
+        <li>Evitar hipotermia, acidose e coagulopatia.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="antibioticos" class="section">
+  <div class="card">
+    <h3>Guia rápido de antibióticos</h3>
+
+    <div class="note">
+      Doses devem ser ajustadas à indicação, gravidade, função renal, peso, idade, foco infeccioso,
+      epidemiologia local e protocolo institucional.
+    </div>
+
+    <div class="alg-card">
+      <h4>Mais usados</h4>
+      <ul class="list">
+        <li>Amoxicilina: otite, sinusite, pneumonia comunitária selecionada.</li>
+        <li>Amoxicilina + clavulanato: mordedura, sinusite/otite com maior risco de beta-lactamase.</li>
+        <li>Cefalexina: pele, partes moles, ITU baixa selecionada.</li>
+        <li>Azitromicina: atípicos, coqueluche e cenários selecionados.</li>
+        <li>Ceftriaxona: infecções graves, pneumonia, sepse, meningite conforme dose específica.</li>
+        <li>Clindamicina: pele/partes moles, anaeróbios e cobertura anti-toxina em casos específicos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="alertas" class="section">
+  <div class="card">
+    <h3>Alertas de segurança</h3>
+
+    <div class="alert">
+      Esta ferramenta não deve ser usada sem revisão clínica. Sempre conferir bula, protocolo institucional,
+      alergias, idade, peso, função renal/hepática, interações, diluição e via.
+    </div>
+
+    <ul class="list">
+      <li>AINEs: evitar em dengue suspeita, desidratação, DRC, sangramento, plaquetopenia e varicela.</li>
+      <li>Ondansetrona, domperidona, macrolídeos e antipsicóticos: atenção ao QT.</li>
+      <li>Midazolam, diazepam, opioides e propofol: risco de depressão respiratória.</li>
+      <li>KCl, NaCl 3%, bicarbonato e cálcio: dupla checagem obrigatória.</li>
+      <li>Suxametônio: contraindicações críticas em hipercalemia, queimadura tardia, doença neuromuscular e hipertermia maligna.</li>
+      <li>Rocurônio: garantir plano de via aérea e ventilação antes do bloqueio.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="footer">
+  Calculadora Médica · Ferramenta de apoio médico · Uso profissional com conferência obrigatória.
+</div>
 
 </main>
+
+<script>
+const meds = [
+{
+  nome:"Dipirona",
+  classe:"Analgésico / antitérmico",
+  dose:15,
+  unidade:"mg/kg/dose",
+  intervalo:"6/6h",
+  teto:1000,
+  idadeMinMeses:3,
+  pesoMin:5,
+  vias:"VO / EV / IM",
+  apresentacoes:[
+    {nome:"Gotas 500 mg/mL", conc:500, tipo:"gotas"},
+    {nome:"Solução oral 50 mg/mL", conc:50, tipo:"mL"},
+    {nome:"Comprimido 500 mg", fixo:500, tipo:"comprimido"},
+    {nome:"Comprimido 1 g", fixo:1000, tipo:"comprimido"}
+  ],
+  alertas:["Evitar <3 meses ou <5 kg.","Conferir alergia, hipotensão em EV, discrasias sanguíneas raras.","Dose máxima por dose ajustada ao teto."]
+},
+{
+  nome:"Paracetamol",
+  classe:"Analgésico / antitérmico",
+  dose:15,
+  unidade:"mg/kg/dose",
+  intervalo:"6/6h",
+  teto:750,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Gotas 200 mg/mL", conc:200, tipo:"gotas"},
+    {nome:"Suspensão 32 mg/mL", conc:32, tipo:"mL"},
+    {nome:"Comprimido 500 mg", fixo:500, tipo:"comprimido"},
+    {nome:"Comprimido 750 mg", fixo:750, tipo:"comprimido"}
+  ],
+  alertas:["Cautela em hepatopatia, etilismo, desnutrição.","Não ultrapassar dose diária segura."]
+},
+{
+  nome:"Ibuprofeno",
+  classe:"AINE",
+  dose:10,
+  unidade:"mg/kg/dose",
+  intervalo:"6–8/8h",
+  teto:400,
+  idadeMinMeses:6,
+  pesoMin:5,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Gotas 50 mg/mL", conc:50, tipo:"gotas"},
+    {nome:"Gotas 100 mg/mL", conc:100, tipo:"gotas"},
+    {nome:"Suspensão 100 mg/5 mL", conc:20, tipo:"mL"},
+    {nome:"Comprimido 300 mg", fixo:300, tipo:"comprimido"},
+    {nome:"Comprimido 400 mg", fixo:400, tipo:"comprimido"}
+  ],
+  alertas:["Evitar <6 meses.","Evitar em dengue suspeita, desidratação, DRC, sangramento digestivo ou plaquetopenia."]
+},
+{
+  nome:"Cetoprofeno",
+  classe:"AINE",
+  dose:1,
+  unidade:"mg/kg/dose",
+  intervalo:"8/8h ou 12/12h",
+  teto:50,
+  idadeMinMeses:6,
+  pesoMin:0,
+  vias:"VO / EV / IM conforme apresentação",
+  apresentacoes:[
+    {nome:"Gotas 20 mg/mL", conc:20, tipo:"gotas"},
+    {nome:"Comprimido 50 mg", fixo:50, tipo:"comprimido"},
+    {nome:"Ampola 50 mg/mL", conc:50, tipo:"mL"}
+  ],
+  alertas:["AINE: evitar em dengue suspeita, DRC, desidratação, sangramento e plaquetopenia.","Checar apresentação pediátrica e idade mínima local."]
+},
+{
+  nome:"Naproxeno",
+  classe:"AINE",
+  dose:5,
+  unidade:"mg/kg/dose",
+  intervalo:"12/12h",
+  teto:500,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Suspensão 25 mg/mL", conc:25, tipo:"mL"},
+    {nome:"Comprimido 250 mg", fixo:250, tipo:"comprimido"},
+    {nome:"Comprimido 500 mg", fixo:500, tipo:"comprimido"}
+  ],
+  alertas:["Evitar menores de 2 anos salvo protocolo específico.","AINE: cautela renal, gastrointestinal, dengue e desidratação."]
+},
+{
+  nome:"Ondansetrona",
+  classe:"Antiemético",
+  dose:0.15,
+  unidade:"mg/kg/dose",
+  intervalo:"8/8h se necessário",
+  teto:8,
+  idadeMinMeses:6,
+  pesoMin:0,
+  vias:"VO / EV",
+  apresentacoes:[
+    {nome:"Solução oral 4 mg/5 mL", conc:0.8, tipo:"mL"},
+    {nome:"Comprimido 4 mg", fixo:4, tipo:"comprimido"},
+    {nome:"Comprimido 8 mg", fixo:8, tipo:"comprimido"},
+    {nome:"Ampola 2 mg/mL", conc:2, tipo:"mL"}
+  ],
+  alertas:["Atenção a QT longo, hipocalemia, hipomagnesemia e associação com drogas que prolongam QT."]
+},
+{
+  nome:"Dimenidrinato",
+  classe:"Antiemético / antivertiginoso",
+  dose:1,
+  unidade:"mg/kg/dose",
+  intervalo:"6–8/8h",
+  teto:50,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO / IM / EV conforme apresentação",
+  apresentacoes:[
+    {nome:"Solução oral 2,5 mg/mL", conc:2.5, tipo:"mL"},
+    {nome:"Comprimido 50 mg", fixo:50, tipo:"comprimido"},
+    {nome:"Ampola 50 mg/mL", conc:50, tipo:"mL"}
+  ],
+  alertas:["Risco de sedação, sonolência e efeito anticolinérgico.","Evitar em lactentes pequenos salvo orientação específica."]
+},
+{
+  nome:"Amoxicilina",
+  classe:"Antibiótico penicilina",
+  dose:50,
+  unidade:"mg/kg/dia",
+  intervalo:"Dividir 8/8h ou 12/12h",
+  teto:1000,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Suspensão 250 mg/5 mL", conc:50, tipo:"mL"},
+    {nome:"Suspensão 400 mg/5 mL", conc:80, tipo:"mL"},
+    {nome:"Cápsula 500 mg", fixo:500, tipo:"comprimido"},
+    {nome:"Comprimido 875 mg", fixo:875, tipo:"comprimido"}
+  ],
+  alertas:["Dose depende do foco infeccioso.","Alta dose pode chegar a 80–90 mg/kg/dia em indicações selecionadas.","Conferir alergia a beta-lactâmicos."]
+},
+{
+  nome:"Amoxicilina + Clavulanato",
+  classe:"Antibiótico beta-lactâmico",
+  dose:50,
+  unidade:"mg/kg/dia de amoxicilina",
+  intervalo:"Dividir 12/12h ou 8/8h conforme formulação",
+  teto:1000,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Suspensão 400/57 mg em 5 mL", conc:80, tipo:"mL"},
+    {nome:"Suspensão 250/62,5 mg em 5 mL", conc:50, tipo:"mL"},
+    {nome:"Comprimido 500/125 mg", fixo:500, tipo:"comprimido"},
+    {nome:"Comprimido 875/125 mg", fixo:875, tipo:"comprimido"}
+  ],
+  alertas:["Cálculo exibido pelo componente amoxicilina.","Evitar excesso de clavulanato por risco gastrointestinal.","Conferir apresentação e intervalo."]
+},
+{
+  nome:"Cefalexina",
+  classe:"Cefalosporina 1ª geração",
+  dose:25,
+  unidade:"mg/kg/dose",
+  intervalo:"6–8/8h",
+  teto:500,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Suspensão 250 mg/5 mL", conc:50, tipo:"mL"},
+    {nome:"Suspensão 500 mg/5 mL", conc:100, tipo:"mL"},
+    {nome:"Cápsula 500 mg", fixo:500, tipo:"comprimido"}
+  ],
+  alertas:["Ajustar conforme foco e função renal.","Conferir alergia a beta-lactâmicos."]
+},
+{
+  nome:"Azitromicina",
+  classe:"Macrolídeo",
+  dose:10,
+  unidade:"mg/kg/dia",
+  intervalo:"1x/dia",
+  teto:500,
+  idadeMinMeses:6,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Suspensão 200 mg/5 mL", conc:40, tipo:"mL"},
+    {nome:"Comprimido 500 mg", fixo:500, tipo:"comprimido"}
+  ],
+  alertas:["Atenção a QT longo e interações.","Dose e duração variam conforme indicação."]
+},
+{
+  nome:"Ceftriaxona",
+  classe:"Cefalosporina 3ª geração",
+  dose:50,
+  unidade:"mg/kg/dia",
+  intervalo:"1x/dia ou 12/12h conforme indicação",
+  teto:2000,
+  idadeMinMeses:1,
+  pesoMin:0,
+  vias:"EV / IM",
+  apresentacoes:[
+    {nome:"Frasco 500 mg", fixo:500, tipo:"frasco"},
+    {nome:"Frasco 1 g", fixo:1000, tipo:"frasco"}
+  ],
+  alertas:["Meningite e sepse podem exigir doses específicas.","Evitar em neonatos com hiperbilirrubinemia ou uso de cálcio EV conforme contexto."]
+},
+{
+  nome:"Prednisolona",
+  classe:"Corticoide sistêmico",
+  dose:1,
+  unidade:"mg/kg/dia",
+  intervalo:"1–2x/dia",
+  teto:60,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Solução 3 mg/mL", conc:3, tipo:"mL"},
+    {nome:"Solução 1 mg/mL", conc:1, tipo:"mL"},
+    {nome:"Comprimido 20 mg", fixo:20, tipo:"comprimido"}
+  ],
+  alertas:["Dose varia por indicação: asma, crupe, alergia, doença inflamatória.","Cautela em infecção sistêmica sem cobertura adequada."]
+},
+{
+  nome:"Dexametasona",
+  classe:"Corticoide",
+  dose:0.6,
+  unidade:"mg/kg/dose",
+  intervalo:"Dose única ou conforme indicação",
+  teto:16,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"VO / EV / IM",
+  apresentacoes:[
+    {nome:"Elixir 0,5 mg/5 mL", conc:0.1, tipo:"mL"},
+    {nome:"Ampola 4 mg/mL", conc:4, tipo:"mL"},
+    {nome:"Comprimido 4 mg", fixo:4, tipo:"comprimido"}
+  ],
+  alertas:["Crupe frequentemente usa 0,15–0,6 mg/kg.","Conferir indicação e teto local."]
+},
+{
+  nome:"Salbutamol",
+  classe:"Beta-2 agonista",
+  dose:0.15,
+  unidade:"mg/kg/dose nebulização",
+  intervalo:"20/20 min na crise ou conforme protocolo",
+  teto:5,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Inalatória",
+  apresentacoes:[
+    {nome:"Nebulização 5 mg/mL", conc:5, tipo:"mL"},
+    {nome:"Spray 100 mcg/jato", fixo:0.1, tipo:"jato"}
+  ],
+  alertas:["Pode causar taquicardia, tremor e hipocalemia.","Preferir spray com espaçador quando possível."]
+},
+{
+  nome:"Ipratrópio",
+  classe:"Anticolinérgico inalatório",
+  dose:0.25,
+  unidade:"mg/dose nebulização",
+  intervalo:"20/20 min nas primeiras doses conforme gravidade",
+  teto:0.5,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"Inalatória",
+  apresentacoes:[
+    {nome:"Solução 0,25 mg/mL", conc:0.25, tipo:"mL"}
+  ],
+  alertas:["Associar ao beta-2 em broncoespasmo moderado/grave.","Ajustar por idade e gravidade."]
+},
+{
+  nome:"Hedera helix",
+  classe:"Fitoterápico expectorante",
+  dose:0,
+  unidade:"dose fixa por idade",
+  intervalo:"8/8h conforme idade",
+  teto:0,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 15 mg/mL", conc:15, tipo:"mL"}
+  ],
+  alertas:["2–5 anos: 2 mL 8/8h. 6–12 anos: 4 mL 8/8h. >12 anos/adultos: conferir bula/local.","Não usar em menores de 2 anos sem avaliação médica."]
+},
+{
+  nome:"Midazolam intranasal",
+  classe:"Benzodiazepínico",
+  dose:0.2,
+  unidade:"mg/kg/dose",
+  intervalo:"Dose única; repetir conforme protocolo",
+  teto:10,
+  idadeMinMeses:1,
+  pesoMin:0,
+  vias:"Intranasal",
+  apresentacoes:[
+    {nome:"Ampola 5 mg/mL", conc:5, tipo:"mL"},
+    {nome:"Ampola 1 mg/mL", conc:1, tipo:"mL"}
+  ],
+  alertas:["Uso em crise convulsiva prolongada.","Risco de depressão respiratória. Monitorização obrigatória.","Dividir volume entre as narinas."]
+},
+{
+  nome:"Diazepam",
+  classe:"Benzodiazepínico",
+  dose:0.2,
+  unidade:"mg/kg/dose",
+  intervalo:"Dose única/repetição conforme protocolo",
+  teto:10,
+  idadeMinMeses:1,
+  pesoMin:0,
+  vias:"EV / retal",
+  apresentacoes:[
+    {nome:"Ampola 5 mg/mL", conc:5, tipo:"mL"},
+    {nome:"Comprimido 5 mg", fixo:5, tipo:"comprimido"},
+    {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
+  ],
+  alertas:["Risco de depressão respiratória e sedação prolongada.","EV lentamente, com monitorização."]
+},
+{
+  nome:"Atropina",
+  classe:"Anticolinérgico",
+  dose:0.02,
+  unidade:"mg/kg/dose",
+  intervalo:"Repetir conforme protocolo",
+  teto:0.5,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"IV / IO",
+  apresentacoes:[
+    {nome:"Ampola 0,25 mg/mL", conc:0.25, tipo:"mL"},
+    {nome:"Ampola 0,5 mg/mL", conc:0.5, tipo:"mL"}
+  ],
+  alertas:["Dose mínima pediátrica usual: 0,1 mg.","Bradicardia por tônus vagal ou bloqueio AV.","Adulto ACLS: 1 mg por dose."]
+},
+{
+  nome:"Etomidato",
+  classe:"Hipnótico para indução",
+  dose:0.3,
+  unidade:"mg/kg/dose",
+  intervalo:"Dose única IOT",
+  teto:20,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Ampola 2 mg/mL", conc:2, tipo:"mL"}
+  ],
+  alertas:["Indução em IOT. Pode causar supressão adrenal transitória.","Não fornece analgesia.","Monitorização e preparo de via aérea obrigatórios."]
+},
+{
+  nome:"Cetamina",
+  classe:"Anestésico dissociativo",
+  dose:1.5,
+  unidade:"mg/kg/dose EV",
+  intervalo:"Dose única ou bolus titulado",
+  teto:150,
+  idadeMinMeses:3,
+  pesoMin:0,
+  vias:"EV / IM",
+  apresentacoes:[
+    {nome:"Ampola 50 mg/mL", conc:50, tipo:"mL"},
+    {nome:"Ampola 10 mg/mL", conc:10, tipo:"mL"}
+  ],
+  alertas:["Útil em broncoespasmo e instabilidade relativa.","Pode aumentar secreções, PA e FC.","Preparar via aérea."]
+},
+{
+  nome:"Fentanil",
+  classe:"Opioide",
+  dose:1,
+  unidade:"mcg/kg/dose",
+  intervalo:"Titular conforme dor/sedação",
+  teto:100,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV / IN",
+  apresentacoes:[
+    {nome:"Ampola 50 mcg/mL", conc:50, tipo:"mL", mcg:true}
+  ],
+  alertas:["Risco de depressão respiratória e rigidez torácica em bolus rápido.","Monitorização obrigatória."]
+},
+{
+  nome:"Morfina",
+  classe:"Opioide",
+  dose:0.1,
+  unidade:"mg/kg/dose",
+  intervalo:"4/4h ou titulado conforme dor",
+  teto:10,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV / SC / VO conforme apresentação",
+  apresentacoes:[
+    {nome:"Ampola 10 mg/mL", conc:10, tipo:"mL"},
+    {nome:"Solução oral 10 mg/mL", conc:10, tipo:"mL"},
+    {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
+  ],
+  alertas:["Risco de depressão respiratória, náusea, hipotensão, retenção urinária.","Ajustar em DRC e fragilidade."]
+},
+{
+  nome:"Propofol",
+  classe:"Hipnótico sedativo",
+  dose:1,
+  unidade:"mg/kg/dose",
+  intervalo:"Bolus titulado",
+  teto:100,
+  idadeMinMeses:1,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Ampola 10 mg/mL", conc:10, tipo:"mL"}
+  ],
+  alertas:["Evitar em choque/hipotensão. Não é analgésico.","Via aérea e monitorização obrigatórias."]
+},
+{
+  nome:"Suxametônio",
+  classe:"Bloqueador neuromuscular despolarizante",
+  dose:1.5,
+  unidade:"mg/kg/dose",
+  intervalo:"Dose única IOT",
+  teto:150,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Frasco 100 mg/5 mL", conc:20, tipo:"mL"}
+  ],
+  alertas:["Contraindicado em hipercalemia, queimadura >24–48h, doença neuromuscular, hipertermia maligna e imobilização prolongada.","Não sedativo. Exige indução adequada."]
+},
+{
+  nome:"Rocurônio",
+  classe:"Bloqueador neuromuscular não despolarizante",
+  dose:1,
+  unidade:"mg/kg/dose RSI",
+  intervalo:"Dose única IOT",
+  teto:100,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV",
+  apresentacoes:[
+    {nome:"Ampola 10 mg/mL", conc:10, tipo:"mL"}
+  ],
+  alertas:["Não sedativo. Garantir hipnose/analgesia e plano de via aérea.","Duração prolongada em relação à suxametônio."]
+}
+];
+
+const emerg = {
+  adrenalina_pcr:{nome:"Adrenalina PCR IV/IO", dose:0.01, unidade:"mg/kg", teto:1, conc:0.1, obs:"Usar concentração 0,1 mg/mL. Repetir a cada 3–5 min conforme protocolo."},
+  adrenalina_anafilaxia:{nome:"Adrenalina IM anafilaxia", dose:0.01, unidade:"mg/kg", teto:0.5, conc:1, obs:"Usar 1 mg/mL IM, face anterolateral da coxa. Criança frequentemente teto 0,3 mg; adulto 0,5 mg."},
+  atropina:{nome:"Atropina", dose:0.02, unidade:"mg/kg", teto:0.5, conc:0.25, obs:"Dose mínima 0,1 mg em pediatria. Adulto ACLS: 1 mg."},
+  adenosina1:{nome:"Adenosina 1ª dose", dose:0.1, unidade:"mg/kg", teto:6, conc:3, obs:"Flush rápido imediatamente após. Monitorização."},
+  adenosina2:{nome:"Adenosina 2ª dose", dose:0.2, unidade:"mg/kg", teto:12, conc:3, obs:"Flush rápido imediatamente após. Monitorização."},
+  amiodarona:{nome:"Amiodarona PCR", dose:5, unidade:"mg/kg", teto:300, conc:50, obs:"FV/TV sem pulso refratária. Monitorar ritmo e pressão."},
+  midazolam_in:{nome:"Midazolam intranasal", dose:0.2, unidade:"mg/kg", teto:10, conc:5, obs:"Dividir entre narinas. Risco de depressão respiratória."},
+  etomidato:{nome:"Etomidato", dose:0.3, unidade:"mg/kg", teto:20, conc:2, obs:"Indução IOT. Não é analgésico."},
+  cetamina:{nome:"Cetamina", dose:1.5, unidade:"mg/kg", teto:150, conc:50, obs:"Indução/sedação. Preparar via aérea."},
+  suxametonio:{nome:"Suxametônio", dose:1.5, unidade:"mg/kg", teto:150, conc:20, obs:"Bloqueador. Contraindicações críticas: hipercalemia, queimadura tardia, doença neuromuscular."},
+  rocuronio:{nome:"Rocurônio RSI", dose:1, unidade:"mg/kg", teto:100, conc:10, obs:"Bloqueador. Não sedativo."},
+  fentanil_bolus:{nome:"Fentanil bolus", dose:1, unidade:"mcg/kg", teto:100, conc:50, obs:"Concentração 50 mcg/mL. Infundir lentamente."},
+  nacl3:{nome:"NaCl 3%", dose:3, unidade:"mL/kg", teto:150, conc:null, obs:"Hiponatremia sintomática/hipertensão intracraniana conforme protocolo. Monitorar sódio."},
+  glicose10:{nome:"Glicose 10%", dose:5, unidade:"mL/kg", teto:250, conc:null, obs:"Hipoglicemia pediátrica. Rechecar glicemia."}
+};
+
+const opioides = {
+  morfina_vo:{nome:"Morfina VO", fator:1},
+  morfina_ev:{nome:"Morfina EV", fator:3},
+  oxicodona_vo:{nome:"Oxicodona VO", fator:1.5},
+  hidromorfona_vo:{nome:"Hidromorfona VO", fator:4},
+  tramadol_vo:{nome:"Tramadol VO", fator:0.1},
+  codeina_vo:{nome:"Codeína VO", fator:0.15},
+  fentanil_transdermico:{nome:"Fentanil transdérmico mcg/h", fator:2.4}
+};
+
+function init(){
+  const sel = document.getElementById("medicamento");
+  meds.forEach((m,i)=>{
+    const opt=document.createElement("option");
+    opt.value=i;
+    opt.textContent=m.nome + " — " + m.classe;
+    sel.appendChild(opt);
+  });
+}
+
+function toggleMenu(open){
+  document.body.classList.toggle("menu-open", open);
+}
+
+function goSection(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  toggleMenu(false);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function idadeMeses(){
+  const idade = parseFloat(document.getElementById("idade").value || 0);
+  const un = document.getElementById("idadeUnidade").value;
+  return un === "anos" ? idade*12 : idade;
+}
+
+function calcularDose(){
+  const peso = parseFloat(document.getElementById("peso").value);
+  const idadeM = idadeMeses();
+  const m = meds[parseInt(document.getElementById("medicamento").value)];
+  const out = document.getElementById("resultadoDose");
+
+  if(!peso || peso<=0){
+    out.innerHTML = `<div class="alert">Informe um peso válido.</div>`;
+    return;
+  }
+
+  let alertas = [...m.alertas];
+
+  if(idadeM < m.idadeMinMeses) alertas.unshift(`Restrição: idade abaixo do recomendado para ${m.nome}.`);
+  if(peso < m.pesoMin) alertas.unshift(`Restrição: peso abaixo do mínimo recomendado para ${m.nome}.`);
+
+  if(m.nome === "Hedera helix"){
+    out.innerHTML = `
+    <div class="result">
+      <h4>Hedera helix</h4>
+      <div class="dose-box">
+        <strong>2–5 anos:</strong> 2 mL VO 8/8h. Máximo 6 mL/dia.<br>
+        <strong>6–12 anos:</strong> 4 mL VO 8/8h. Máximo 12 mL/dia.<br>
+        <strong>&gt;12 anos/adultos:</strong> conferir apresentação/bula local.
+      </div>
+      <div class="alert">${alertas.map(x=>"• "+x).join("<br>")}</div>
+    </div>`;
+    return;
+  }
+
+  let doseCalc = peso * m.dose;
+  let doseFinal = Math.min(doseCalc, m.teto);
+  let ajustada = doseFinal < doseCalc;
+
+  let html = `
+    <div class="result">
+      <h4>${m.nome}</h4>
+      <p><strong>Classe:</strong> ${m.classe}</p>
+      <p><strong>Dose base:</strong> ${m.dose} ${m.unidade}</p>
+      <p><strong>Intervalo:</strong> ${m.intervalo}</p>
+      <p><strong>Via:</strong> ${m.vias}</p>
+      <div class="dose-box">
+        <strong>Dose calculada:</strong> ${doseCalc.toFixed(2)} ${m.unidade.includes("mcg") ? "mcg" : "mg"}<br>
+        <strong>Dose final sugerida:</strong> ${doseFinal.toFixed(2)} ${m.unidade.includes("mcg") ? "mcg" : "mg"}
+        ${ajustada ? `<br><span style="color:#A94442;font-weight:800">Dose reduzida ao teto máximo permitido.</span>` : ``}
+      </div>
+  `;
+
+  m.apresentacoes.forEach(a=>{
+    if(a.conc){
+      let vol = doseFinal / a.conc;
+      let gotas = vol * 20;
+      html += `
+      <div class="dose-box">
+        <strong>${a.nome}</strong><br>
+        Volume: ${vol.toFixed(2)} mL
+        ${a.tipo==="gotas" ? `<br>Gotas: ${Math.round(gotas)} gotas <span class="small">(20 gotas = 1 mL)</span>` : ``}
+      </div>`;
+    }
+    if(a.fixo){
+      let qtd = doseFinal / a.fixo;
+      html += `
+      <div class="dose-box">
+        <strong>${a.nome}</strong><br>
+        Equivalência aproximada: ${qtd.toFixed(2)} unidade(s).<br>
+        <span class="small">Na prática, ajustar à apresentação segura mais próxima e ao teto clínico.</span>
+      </div>`;
+    }
+  });
+
+  html += `<div class="alert"><strong>Alertas:</strong><br>${alertas.map(x=>"• "+x).join("<br>")}</div>`;
+  html += `</div>`;
+  out.innerHTML = html;
+}
+
+function calcularEmergencia(){
+  const peso = parseFloat(document.getElementById("pesoEmerg").value);
+  const d = emerg[document.getElementById("drogaEmerg").value];
+  const out = document.getElementById("resultadoEmerg");
+
+  if(!peso || peso<=0){
+    out.innerHTML = `<div class="alert">Informe um peso válido.</div>`;
+    return;
+  }
+
+  let doseCalc = peso * d.dose;
+  let doseFinal = Math.min(doseCalc, d.teto);
+  let unidadeFinal = d.unidade.includes("mcg") ? "mcg" : d.unidade.includes("mL") ? "mL" : "mg";
+  let volume = d.conc ? doseFinal / d.conc : null;
+
+  out.innerHTML = `
+    <div class="result">
+      <h4>${d.nome}</h4>
+      <div class="dose-box">
+        <strong>Dose calculada:</strong> ${doseCalc.toFixed(2)} ${unidadeFinal}<br>
+        <strong>Dose final:</strong> ${doseFinal.toFixed(2)} ${unidadeFinal}
+        ${doseFinal < doseCalc ? `<br><span style="color:#A94442;font-weight:800">Dose reduzida ao teto.</span>` : ``}
+        ${volume !== null ? `<br><strong>Volume:</strong> ${volume.toFixed(2)} mL` : ``}
+      </div>
+      <div class="alert">${d.obs}</div>
+    </div>
+  `;
+}
+
+function calcularHidratacao(){
+  const peso = parseFloat(document.getElementById("pesoHid").value);
+  const perc = parseFloat(document.getElementById("percHid").value);
+  const naNec = parseFloat(document.getElementById("naNecessidade").value);
+  const naPct = parseFloat(document.getElementById("naPercentual").value);
+  const naFonte = parseFloat(document.getElementById("naFonte").value);
+  const naFonteTexto = document.getElementById("naFonte").options[document.getElementById("naFonte").selectedIndex].text;
+  const kNec = parseFloat(document.getElementById("kNecessidade").value);
+  const kPct = parseFloat(document.getElementById("kPercentual").value);
+  const kFonte = parseFloat(document.getElementById("kFonte").value);
+  const kFonteTexto = document.getElementById("kFonte").options[document.getElementById("kFonte").selectedIndex].text;
+  const out = document.getElementById("resultadoHid");
+
+  if(!peso || peso<=0){
+    out.innerHTML = `<div class="alert">Informe um peso válido.</div>`;
+    return;
+  }
+
+  if(!naNec || !naPct || !kNec || !kPct){
+    out.innerHTML = `<div class="alert">Informe valores válidos para sódio e potássio.</div>`;
+    return;
+  }
+
+  let manutencao = 0;
+  if(peso <= 10) manutencao = peso*100;
+  else if(peso <= 20) manutencao = 1000 + (peso-10)*50;
+  else manutencao = 1500 + (peso-20)*20;
+
+  const volumeFinal = manutencao * perc;
+  const velocidade = volumeFinal / 24;
+
+  const naTotalDia = peso * naNec;
+  const naPrescrito = naTotalDia * (naPct/100);
+  const naVolume = naPrescrito / naFonte;
+
+  const kTotalDia = peso * kNec;
+  const kPrescrito = kTotalDia * (kPct/100);
+  const kVolume = kPrescrito / kFonte;
+
+  const volumeEletr = naVolume + kVolume;
+  const volumeBase = Math.max(volumeFinal - volumeEletr, 0);
+
+  const kConcFinal = kPrescrito / (volumeFinal/1000);
+  const naConcFinal = naPrescrito / (volumeFinal/1000);
+
+  out.innerHTML = `
+    <div class="result">
+      <h4>Prescrição de manutenção pela regra de Holliday-Segar</h4>
+
+      <div class="dose-box">
+        <strong>Manutenção 100%:</strong> ${manutencao.toFixed(0)} mL/dia<br>
+        <strong>Percentual selecionado:</strong> ${(perc*100).toFixed(0)}%<br>
+        <strong>Volume final da solução:</strong> ${volumeFinal.toFixed(0)} mL/24h<br>
+        <strong>Velocidade:</strong> ${velocidade.toFixed(1)} mL/h
+      </div>
+
+      <div class="dose-box">
+        <strong>Sódio diário considerado:</strong> ${naTotalDia.toFixed(1)} mEq/dia (${naNec} mEq/kg/dia)<br>
+        <strong>Sódio prescrito:</strong> ${naPrescrito.toFixed(1)} mEq (${naPct}% da necessidade diária)<br>
+        <strong>Fonte:</strong> ${naFonteTexto}<br>
+        <strong>Volume de NaCl:</strong> ${naVolume.toFixed(2)} mL<br>
+        <strong>Concentração final de sódio:</strong> ${naConcFinal.toFixed(1)} mEq/L
+      </div>
+
+      <div class="dose-box">
+        <strong>Potássio diário considerado:</strong> ${kTotalDia.toFixed(1)} mEq/dia (${kNec} mEq/kg/dia)<br>
+        <strong>Potássio prescrito:</strong> ${kPrescrito.toFixed(1)} mEq (${kPct}% da necessidade diária)<br>
+        <strong>Fonte:</strong> ${kFonteTexto}<br>
+        <strong>Volume de KCl:</strong> ${kVolume.toFixed(2)} mL<br>
+        <strong>Concentração final de potássio:</strong> ${kConcFinal.toFixed(1)} mEq/L
+      </div>
+
+      <div class="dose-box">
+        <strong>Montagem sugerida da solução em 24h</strong><br>
+        Solução base: ${volumeBase.toFixed(0)} mL<br>
+        + NaCl selecionado: ${naVolume.toFixed(2)} mL<br>
+        + KCl selecionado: ${kVolume.toFixed(2)} mL<br>
+        <strong>Volume total aproximado:</strong> ${volumeFinal.toFixed(0)} mL
+      </div>
+
+      <div class="alert">
+        Não adicionar potássio sem diurese adequada ou em insuficiência renal/hipercalemia. 
+        Conferir sódio sérico, potássio sérico, glicemia, perdas, hidratação real desejada e protocolo institucional.
+        Atenção à osmolaridade e concentração final de KCl, especialmente em acesso periférico.
+      </div>
+    </div>
+  `;
+}
+
+function calcularOpioide(){
+  const origem = opioides[document.getElementById("opioideOrigem").value];
+  const destino = opioides[document.getElementById("opioideDestino").value];
+  const dose = parseFloat(document.getElementById("opioideDose").value);
+  const red = parseFloat(document.getElementById("reducaoOpioide").value);
+  const out = document.getElementById("resultadoOpioide");
+
+  if(!dose || dose<=0){
+    out.innerHTML = `<div class="alert">Informe uma dose diária válida.</div>`;
+    return;
+  }
+
+  let mme = dose * origem.fator;
+  let destinoDose = mme / destino.fator;
+  let ajustada = destinoDose * (1-red);
+
+  out.innerHTML = `
+    <div class="result">
+      <h4>Conversão aproximada</h4>
+      <div class="dose-box">
+        <strong>Opioide atual:</strong> ${origem.nome}<br>
+        <strong>Dose diária atual:</strong> ${dose} ${origem.nome.includes("Fentanil") ? "mcg/h" : "mg/dia"}<br>
+        <strong>Equivalente em morfina oral:</strong> ${mme.toFixed(1)} mg/dia
+      </div>
+      <div class="dose-box">
+        <strong>Destino:</strong> ${destino.nome}<br>
+        <strong>Dose equivalente sem redução:</strong> ${destinoDose.toFixed(1)} ${destino.nome.includes("Fentanil") ? "mcg/h" : "mg/dia"}<br>
+        <strong>Dose sugerida após redução:</strong> ${ajustada.toFixed(1)} ${destino.nome.includes("Fentanil") ? "mcg/h" : "mg/dia"}
+      </div>
+      <div class="alert">
+        Conversão exige julgamento clínico. Considerar redução adicional em idosos, DRC, insuficiência hepática,
+        fragilidade, hipoxemia, associação com benzodiazepínicos ou sedativos.
+      </div>
+    </div>
+  `;
+}
+
+function acceptTerms(){
+  localStorage.setItem("termosCalculadoraMedica","aceito");
+  document.getElementById("termsModal").style.display="none";
+}
+
+function denyTerms(){
+  document.body.innerHTML = `
+    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#F8F7F5;font-family:Montserrat">
+      <div style="max-width:520px;background:white;border-radius:28px;padding:30px;text-align:center;box-shadow:0 18px 45px rgba(0,0,0,.12);border:1px solid #C2A46D">
+        <h2 style="font-family:Playfair Display;color:#4F5B4A">Acesso encerrado</h2>
+        <p style="color:#70756E">O uso da calculadora requer aceitação dos termos de responsabilidade médica.</p>
+      </div>
+    </div>`;
+}
+
+window.onload = function(){
+  init();
+  if(localStorage.getItem("termosCalculadoraMedica")==="aceito"){
+    document.getElementById("termsModal").style.display="none";
+  }
+};
+</script>
 
 </body>
 </html>
