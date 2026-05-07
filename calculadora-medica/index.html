@@ -459,6 +459,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div>
         <label>Medicamento</label>
         <select id="medicamento"></select>
+        <span class="small">Lista organizada por classe farmacológica.</span>
       </div>
     </div>
 
@@ -1668,13 +1669,222 @@ const opioides = {
   petidina_ev:{nome:"Petidina/Meperidina EV/IM", fator:0.1, unidade:"mg/dia", alerta:"Evitar uso rotineiro; metabólito neurotóxico, maior risco em DRC e idosos."}
 };
 
+function grupoMedicamento(m){
+  const nome = m.nome.toLowerCase();
+  const classe = m.classe.toLowerCase();
+
+  if(
+    classe.includes("analgésico") ||
+    classe.includes("aine") ||
+    nome.includes("dipirona") ||
+    nome.includes("paracetamol") ||
+    nome.includes("ibuprofeno") ||
+    nome.includes("cetoprofeno") ||
+    nome.includes("naproxeno") ||
+    nome.includes("cetorolaco")
+  ){
+    return "Analgésicos, antitérmicos e AINEs";
+  }
+
+  if(
+    classe.includes("antiemético") ||
+    classe.includes("procinético") ||
+    nome.includes("ondansetrona") ||
+    nome.includes("bromoprida") ||
+    nome.includes("metoclopramida") ||
+    nome.includes("domperidona") ||
+    nome.includes("dimenidrinato") ||
+    nome.includes("prometazina")
+  ){
+    return "Antieméticos e procinéticos";
+  }
+
+  if(
+    classe.includes("anti-histamínico") ||
+    nome.includes("loratadina") ||
+    nome.includes("desloratadina") ||
+    nome.includes("cetirizina") ||
+    nome.includes("levocetirizina") ||
+    nome.includes("dexclorfeniramina") ||
+    nome.includes("hidroxizina")
+  ){
+    return "Antialérgicos e anti-histamínicos";
+  }
+
+  if(
+    classe.includes("antibiótico") ||
+    nome.includes("amoxicilina") ||
+    nome.includes("cef") ||
+    nome.includes("azitromicina") ||
+    nome.includes("clavulanato")
+  ){
+    return "Antibióticos";
+  }
+
+  if(
+    classe.includes("corticoide") ||
+    nome.includes("prednis") ||
+    nome.includes("dexametasona") ||
+    nome.includes("hidrocortisona") ||
+    nome.includes("budesonida")
+  ){
+    return "Corticoides";
+  }
+
+  if(
+    nome.includes("salbutamol") ||
+    nome.includes("ipratrópio") ||
+    nome.includes("fenoterol") ||
+    classe.includes("beta-2") ||
+    classe.includes("inalatório")
+  ){
+    return "Respiratórios e broncodilatadores";
+  }
+
+  if(
+    classe.includes("antitussígeno") ||
+    classe.includes("mucolítico") ||
+    nome.includes("ambroxol") ||
+    nome.includes("acetilcisteína") ||
+    nome.includes("guaifenesina") ||
+    nome.includes("dropropizina") ||
+    nome.includes("levodropropizina") ||
+    nome.includes("dextrometorfano")
+  ){
+    return "Tosse, mucolíticos e expectorantes";
+  }
+
+  if(
+    classe.includes("fitoterápico") ||
+    nome.includes("hedera") ||
+    nome.includes("kaloba") ||
+    nome.includes("guaco") ||
+    nome.includes("própolis") ||
+    nome.includes("sambucus")
+  ){
+    return "Fitoterápicos e produtos tradicionais";
+  }
+
+  if(
+    classe.includes("benzodiazepínico") ||
+    nome.includes("midazolam") ||
+    nome.includes("diazepam") ||
+    nome.includes("clonazepam") ||
+    nome.includes("lorazepam")
+  ){
+    return "Neurológicos, convulsão e sedação";
+  }
+
+  if(
+    classe.includes("opioide") ||
+    nome.includes("fentanil") ||
+    nome.includes("morfina") ||
+    nome.includes("tramadol") ||
+    nome.includes("oxicodona") ||
+    nome.includes("metadona") ||
+    nome.includes("nalbufina")
+  ){
+    return "Opioides e analgesia forte";
+  }
+
+  if(
+    classe.includes("bloqueador neuromuscular") ||
+    nome.includes("suxametônio") ||
+    nome.includes("rocurônio") ||
+    nome.includes("cisatracúrio")
+  ){
+    return "Bloqueadores neuromusculares / IOT";
+  }
+
+  if(
+    classe.includes("hipnótico") ||
+    classe.includes("anestésico") ||
+    nome.includes("etomidato") ||
+    nome.includes("cetamina") ||
+    nome.includes("propofol")
+  ){
+    return "Indução anestésica e sedação";
+  }
+
+  if(
+    nome.includes("atropina") ||
+    nome.includes("adenosina") ||
+    nome.includes("amiodarona") ||
+    nome.includes("epinefrina") ||
+    nome.includes("adrenalina")
+  ){
+    return "Emergência cardiovascular e antiarrítmicos";
+  }
+
+  if(
+    nome.includes("ácido tranexâmico") ||
+    nome.includes("enoxaparina") ||
+    nome.includes("heparina") ||
+    nome.includes("varfarina") ||
+    nome.includes("rivaroxabana")
+  ){
+    return "Hemostasia, anticoagulação e trombose";
+  }
+
+  if(
+    nome.includes("naloxona") ||
+    nome.includes("flumazenil") ||
+    nome.includes("carvão")
+  ){
+    return "Antídotos e intoxicações";
+  }
+
+  return "Outros medicamentos úteis";
+}
+
 function init(){
   const sel = document.getElementById("medicamento");
+  sel.innerHTML = "";
+
+  const ordem = [
+    "Analgésicos, antitérmicos e AINEs",
+    "Antieméticos e procinéticos",
+    "Antialérgicos e anti-histamínicos",
+    "Antibióticos",
+    "Corticoides",
+    "Respiratórios e broncodilatadores",
+    "Tosse, mucolíticos e expectorantes",
+    "Fitoterápicos e produtos tradicionais",
+    "Neurológicos, convulsão e sedação",
+    "Opioides e analgesia forte",
+    "Indução anestésica e sedação",
+    "Bloqueadores neuromusculares / IOT",
+    "Emergência cardiovascular e antiarrítmicos",
+    "Hemostasia, anticoagulação e trombose",
+    "Antídotos e intoxicações",
+    "Outros medicamentos úteis"
+  ];
+
+  const grupos = {};
+  ordem.forEach(g => grupos[g] = []);
+
   meds.forEach((m,i)=>{
-    const opt=document.createElement("option");
-    opt.value=i;
-    opt.textContent=m.nome + " — " + m.classe;
-    sel.appendChild(opt);
+    const grupo = grupoMedicamento(m);
+    if(!grupos[grupo]) grupos[grupo] = [];
+    grupos[grupo].push({m,i});
+  });
+
+  ordem.forEach(grupo=>{
+    if(!grupos[grupo] || grupos[grupo].length === 0) return;
+
+    const optgroup = document.createElement("optgroup");
+    optgroup.label = grupo;
+
+    grupos[grupo]
+      .sort((a,b)=>a.m.nome.localeCompare(b.m.nome, "pt-BR"))
+      .forEach(({m,i})=>{
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = m.nome + " — " + m.classe;
+        optgroup.appendChild(opt);
+      });
+
+    sel.appendChild(optgroup);
   });
 }
 
