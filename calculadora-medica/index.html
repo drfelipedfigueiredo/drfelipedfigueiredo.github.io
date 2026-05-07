@@ -400,6 +400,8 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     <button class="nav-item" onclick="goSection('hidratacao')">Holliday-Segar / Solução <span>›</span></button>
     <button class="nav-item" onclick="goSection('opioides')">Equivalência de opioides <span>›</span></button>
     <button class="nav-item" onclick="goSection('emergencia')">Emergência / Drogas críticas <span>›</span></button>
+    <button class="nav-item" onclick="goSection('trombolise')">Trombólise IAM / AVC <span>›</span></button>
+    <button class="nav-item" onclick="goSection('sinais')">Sinais vitais pediátricos <span>›</span></button>
   </div>
 
   <div class="nav-section">
@@ -549,13 +551,20 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div>
         <label>Opioide atual</label>
         <select id="opioideOrigem">
-          <option value="morfina_vo">Morfina VO</option>
+<option value="morfina_vo">Morfina VO</option>
           <option value="morfina_ev">Morfina EV</option>
           <option value="oxicodona_vo">Oxicodona VO</option>
           <option value="hidromorfona_vo">Hidromorfona VO</option>
+          <option value="metadona_vo">Metadona VO</option>
           <option value="tramadol_vo">Tramadol VO</option>
           <option value="codeina_vo">Codeína VO</option>
+          <option value="tapentadol_vo">Tapentadol VO</option>
+          <option value="buprenorfina_sl">Buprenorfina SL</option>
+          <option value="buprenorfina_td">Buprenorfina transdérmica mcg/h</option>
           <option value="fentanil_transdermico">Fentanil transdérmico mcg/h</option>
+          <option value="fentanil_ev">Fentanil EV mcg/dia</option>
+          <option value="nalbufina_ev">Nalbufina EV/IM/SC</option>
+          <option value="petidina_ev">Petidina/Meperidina EV/IM</option>
         </select>
       </div>
 
@@ -567,13 +576,20 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div>
         <label>Converter para</label>
         <select id="opioideDestino">
-          <option value="morfina_vo">Morfina VO</option>
+<option value="morfina_vo">Morfina VO</option>
           <option value="morfina_ev">Morfina EV</option>
           <option value="oxicodona_vo">Oxicodona VO</option>
           <option value="hidromorfona_vo">Hidromorfona VO</option>
+          <option value="metadona_vo">Metadona VO</option>
           <option value="tramadol_vo">Tramadol VO</option>
           <option value="codeina_vo">Codeína VO</option>
+          <option value="tapentadol_vo">Tapentadol VO</option>
+          <option value="buprenorfina_sl">Buprenorfina SL</option>
+          <option value="buprenorfina_td">Buprenorfina transdérmica mcg/h</option>
           <option value="fentanil_transdermico">Fentanil transdérmico mcg/h</option>
+          <option value="fentanil_ev">Fentanil EV mcg/dia</option>
+          <option value="nalbufina_ev">Nalbufina EV/IM/SC</option>
+          <option value="petidina_ev">Petidina/Meperidina EV/IM</option>
         </select>
       </div>
 
@@ -691,6 +707,133 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div class="flow-step"><strong>4. C — Circulation</strong><br>Controle de hemorragia, pulso, pele, PA, acesso calibroso/IO, hemoderivados conforme choque.</div>
       <div class="flow-step"><strong>5. D — Disability</strong><br>Glasgow, pupilas, glicemia, lateralização, convulsão e sinais de hipertensão intracraniana.</div>
       <div class="flow-step"><strong>6. E — Exposure</strong><br>Exposição completa, prevenção de hipotermia, reavaliação contínua e secondary survey após estabilização.</div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="trombolise" class="section">
+  <div class="card">
+    <h3>Trombólise — IAM com supra / AVC isquêmico</h3>
+
+    <div class="alert">
+      <strong>Tempos-limite:</strong><br>
+      • <strong>AVC isquêmico:</strong> considerar trombólise IV em paciente elegível até 4,5 horas do início dos sintomas ou último momento conhecido assintomático. Em janela estendida/indeterminada, apenas com protocolo de imagem avançada e equipe especializada.<br>
+      • <strong>IAM com supra de ST:</strong> considerar fibrinólise preferencialmente nas primeiras 12 horas do início da dor/sintomas, quando angioplastia primária não estiver disponível em tempo adequado e não houver contraindicação.<br>
+      • Esta aba não substitui protocolo institucional, neurologia/cardiologia, tomografia no AVC, ECG seriado, estratificação de risco hemorrágico e consentimento quando aplicável.
+    </div>
+
+    <div class="grid">
+      <div>
+        <label>Cenário clínico</label>
+        <select id="tromboCenario" onchange="atualizarTromboAviso()">
+          <option value="avc">AVC isquêmico</option>
+          <option value="iam">IAM com supra de ST</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Fibrinolítico</label>
+        <select id="tromboDroga">
+          <option value="alteplase">Alteplase</option>
+          <option value="tenecteplase">Tenecteplase</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Peso, em kg</label>
+        <input id="tromboPeso" type="number" step="0.1" placeholder="Ex.: 70">
+      </div>
+
+      <div>
+        <label>Tempo desde início/último bem conhecido</label>
+        <input id="tromboTempo" type="number" step="0.1" placeholder="Horas. Ex.: 2.5">
+      </div>
+    </div>
+
+    <button class="btn primary" onclick="calcularTrombolise()">Calcular trombólise</button>
+
+    <div id="resultadoTrombo"></div>
+
+    <div class="alg-card">
+      <h4>Contraindicações absolutas — checklist rápido</h4>
+      <ul class="list">
+        <li>Hemorragia intracraniana atual ou prévia relevante, lesão vascular cerebral conhecida ou neoplasia intracraniana de alto risco hemorrágico.</li>
+        <li>Suspeita de dissecção de aorta no IAM ou hemorragia subaracnoide no AVC.</li>
+        <li>Sangramento ativo importante ou diátese hemorrágica significativa.</li>
+        <li>Trauma cranioencefálico significativo, cirurgia intracraniana/espinhal recente ou AVC hemorrágico prévio.</li>
+        <li>PA persistentemente muito elevada apesar de tratamento, especialmente no AVC antes da trombólise.</li>
+        <li>AVC: TC/RM com hemorragia, grande área de infarto estabelecido, plaquetas muito baixas, anticoagulação relevante sem reversão/segurança laboratorial.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Contraindicações relativas / cautelas</h4>
+      <ul class="list">
+        <li>Uso de anticoagulante oral, coagulopatia, punção não compressível recente ou cirurgia/trauma recente.</li>
+        <li>História de AVC isquêmico recente, sangramento digestivo/urinário recente ou neoplasia com risco hemorrágico.</li>
+        <li>Gestação ou puerpério recente: decisão individualizada, risco-benefício.</li>
+        <li>IAM: RCP traumática/prolongada, hipertensão grave não controlada, úlcera péptica ativa, doença hepática avançada.</li>
+        <li>AVC: sintomas leves não incapacitantes, crise convulsiva no início com déficit pós-ictal provável, glicemia muito baixa/alta até correção e reavaliação.</li>
+      </ul>
+    </div>
+
+    <div class="alg-card">
+      <h4>Anticoagulação associada — enoxaparina</h4>
+      <ul class="list">
+        <li><strong>IAM com supra tratado com fibrinolítico:</strong> enoxaparina pode ser usada com bolus EV seguido de SC conforme idade, peso e função renal.</li>
+        <li><strong>&lt;75 anos:</strong> 30 mg EV em bolus + 1 mg/kg SC 12/12h, com máximo de 100 mg nas primeiras duas doses SC.</li>
+        <li><strong>≥75 anos:</strong> sem bolus EV; 0,75 mg/kg SC 12/12h, máximo 75 mg nas primeiras duas doses SC.</li>
+        <li><strong>ClCr &lt;30 mL/min:</strong> ajustar para 1 mg/kg SC 1x/dia, conforme protocolo.</li>
+        <li><strong>AVC isquêmico após trombólise:</strong> não usar anticoagulante/antiagregante nas primeiras 24 h; repetir imagem antes. Enoxaparina profilática para fase venosa/TEV geralmente só após 24 h e após excluir sangramento, conforme protocolo.</li>
+        <li><strong>Profilaxia venosa no AVC imobilizado:</strong> enoxaparina 40 mg SC 1x/dia no adulto usual; ajustar em baixo peso, idoso, DRC e risco hemorrágico.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sinais" class="section">
+  <div class="card">
+    <h3>Sinais vitais em pediatria — referência por faixa etária</h3>
+
+    <div class="alert">
+      Valores de referência variam conforme sono, febre, choro, dor, ansiedade, altitude, medicações e fonte consultada.
+      Use como referência rápida e sempre correlacione com perfusão, esforço respiratório, estado mental e contexto clínico.
+    </div>
+
+    <div class="alg-card">
+      <h4>Frequência cardíaca, frequência respiratória e pressão sistólica mínima esperada</h4>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead>
+            <tr style="background:#EEF3EC;color:#4F5B4A">
+              <th style="padding:10px;border:1px solid rgba(194,164,109,.35);text-align:left">Faixa etária</th>
+              <th style="padding:10px;border:1px solid rgba(194,164,109,.35);text-align:left">FC/min</th>
+              <th style="padding:10px;border:1px solid rgba(194,164,109,.35);text-align:left">FR/min</th>
+              <th style="padding:10px;border:1px solid rgba(194,164,109,.35);text-align:left">PAS mínima aproximada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">RN 0–28 dias</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">100–205 acordado</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">30–60</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">≥60 mmHg</td></tr>
+            <tr><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">1–12 meses</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">100–190</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">30–53</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">≥70 mmHg</td></tr>
+            <tr><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">1–2 anos</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">98–140</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">22–37</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">≥70 + 2×idade</td></tr>
+            <tr><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">3–5 anos</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">80–120</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">20–28</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">≥70 + 2×idade</td></tr>
+            <tr><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">6–11 anos</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">75–118</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">18–25</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">≥70 + 2×idade</td></tr>
+            <tr><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">≥12 anos</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">60–100/120</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">12–20</td><td style="padding:10px;border:1px solid rgba(194,164,109,.25)">≥90 mmHg</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="alg-card">
+      <h4>Alertas práticos</h4>
+      <ul class="list">
+        <li>Taquicardia isolada pode ser febre, dor, choro, hipovolemia, broncoespasmo, sepse, anemia ou medicação beta-agonista.</li>
+        <li>Bradicardia em criança gravemente enferma é sinal tardio e deve acionar abordagem ABCDE.</li>
+        <li>Hipotensão é sinal tardio de choque pediátrico; valor normal de PA não exclui choque compensado.</li>
+        <li>FR elevada com esforço respiratório, retrações, gemência, batimento de asa nasal ou alteração mental tem maior relevância clínica que número isolado.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1151,7 +1294,345 @@ const meds = [
   ],
   alertas:["Não sedativo. Garantir hipnose/analgesia e plano de via aérea.","Duração prolongada em relação à suxametônio."]
 }
-];
+,
+{
+  nome:"Bromoprida",
+  classe:"Antiemético / procinético",
+  dose:0.03,
+  unidade:"mg/kg/dose",
+  intervalo:"8/8h",
+  teto:10,
+  idadeMinMeses:12,
+  pesoMin:0,
+  vias:"VO / EV / IM",
+  apresentacoes:[
+    {nome:"Gotas 4 mg/mL", conc:4, tipo:"gotas"},
+    {nome:"Solução oral 1 mg/mL", conc:1, tipo:"mL"},
+    {nome:"Ampola 5 mg/mL", conc:5, tipo:"mL"},
+    {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
+  ],
+  alertas:["Risco de sonolência e reação extrapiramidal.","Evitar uso indiscriminado em lactentes e em obstrução/perfuração gastrointestinal."]
+},
+{
+  nome:"Metoclopramida",
+  classe:"Antiemético / procinético",
+  dose:0.1,
+  unidade:"mg/kg/dose",
+  intervalo:"8/8h",
+  teto:10,
+  idadeMinMeses:12,
+  pesoMin:0,
+  vias:"VO / EV / IM",
+  apresentacoes:[
+    {nome:"Gotas 4 mg/mL", conc:4, tipo:"gotas"},
+    {nome:"Ampola 5 mg/mL", conc:5, tipo:"mL"},
+    {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
+  ],
+  alertas:["Risco de distonia/reação extrapiramidal, maior em crianças e adolescentes.","Evitar em obstrução, perfuração ou sangramento gastrointestinal."]
+},
+{
+  nome:"Domperidona",
+  classe:"Antiemético / procinético",
+  dose:0.25,
+  unidade:"mg/kg/dose",
+  intervalo:"8/8h",
+  teto:10,
+  idadeMinMeses:12,
+  pesoMin:10,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Suspensão 1 mg/mL", conc:1, tipo:"mL"},
+    {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
+  ],
+  alertas:["Atenção a prolongamento de QT, cardiopatia, hipocalemia e interações.","Evitar uso sem indicação clara."]
+},
+{
+  nome:"Prometazina",
+  classe:"Anti-histamínico / antiemético sedativo",
+  dose:0.25,
+  unidade:"mg/kg/dose",
+  intervalo:"8–12/12h",
+  teto:25,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO / IM",
+  apresentacoes:[
+    {nome:"Comprimido 25 mg", fixo:25, tipo:"comprimido"},
+    {nome:"Ampola 25 mg/mL", conc:25, tipo:"mL"}
+  ],
+  alertas:["Contraindicada em menores de 2 anos pelo risco de depressão respiratória.","Sedação importante e efeito anticolinérgico."]
+},
+{
+  nome:"Levodropropizina",
+  classe:"Antitussígeno periférico",
+  dose:1,
+  unidade:"mg/kg/dose",
+  intervalo:"8/8h",
+  teto:60,
+  idadeMinMeses:24,
+  pesoMin:10,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 6 mg/mL", conc:6, tipo:"mL"},
+    {nome:"Gotas 30 mg/mL", conc:30, tipo:"gotas"}
+  ],
+  alertas:["Indicado apenas para tosse seca/irritativa; evitar em tosse produtiva com secreção importante.","Conferir idade mínima e bula da apresentação disponível."]
+},
+{
+  nome:"Dropropizina",
+  classe:"Antitussígeno",
+  dose:1,
+  unidade:"mg/kg/dose",
+  intervalo:"6–8/8h",
+  teto:30,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope pediátrico 1,5 mg/mL", conc:1.5, tipo:"mL"},
+    {nome:"Xarope adulto 3 mg/mL", conc:3, tipo:"mL"}
+  ],
+  alertas:["Usar apenas em tosse seca; evitar em tosse produtiva, asma descompensada ou depressão respiratória.","Conferir bula/local."]
+},
+{
+  nome:"Dextrometorfano",
+  classe:"Antitussígeno central",
+  dose:0.25,
+  unidade:"mg/kg/dose",
+  intervalo:"6–8/8h",
+  teto:30,
+  idadeMinMeses:72,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 2 mg/mL", conc:2, tipo:"mL"},
+    {nome:"Cápsula/comprimido 15 mg", fixo:15, tipo:"comprimido"}
+  ],
+  alertas:["Evitar em menores de 6 anos salvo orientação específica e em tosse produtiva.","Risco de interação serotoninérgica com IMAO/ISRS e abuso em doses altas."]
+},
+{
+  nome:"Acetilcisteína",
+  classe:"Mucolítico",
+  dose:10,
+  unidade:"mg/kg/dose",
+  intervalo:"8–12/12h",
+  teto:600,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope pediátrico 20 mg/mL", conc:20, tipo:"mL"},
+    {nome:"Sachê 200 mg", fixo:200, tipo:"sachê"},
+    {nome:"Sachê/comprimido 600 mg", fixo:600, tipo:"sachê"}
+  ],
+  alertas:["Pode aumentar secreções; cautela em crianças pequenas com dificuldade de expectorar.","Conferir indicação e hidratação."]
+},
+{
+  nome:"Ambroxol",
+  classe:"Mucolítico / expectorante",
+  dose:0.5,
+  unidade:"mg/kg/dose",
+  intervalo:"8/8h",
+  teto:30,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 15 mg/5 mL", conc:3, tipo:"mL"},
+    {nome:"Xarope 30 mg/5 mL", conc:6, tipo:"mL"},
+    {nome:"Comprimido 30 mg", fixo:30, tipo:"comprimido"}
+  ],
+  alertas:["Evitar em menores de 2 anos salvo orientação específica.","Cautela se secreção abundante e baixa capacidade de expectoração."]
+},
+{
+  nome:"Loratadina",
+  classe:"Anti-histamínico 2ª geração",
+  dose:0.2,
+  unidade:"mg/kg/dia",
+  intervalo:"1x/dia",
+  teto:10,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 1 mg/mL", conc:1, tipo:"mL"},
+    {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
+  ],
+  alertas:["Uso habitual em rinite/urticária. Ajustar conforme idade e peso.","Cautela em insuficiência hepática."]
+},
+{
+  nome:"Desloratadina",
+  classe:"Anti-histamínico 2ª geração",
+  dose:0.1,
+  unidade:"mg/kg/dia",
+  intervalo:"1x/dia",
+  teto:5,
+  idadeMinMeses:6,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 0,5 mg/mL", conc:0.5, tipo:"mL"},
+    {nome:"Comprimido 5 mg", fixo:5, tipo:"comprimido"}
+  ],
+  alertas:["Dose pode ser por faixa etária conforme bula.","Cautela em insuficiência hepática/renal."]
+},
+{
+  nome:"Cetirizina",
+  classe:"Anti-histamínico 2ª geração",
+  dose:0.25,
+  unidade:"mg/kg/dia",
+  intervalo:"1–2x/dia",
+  teto:10,
+  idadeMinMeses:6,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Solução 1 mg/mL", conc:1, tipo:"mL"},
+    {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
+  ],
+  alertas:["Pode causar sonolência em parte dos pacientes.","Ajustar em insuficiência renal."]
+},
+{
+  nome:"Dexclorfeniramina",
+  classe:"Anti-histamínico 1ª geração",
+  dose:0.04,
+  unidade:"mg/kg/dose",
+  intervalo:"6–8/8h",
+  teto:2,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 0,4 mg/mL", conc:0.4, tipo:"mL"},
+    {nome:"Comprimido 2 mg", fixo:2, tipo:"comprimido"}
+  ],
+  alertas:["Sedação e efeito anticolinérgico.","Evitar em menores de 2 anos salvo avaliação específica."]
+},
+{
+  nome:"Hidroxizina",
+  classe:"Anti-histamínico sedativo",
+  dose:0.5,
+  unidade:"mg/kg/dose",
+  intervalo:"6–8/8h",
+  teto:25,
+  idadeMinMeses:6,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope 2 mg/mL", conc:2, tipo:"mL"},
+    {nome:"Comprimido 25 mg", fixo:25, tipo:"comprimido"}
+  ],
+  alertas:["Sedação, efeito anticolinérgico e atenção a QT em pacientes de risco.","Evitar associação com outros depressores do SNC."]
+},
+{
+  nome:"Prednisona",
+  classe:"Corticoide sistêmico",
+  dose:1,
+  unidade:"mg/kg/dia",
+  intervalo:"1–2x/dia",
+  teto:60,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Comprimido 5 mg", fixo:5, tipo:"comprimido"},
+    {nome:"Comprimido 20 mg", fixo:20, tipo:"comprimido"}
+  ],
+  alertas:["Dose varia conforme indicação. Evitar uso prolongado sem plano de desmame quando aplicável.","Cautela em infecções não tratadas."]
+},
+{
+  nome:"Hidrocortisona",
+  classe:"Corticoide sistêmico EV",
+  dose:4,
+  unidade:"mg/kg/dose",
+  intervalo:"6/6h ou conforme indicação",
+  teto:100,
+  idadeMinMeses:0,
+  pesoMin:0,
+  vias:"EV / IM",
+  apresentacoes:[
+    {nome:"Frasco-ampola 100 mg", fixo:100, tipo:"frasco"},
+    {nome:"Frasco-ampola 500 mg", fixo:500, tipo:"frasco"}
+  ],
+  alertas:["Útil em anafilaxia como adjuvante, asma grave e insuficiência adrenal, sem substituir adrenalina na anafilaxia.","Conferir diluição e indicação."]
+},
+{
+  nome:"Budesonida nebulização",
+  classe:"Corticoide inalatório",
+  dose:0.5,
+  unidade:"mg/dose",
+  intervalo:"12/12h ou conforme indicação",
+  teto:2,
+  idadeMinMeses:6,
+  pesoMin:0,
+  vias:"Inalatória",
+  apresentacoes:[
+    {nome:"Suspensão para nebulização 0,25 mg/mL", conc:0.25, tipo:"mL"},
+    {nome:"Suspensão para nebulização 0,5 mg/mL", conc:0.5, tipo:"mL"}
+  ],
+  alertas:["Não substitui broncodilatador de resgate em crise aguda.","Enxaguar boca quando uso contínuo."]
+},
+{
+  nome:"Kaloba",
+  classe:"Fitoterápico — Pelargonium sidoides",
+  dose:0,
+  unidade:"dose fixa por idade",
+  intervalo:"8/8h",
+  teto:0,
+  idadeMinMeses:12,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Solução oral 825 mg/mL", conc:825, tipo:"gotas"},
+    {nome:"Comprimido revestido", fixo:1, tipo:"comprimido"}
+  ],
+  alertas:["1–5 anos: 10 gotas 8/8h. 6–12 anos: 20 gotas 8/8h. >12 anos/adultos: 30 gotas 8/8h.","Comprimidos usualmente para maiores de 12 anos.","Duração média 5–7 dias; não exceder conforme bula."]
+},
+{
+  nome:"Guaco",
+  classe:"Fitoterápico expectorante/bronco­dilatador leve",
+  dose:0,
+  unidade:"dose por bula",
+  intervalo:"Conforme apresentação",
+  teto:0,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope de Mikania glomerata — concentração variável", conc:0, tipo:"mL"}
+  ],
+  alertas:["Concentrações variam muito entre fabricantes; usar dose da bula específica.","Cautela com anticoagulantes, hepatopatias e alergias."]
+},
+{
+  nome:"Sambucus nigra",
+  classe:"Fitoterápico / produto tradicional",
+  dose:0,
+  unidade:"dose por bula",
+  intervalo:"Conforme apresentação",
+  teto:0,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO",
+  apresentacoes:[
+    {nome:"Xarope/gomas/gotas — concentração variável", conc:0, tipo:"mL"}
+  ],
+  alertas:["Produto com apresentações heterogêneas; dose deve ser a da bula específica.","Evitar substituir avaliação em febre persistente, dispneia ou sinais de gravidade."]
+},
+{
+  nome:"Própolis",
+  classe:"Fitoterápico / produto apícola",
+  dose:0,
+  unidade:"dose por bula",
+  intervalo:"Conforme apresentação",
+  teto:0,
+  idadeMinMeses:24,
+  pesoMin:0,
+  vias:"VO / tópico conforme produto",
+  apresentacoes:[
+    {nome:"Extrato/gotas/spray — concentração variável", conc:0, tipo:"gotas"}
+  ],
+  alertas:["Risco de alergia, especialmente em pacientes com alergia a produtos apícolas/pólen.","Concentrações variam; usar bula do produto."]
+}];
 
 const emerg = {
   adrenalina_pcr:{nome:"Adrenalina PCR IV/IO", dose:0.01, unidade:"mg/kg", teto:1, conc:0.1, obs:"Usar concentração 0,1 mg/mL. Repetir a cada 3–5 min conforme protocolo."},
@@ -1171,13 +1652,20 @@ const emerg = {
 };
 
 const opioides = {
-  morfina_vo:{nome:"Morfina VO", fator:1},
-  morfina_ev:{nome:"Morfina EV", fator:3},
-  oxicodona_vo:{nome:"Oxicodona VO", fator:1.5},
-  hidromorfona_vo:{nome:"Hidromorfona VO", fator:4},
-  tramadol_vo:{nome:"Tramadol VO", fator:0.1},
-  codeina_vo:{nome:"Codeína VO", fator:0.15},
-  fentanil_transdermico:{nome:"Fentanil transdérmico mcg/h", fator:2.4}
+  morfina_vo:{nome:"Morfina VO", fator:1, unidade:"mg/dia"},
+  morfina_ev:{nome:"Morfina EV", fator:3, unidade:"mg/dia"},
+  oxicodona_vo:{nome:"Oxicodona VO", fator:1.5, unidade:"mg/dia"},
+  hidromorfona_vo:{nome:"Hidromorfona VO", fator:4, unidade:"mg/dia"},
+  metadona_vo:{nome:"Metadona VO", fator:3, unidade:"mg/dia", alerta:"Conversão com metadona é não linear e de alto risco. Usar apenas como estimativa inicial e preferir cálculo específico por faixa de MME."},
+  tramadol_vo:{nome:"Tramadol VO", fator:0.1, unidade:"mg/dia"},
+  codeina_vo:{nome:"Codeína VO", fator:0.15, unidade:"mg/dia"},
+  tapentadol_vo:{nome:"Tapentadol VO", fator:0.4, unidade:"mg/dia"},
+  buprenorfina_sl:{nome:"Buprenorfina SL", fator:30, unidade:"mg/dia", alerta:"Conversão aproximada; formulações e indicações variam. Conferir bula e contexto."},
+  buprenorfina_td:{nome:"Buprenorfina transdérmica", fator:1.8, unidade:"mcg/h", alerta:"Conversão aproximada por adesivo; titulação lenta."},
+  fentanil_transdermico:{nome:"Fentanil transdérmico", fator:2.4, unidade:"mcg/h"},
+  fentanil_ev:{nome:"Fentanil EV", fator:0.3, unidade:"mcg/dia", alerta:"Conversão parenteral contínua; exige monitorização e contexto hospitalar."},
+  nalbufina_ev:{nome:"Nalbufina EV/IM/SC", fator:1, unidade:"mg/dia", alerta:"Agonista-antagonista; pode precipitar abstinência em dependência de opioide puro."},
+  petidina_ev:{nome:"Petidina/Meperidina EV/IM", fator:0.1, unidade:"mg/dia", alerta:"Evitar uso rotineiro; metabólito neurotóxico, maior risco em DRC e idosos."}
 };
 
 function init(){
@@ -1243,6 +1731,35 @@ function calcularDose(){
     return;
   }
 
+  if(m.nome === "Kaloba"){
+    out.innerHTML = `
+    <div class="result">
+      <h4>Kaloba — Pelargonium sidoides</h4>
+      <div class="dose-box">
+        <strong>1–5 anos:</strong> 10 gotas VO 8/8h.<br>
+        <strong>6–12 anos:</strong> 20 gotas VO 8/8h.<br>
+        <strong>&gt;12 anos/adultos:</strong> 30 gotas VO 8/8h.<br>
+        <strong>Comprimido:</strong> usualmente apenas acima de 12 anos, conforme bula.
+      </div>
+      <div class="alert">${alertas.map(x=>"• "+x).join("<br>")}</div>
+    </div>`;
+    return;
+  }
+
+  if(m.dose === 0){
+    out.innerHTML = `
+    <div class="result">
+      <h4>${m.nome}</h4>
+      <p><strong>Classe:</strong> ${m.classe}</p>
+      <p><strong>Via:</strong> ${m.vias}</p>
+      <div class="dose-box">
+        <strong>Dose:</strong> apresentação com concentração variável ou dose fixa por bula. Conferir produto específico.
+      </div>
+      <div class="alert"><strong>Avisos específicos:</strong><br>${alertas.map(x=>"• "+x).join("<br>")}</div>
+    </div>`;
+    return;
+  }
+
   let doseCalc = peso * m.dose;
   let doseFinal = Math.min(doseCalc, m.teto);
   let ajustada = doseFinal < doseCalc;
@@ -1262,7 +1779,7 @@ function calcularDose(){
   `;
 
   m.apresentacoes.forEach(a=>{
-    if(a.conc){
+    if(a.conc && a.conc > 0){
       let vol = doseFinal / a.conc;
       let gotas = vol * 20;
       html += `
@@ -1436,13 +1953,13 @@ function calcularOpioide(){
       <h4>Conversão aproximada</h4>
       <div class="dose-box">
         <strong>Opioide atual:</strong> ${origem.nome}<br>
-        <strong>Dose diária atual:</strong> ${dose} ${origem.nome.includes("Fentanil") ? "mcg/h" : "mg/dia"}<br>
+        <strong>Dose diária atual:</strong> ${dose} ${origem.unidade}<br>
         <strong>Equivalente em morfina oral:</strong> ${mme.toFixed(1)} mg/dia
       </div>
       <div class="dose-box">
         <strong>Destino:</strong> ${destino.nome}<br>
-        <strong>Dose equivalente sem redução:</strong> ${destinoDose.toFixed(1)} ${destino.nome.includes("Fentanil") ? "mcg/h" : "mg/dia"}<br>
-        <strong>Dose sugerida após redução:</strong> ${ajustada.toFixed(1)} ${destino.nome.includes("Fentanil") ? "mcg/h" : "mg/dia"}
+        <strong>Dose equivalente sem redução:</strong> ${destinoDose.toFixed(1)} ${destino.unidade}<br>
+        <strong>Dose sugerida após redução:</strong> ${ajustada.toFixed(1)} ${destino.unidade}
       </div>
       <div class="alert">
         Conversão exige julgamento clínico. Considerar redução adicional em idosos, DRC, insuficiência hepática,
@@ -1450,6 +1967,133 @@ function calcularOpioide(){
       </div>
     </div>
   `;
+}
+
+
+function calcularTrombolise(){
+  const cenario = document.getElementById("tromboCenario").value;
+  const droga = document.getElementById("tromboDroga").value;
+  const peso = parseFloat(document.getElementById("tromboPeso").value);
+  const tempo = parseFloat(document.getElementById("tromboTempo").value);
+  const out = document.getElementById("resultadoTrombo");
+
+  if(!peso || peso <= 0){
+    out.innerHTML = `<div class="alert">Informe um peso válido.</div>`;
+    return;
+  }
+
+  let alertaTempo = "";
+  if(cenario === "avc" && tempo && tempo > 4.5){
+    alertaTempo = "Tempo informado acima de 4,5 h: trombólise IV convencional para AVC geralmente fora da janela; considerar apenas protocolo avançado/imagem e equipe especializada.";
+  }
+  if(cenario === "iam" && tempo && tempo > 12){
+    alertaTempo = "Tempo informado acima de 12 h: fibrinólise no IAM geralmente fora da janela usual, salvo situações muito específicas e decisão especializada.";
+  }
+
+  let html = `<div class="result"><h4>Resultado — ${cenario === "avc" ? "AVC isquêmico" : "IAM com supra de ST"}</h4>`;
+
+  if(cenario === "avc"){
+    if(droga === "alteplase"){
+      const total = Math.min(0.9 * peso, 90);
+      const bolus = total * 0.10;
+      const infusao = total * 0.90;
+      html += `
+      <div class="dose-box">
+        <strong>Alteplase AVC:</strong> 0,9 mg/kg, máximo 90 mg.<br>
+        <strong>Dose total:</strong> ${total.toFixed(1)} mg<br>
+        <strong>Bolus inicial 10% em 1 minuto:</strong> ${bolus.toFixed(1)} mg<br>
+        <strong>Infusão 90% em 60 minutos:</strong> ${infusao.toFixed(1)} mg
+      </div>`;
+    }else{
+      const total = Math.min(0.25 * peso, 25);
+      html += `
+      <div class="dose-box">
+        <strong>Tenecteplase AVC:</strong> 0,25 mg/kg, máximo 25 mg.<br>
+        <strong>Dose total:</strong> ${total.toFixed(1)} mg em bolus EV único.
+      </div>`;
+    }
+    html += `
+      <div class="alert">
+        Antes da trombólise no AVC: confirmar déficit incapacitante, TC/RM sem hemorragia, PA controlada, glicemia revisada, ausência de contraindicações e horário do último bem conhecido.
+        Não administrar anticoagulante ou antiagregante nas primeiras 24 h após trombólise; repetir imagem antes.
+      </div>`;
+  }
+
+  if(cenario === "iam"){
+    if(droga === "tenecteplase"){
+      let dose = 0;
+      if(peso < 60) dose = 30;
+      else if(peso < 70) dose = 35;
+      else if(peso < 80) dose = 40;
+      else if(peso < 90) dose = 45;
+      else dose = 50;
+      html += `
+      <div class="dose-box">
+        <strong>Tenecteplase IAM:</strong> dose por faixa de peso em bolus EV único.<br>
+        &lt;60 kg: 30 mg · 60–69 kg: 35 mg · 70–79 kg: 40 mg · 80–89 kg: 45 mg · ≥90 kg: 50 mg<br>
+        <strong>Dose sugerida:</strong> ${dose} mg EV bolus.
+      </div>`;
+    }else{
+      html += `
+      <div class="dose-box">
+        <strong>Alteplase IAM — esquema acelerado usual:</strong><br>
+        15 mg EV bolus, depois 0,75 mg/kg em 30 min, máximo 50 mg, depois 0,5 mg/kg em 60 min, máximo 35 mg.<br>
+      `;
+      const bolus = 15;
+      const etapa1 = Math.min(0.75*peso, 50);
+      const etapa2 = Math.min(0.5*peso, 35);
+      const total = bolus + etapa1 + etapa2;
+      html += `
+        <strong>Bolus:</strong> ${bolus.toFixed(1)} mg<br>
+        <strong>Infusão 30 min:</strong> ${etapa1.toFixed(1)} mg<br>
+        <strong>Infusão 60 min:</strong> ${etapa2.toFixed(1)} mg<br>
+        <strong>Total:</strong> ${total.toFixed(1)} mg
+      </div>`;
+    }
+
+    const enoxBolus = 30;
+    const enoxSC = Math.min(1*peso, 100);
+    const enoxIdoso = Math.min(0.75*peso, 75);
+
+    html += `
+      <div class="dose-box">
+        <strong>Enoxaparina associada ao IAM com fibrinólise</strong><br>
+        &lt;75 anos: ${enoxBolus} mg EV bolus + ${enoxSC.toFixed(1)} mg SC 12/12h. Máximo 100 mg nas primeiras duas doses SC.<br>
+        ≥75 anos: sem bolus EV; ${enoxIdoso.toFixed(1)} mg SC 12/12h. Máximo 75 mg nas primeiras duas doses SC.<br>
+        ClCr &lt;30 mL/min: ajustar para 1 mg/kg SC 1x/dia, conforme protocolo.
+      </div>
+      <div class="alert">
+        IAM: fibrinólise apenas se supra de ST/novo BRE equivalente com indicação, início preferencialmente até 12 h e angioplastia primária indisponível em tempo adequado. Transferir para estratégia farmacoinvasiva/resgate conforme resposta.
+      </div>`;
+  }
+
+  if(alertaTempo){
+    html += `<div class="alert"><strong>Aviso de tempo:</strong> ${alertaTempo}</div>`;
+  }
+
+  html += `
+    <div class="alert">
+      Checar contraindicações absolutas e relativas antes de administrar. Esta ferramenta é apoio de cálculo e não substitui protocolo institucional, especialista, ECG/TC e avaliação risco-benefício.
+    </div>
+  </div>`;
+
+  out.innerHTML = html;
+}
+
+function atualizarTromboAviso(){
+  const cenario = document.getElementById("tromboCenario").value;
+  const droga = document.getElementById("tromboDroga");
+  if(cenario === "avc"){
+    droga.innerHTML = `
+      <option value="alteplase">Alteplase</option>
+      <option value="tenecteplase">Tenecteplase</option>
+    `;
+  }else{
+    droga.innerHTML = `
+      <option value="tenecteplase">Tenecteplase</option>
+      <option value="alteplase">Alteplase</option>
+    `;
+  }
 }
 
 function acceptTerms(){
