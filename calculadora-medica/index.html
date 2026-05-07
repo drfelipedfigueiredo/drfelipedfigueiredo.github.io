@@ -422,6 +422,78 @@ hr{
   border-top:1px solid rgba(194,164,109,.35);
   margin:18px 0;
 }
+.calc-top-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.calc-med-row{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:1fr;
+}
+
+.eletrolitos-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.eletrolito-col{
+  background:linear-gradient(180deg,#fff,var(--off));
+  border:1px solid rgba(194,164,109,.45);
+  border-radius:20px;
+  padding:16px;
+}
+
+.flow{
+  display:grid;
+  gap:12px;
+  margin-top:14px;
+}
+
+.flow-row{
+  display:grid;
+  grid-template-columns:1fr 42px 1fr;
+  gap:10px;
+  align-items:center;
+}
+
+.flow-step{
+  background:#fff;
+  border:1px solid rgba(194,164,109,.55);
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.05);
+  min-height:72px;
+}
+
+.flow-step strong{
+  color:var(--verde);
+}
+
+.flow-arrow{
+  text-align:center;
+  color:var(--dourado);
+  font-weight:900;
+  font-size:22px;
+}
+
+.flow-down{
+  text-align:center;
+  color:var(--dourado);
+  font-weight:900;
+  font-size:22px;
+  margin:-3px 0;
+}
+
+@media(max-width:760px){
+  .calc-top-grid,.eletrolitos-grid{grid-template-columns:1fr}
+  .flow-row{grid-template-columns:1fr}
+  .flow-arrow{transform:rotate(90deg)}
+}
+
 </style>
 </head>
 
@@ -471,12 +543,6 @@ hr{
     <button class="nav-item" onclick="goSection('atls')">ATLS / Trauma <span>›</span></button>
   </div>
 
-  <div class="nav-section">
-    <p class="nav-title">Guias</p>
-    <button class="nav-item" onclick="goSection('antibioticos')">Antibióticos <span>›</span></button>
-    <button class="nav-item" onclick="goSection('alertas')">Alertas de segurança <span>›</span></button>
-  </div>
-
   <button class="close-drawer" onclick="toggleMenu(false)">Fechar menu</button>
 </aside>
 
@@ -496,7 +562,7 @@ hr{
   <div class="card">
     <h2>Calculadora de doses</h2>
 
-    <div class="grid">
+    <div class="calc-top-grid">
       <div>
         <label>Peso do paciente, em kg</label>
         <input id="peso" type="number" step="0.1" placeholder="Ex.: 18">
@@ -514,7 +580,9 @@ hr{
           <option value="meses">Meses</option>
         </select>
       </div>
+    </div>
 
+    <div class="calc-med-row">
       <div>
         <label>Medicamento</label>
         <select id="medicamento"></select>
@@ -543,18 +611,8 @@ hr{
 
       <div>
         <label>Percentual da hidratação de manutenção</label>
-        <select id="percHid">
-          <option value="0.5">50%</option>
-          <option value="0.6">60%</option>
-          <option value="0.7">70%</option>
-          <option value="0.8">80%</option>
-          <option value="0.9">90%</option>
-          <option value="1" selected>100%</option>
-          <option value="1.1">110%</option>
-          <option value="1.2">120%</option>
-          <option value="1.3">130%</option>
-          <option value="1.5">150%</option>
-        </select>
+        <input id="percHid" type="number" step="1" value="100" placeholder="Ex.: 100">
+        <span class="small">Digite o percentual desejado. Padrão: 100%.</span>
       </div>
     </div>
 
@@ -562,41 +620,35 @@ hr{
 
     <h4>Eletrólitos da solução</h4>
 
-    <div class="grid">
-      <div>
+    <div class="eletrolitos-grid">
+      <div class="eletrolito-col">
+        <h4>Sódio</h4>
         <label>Necessidade diária de sódio considerada</label>
         <input id="naNecessidade" type="number" step="0.1" value="3">
         <span class="small">Padrão: 3 mEq/kg/dia. Ajuste conforme protocolo.</span>
-      </div>
 
-      <div>
-        <label>Percentual do sódio diário a repor</label>
+        <label style="margin-top:12px">Percentual do sódio diário a repor</label>
         <input id="naPercentual" type="number" step="1" value="40">
         <span class="small">Padrão solicitado: 40%.</span>
-      </div>
 
-      <div>
-        <label>Fonte de sódio</label>
+        <label style="margin-top:12px">Fonte de sódio</label>
         <select id="naFonte">
           <option value="1.71">NaCl 10% — 1,71 mEq/mL</option>
           <option value="3.42">NaCl 20% — 3,42 mEq/mL</option>
         </select>
       </div>
 
-      <div>
+      <div class="eletrolito-col">
+        <h4>Potássio</h4>
         <label>Necessidade diária de potássio considerada</label>
         <input id="kNecessidade" type="number" step="0.1" value="2">
         <span class="small">Padrão: 2 mEq/kg/dia. Ajuste conforme protocolo.</span>
-      </div>
 
-      <div>
-        <label>Percentual do potássio diário a repor</label>
+        <label style="margin-top:12px">Percentual do potássio diário a repor</label>
         <input id="kPercentual" type="number" step="1" value="20">
         <span class="small">Padrão solicitado: 20%.</span>
-      </div>
 
-      <div>
-        <label>Fonte de potássio</label>
+        <label style="margin-top:12px">Fonte de potássio</label>
         <select id="kFonte">
           <option value="2.56">KCl 19,1% — 2,56 mEq/mL</option>
           <option value="1.34">KCl 10% — 1,34 mEq/mL</option>
@@ -711,149 +763,80 @@ hr{
 
 <section id="pals" class="section">
   <div class="card">
-    <h3>PALS — algoritmos pediátricos</h3>
-
-    <div class="alg-card">
-      <h4>PCR pediátrica</h4>
-      <span class="badge">C-A-B</span><span class="badge">RCP alta qualidade</span><span class="badge">Desfibrilar se chocável</span>
-      <ul class="list">
-        <li>Compressões fortes, rápidas, retorno completo do tórax e mínima pausa.</li>
-        <li>Oxigênio, monitor/desfibrilador, acesso IV/IO.</li>
-        <li>Adrenalina IV/IO: 0,01 mg/kg de 0,1 mg/mL, máximo 1 mg.</li>
-        <li>Ritmo chocável: desfibrilação 2 J/kg, depois 4 J/kg, depois ≥4 J/kg até máximo adulto.</li>
-        <li>Amiodarona: 5 mg/kg em FV/TV sem pulso refratária, máximo 300 mg.</li>
-        <li>Procurar e tratar Hs e Ts.</li>
-      </ul>
-    </div>
-
-    <div class="alg-card">
-      <h4>Bradicardia com instabilidade</h4>
-      <ul class="list">
-        <li>Oxigênio, ventilação se necessário, monitorização e acesso.</li>
-        <li>Se FC baixa com má perfusão apesar de oxigenação: iniciar RCP se FC &lt;60/min com sinais de choque.</li>
-        <li>Adrenalina 0,01 mg/kg IV/IO.</li>
-        <li>Atropina 0,02 mg/kg se aumento de tônus vagal ou bloqueio AV primário.</li>
-        <li>Considerar marcapasso transcutâneo em bloqueio AV ou refratariedade.</li>
-      </ul>
-    </div>
-
-    <div class="alg-card">
-      <h4>Crise convulsiva</h4>
-      <ul class="list">
-        <li>ABCDE, lateralização, aspiração se necessário, glicemia capilar.</li>
-        <li>Crise ≥5 min: benzodiazepínico.</li>
-        <li>Midazolam intranasal 0,2–0,3 mg/kg, máximo 10 mg.</li>
-        <li>Sem resposta: segunda linha com levetiracetam, fenitoína/fosfenitoína ou fenobarbital conforme protocolo.</li>
-        <li>Preparar via aérea em depressão respiratória ou estado epiléptico refratário.</li>
-      </ul>
+    <h3>PALS — fluxograma pediátrico</h3>
+    <div class="flow">
+      <div class="flow-step"><strong>1. Avaliação inicial</strong><br>Responsividade, respiração, pulso, monitor/desfibrilador, oxigênio e acesso IV/IO.</div>
+      <div class="flow-down">↓</div>
+      <div class="flow-row">
+        <div class="flow-step"><strong>PCR?</strong><br>Sem pulso ou FC &lt;60/min com má perfusão apesar de oxigenação.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><strong>RCP de alta qualidade</strong><br>Compressões efetivas, mínima pausa, ventilação adequada e troca de compressor.</div>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-row">
+        <div class="flow-step"><strong>Ritmo chocável</strong><br>FV/TV sem pulso: choque 2 J/kg → 4 J/kg → ≥4 J/kg. Adrenalina e amiodarona conforme ciclos.</div>
+        <div class="flow-arrow">↔</div>
+        <div class="flow-step"><strong>Ritmo não chocável</strong><br>Assistolia/AESP: RCP + adrenalina 0,01 mg/kg IV/IO a cada 3–5 min.</div>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-step"><strong>Reavaliar a cada 2 minutos</strong><br>Ritmo, pulso, qualidade da RCP, capnografia se disponível, causas reversíveis Hs e Ts.</div>
     </div>
   </div>
 </section>
 
 <section id="acls" class="section">
   <div class="card">
-    <h3>ACLS — adulto</h3>
-
-    <div class="alg-card">
-      <h4>PCR adulto</h4>
-      <ul class="list">
-        <li>RCP de alta qualidade e desfibrilação precoce se ritmo chocável.</li>
-        <li>Adrenalina 1 mg IV/IO a cada 3–5 min.</li>
-        <li>FV/TV sem pulso refratária: amiodarona 300 mg, depois 150 mg.</li>
-        <li>Via aérea avançada sem interromper compressões; capnografia quando disponível.</li>
-        <li>Tratar causas reversíveis: Hs e Ts.</li>
-      </ul>
-    </div>
-
-    <div class="alg-card">
-      <h4>Bradicardia sintomática</h4>
-      <ul class="list">
-        <li>Atropina 1 mg IV, repetir a cada 3–5 min, máximo 3 mg.</li>
-        <li>Se refratária: marcapasso transcutâneo, dopamina ou adrenalina em infusão.</li>
-        <li>Considerar causa medicamentosa: beta-bloqueador, bloqueador de cálcio, digoxina, hipercalemia.</li>
-      </ul>
-    </div>
-
-    <div class="alg-card">
-      <h4>Taquicardia com pulso</h4>
-      <ul class="list">
-        <li>Instável: cardioversão sincronizada.</li>
-        <li>QRS estreito regular estável: manobra vagal e adenosina.</li>
-        <li>QRS largo: avaliar TV, amiodarona/procainamida conforme cenário e protocolo.</li>
-      </ul>
+    <h3>ACLS — fluxograma adulto</h3>
+    <div class="flow">
+      <div class="flow-step"><strong>1. Checar responsividade e pulso</strong><br>Acionar equipe, monitor/desfibrilador, oxigênio, acesso IV/IO e RCP se sem pulso.</div>
+      <div class="flow-down">↓</div>
+      <div class="flow-row">
+        <div class="flow-step"><strong>FV/TV sem pulso</strong><br>Desfibrilar, RCP 2 min, adrenalina 1 mg a cada 3–5 min, amiodarona se refratária.</div>
+        <div class="flow-arrow">↔</div>
+        <div class="flow-step"><strong>Assistolia/AESP</strong><br>RCP 2 min, adrenalina 1 mg a cada 3–5 min, tratar causas reversíveis.</div>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-row">
+        <div class="flow-step"><strong>Bradicardia sintomática</strong><br>Atropina 1 mg IV, repetir até 3 mg; se refratária: marcapasso, dopamina ou adrenalina.</div>
+        <div class="flow-arrow">↔</div>
+        <div class="flow-step"><strong>Taquicardia com pulso</strong><br>Instável: cardioversão sincronizada. Estável: tratar conforme QRS e regularidade.</div>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-step"><strong>Pós-ROSC</strong><br>Via aérea, oxigenação, pressão, ECG, causa de PCR, temperatura e transferência/UTI.</div>
     </div>
   </div>
 </section>
 
 <section id="atls" class="section">
   <div class="card">
-    <h3>ATLS / Trauma — abordagem inicial</h3>
-
-    <div class="alg-card">
-      <h4>Primary survey — ABCDE</h4>
-      <ul class="list">
-        <li><strong>A:</strong> via aérea com proteção cervical.</li>
-        <li><strong>B:</strong> ventilação, pneumotórax hipertensivo, tórax instável, feridas abertas.</li>
-        <li><strong>C:</strong> circulação e controle de hemorragia externa.</li>
-        <li><strong>D:</strong> avaliação neurológica rápida, pupilas, Glasgow, glicemia.</li>
-        <li><strong>E:</strong> exposição completa e prevenção de hipotermia.</li>
-      </ul>
-    </div>
-
-    <div class="alg-card">
-      <h4>Choque hemorrágico</h4>
-      <ul class="list">
-        <li>Controle de sangramento externo imediato.</li>
-        <li>Acesso calibroso ou intraósseo.</li>
-        <li>Reposição balanceada com hemoderivados quando indicado.</li>
-        <li>Evitar hipotermia, acidose e coagulopatia.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="antibioticos" class="section">
-  <div class="card">
-    <h3>Guia rápido de antibióticos</h3>
-
-    <div class="note">
-      Doses devem ser ajustadas à indicação, gravidade, função renal, peso, idade, foco infeccioso,
-      epidemiologia local e protocolo institucional.
-    </div>
-
-    <div class="alg-card">
-      <h4>Mais usados</h4>
-      <ul class="list">
-        <li>Amoxicilina: otite, sinusite, pneumonia comunitária selecionada.</li>
-        <li>Amoxicilina + clavulanato: mordedura, sinusite/otite com maior risco de beta-lactamase.</li>
-        <li>Cefalexina: pele, partes moles, ITU baixa selecionada.</li>
-        <li>Azitromicina: atípicos, coqueluche e cenários selecionados.</li>
-        <li>Ceftriaxona: infecções graves, pneumonia, sepse, meningite conforme dose específica.</li>
-        <li>Clindamicina: pele/partes moles, anaeróbios e cobertura anti-toxina em casos específicos.</li>
-      </ul>
+    <h3>ATLS — fluxograma do trauma</h3>
+    <div class="flow">
+      <div class="flow-step"><strong>Preparação e segurança</strong><br>Equipe, EPIs, mecanismo, cinemática, recursos, aviso para centro de trauma se necessário.</div>
+      <div class="flow-down">↓</div>
+      <div class="flow-row">
+        <div class="flow-step"><strong>A — Airway</strong><br>Via aérea com proteção cervical. Considerar IOT se falha de proteção, rebaixamento ou hipoxemia.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><strong>B — Breathing</strong><br>Inspecionar, auscultar, tratar pneumotórax hipertensivo, tórax aberto e ventilação inadequada.</div>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-row">
+        <div class="flow-step"><strong>C — Circulation</strong><br>Controle de hemorragia, acesso calibroso/IO, reposição hemostática, ácido tranexâmico se indicado.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><strong>D — Disability</strong><br>Glasgow, pupilas, glicemia, lateralização, convulsão e sinais de hipertensão intracraniana.</div>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-row">
+        <div class="flow-step"><strong>E — Exposure</strong><br>Exposição completa, busca de lesões e prevenção ativa de hipotermia.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><strong>Reavaliação</strong><br>ABCDE seriado, exames adjuntos, FAST/RX/TC conforme estabilidade e transferência se necessário.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="alertas" class="section">
-  <div class="card">
-    <h3>Alertas de segurança</h3>
 
-    <div class="alert">
-      Esta ferramenta não deve ser usada sem revisão clínica. Sempre conferir bula, protocolo institucional,
-      alergias, idade, peso, função renal/hepática, interações, diluição e via.
-    </div>
 
-    <ul class="list">
-      <li>AINEs: evitar em dengue suspeita, desidratação, DRC, sangramento, plaquetopenia e varicela.</li>
-      <li>Ondansetrona, domperidona, macrolídeos e antipsicóticos: atenção ao QT.</li>
-      <li>Midazolam, diazepam, opioides e propofol: risco de depressão respiratória.</li>
-      <li>KCl, NaCl 3%, bicarbonato e cálcio: dupla checagem obrigatória.</li>
-      <li>Suxametônio: contraindicações críticas em hipercalemia, queimadura tardia, doença neuromuscular e hipertermia maligna.</li>
-      <li>Rocurônio: garantir plano de via aérea e ventilação antes do bloqueio.</li>
-    </ul>
-  </div>
-</section>
+
 
 <div class="footer">
   Calculadora Médica · Ferramenta de apoio médico · Uso profissional com conferência obrigatória.
@@ -930,10 +913,12 @@ const meds = [
   vias:"VO / EV / IM conforme apresentação",
   apresentacoes:[
     {nome:"Gotas 20 mg/mL", conc:20, tipo:"gotas"},
-    {nome:"Comprimido 50 mg", fixo:50, tipo:"comprimido"},
-    {nome:"Ampola 50 mg/mL", conc:50, tipo:"mL"}
+    {nome:"Cápsula/comprimido 50 mg", fixo:50, tipo:"comprimido"},
+    {nome:"Comprimido/cápsula 100 mg", fixo:100, tipo:"comprimido"},
+    {nome:"IM 100 mg/2 mL", conc:50, tipo:"mL"},
+    {nome:"IV frasco-ampola 100 mg — diluir em 100 a 150 mL", fixo:100, tipo:"frasco"}
   ],
-  alertas:["AINE: evitar em dengue suspeita, DRC, desidratação, sangramento e plaquetopenia.","Checar apresentação pediátrica e idade mínima local."]
+  alertas:["AINE: evitar em dengue suspeita, DRC, desidratação, sangramento e plaquetopenia.","Uso pediátrico deve ser restrito e conferido em bula/protocolo.","IM: 100 mg/2 mL. IV: frasco-ampola 100 mg para diluição, não ampola EV pronta."]
 },
 {
   nome:"Naproxeno",
@@ -1313,7 +1298,7 @@ const meds = [
 
 const emerg = {
   adrenalina_pcr:{nome:"Adrenalina PCR IV/IO", dose:0.01, unidade:"mg/kg", teto:1, conc:0.1, obs:"Usar concentração 0,1 mg/mL. Repetir a cada 3–5 min conforme protocolo."},
-  adrenalina_anafilaxia:{nome:"Adrenalina IM anafilaxia", dose:0.01, unidade:"mg/kg", teto:0.5, conc:1, obs:"Usar 1 mg/mL IM, face anterolateral da coxa. Criança frequentemente teto 0,3 mg; adulto 0,5 mg."},
+  adrenalina_anafilaxia:{nome:"Adrenalina IM anafilaxia", dose:0.01, unidade:"mg/kg", teto:0.5, conc:1, obs:"Usar 1 mg/mL IM, face anterolateral da coxa. Até 11 anos: dose máxima 0,3 mL (0,3 mg). Adultos/adolescentes maiores: até 0,5 mL conforme protocolo."},
   atropina:{nome:"Atropina", dose:0.02, unidade:"mg/kg", teto:0.5, conc:0.25, obs:"Dose mínima 0,1 mg em pediatria. Adulto ACLS: 1 mg."},
   adenosina1:{nome:"Adenosina 1ª dose", dose:0.1, unidade:"mg/kg", teto:6, conc:3, obs:"Flush rápido imediatamente após. Monitorização."},
   adenosina2:{nome:"Adenosina 2ª dose", dose:0.2, unidade:"mg/kg", teto:12, conc:3, obs:"Flush rápido imediatamente após. Monitorização."},
@@ -1451,7 +1436,12 @@ function calcularEmergencia(){
   }
 
   let doseCalc = peso * d.dose;
-  let doseFinal = Math.min(doseCalc, d.teto);
+  let tetoUsado = d.teto;
+  if(document.getElementById("drogaEmerg").value === "adrenalina_anafilaxia"){
+    const idadeM = idadeMeses();
+    if(idadeM > 0 && idadeM <= 132){ tetoUsado = 0.3; }
+  }
+  let doseFinal = Math.min(doseCalc, tetoUsado);
   let unidadeFinal = d.unidade.includes("mcg") ? "mcg" : d.unidade.includes("mL") ? "mL" : "mg";
   let volume = d.conc ? doseFinal / d.conc : null;
 
@@ -1471,7 +1461,7 @@ function calcularEmergencia(){
 
 function calcularHidratacao(){
   const peso = parseFloat(document.getElementById("pesoHid").value);
-  const perc = parseFloat(document.getElementById("percHid").value);
+  const perc = parseFloat(document.getElementById("percHid").value) / 100;
   const naNec = parseFloat(document.getElementById("naNecessidade").value);
   const naPct = parseFloat(document.getElementById("naPercentual").value);
   const naFonte = parseFloat(document.getElementById("naFonte").value);
