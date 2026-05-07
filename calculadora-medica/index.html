@@ -3,808 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora Médica Beta | Dr. Felipe Dias Figueiredo</title>
+
+<title>Calculadora Médica</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --verde:#4F5B4A;
-  --dourado:#C2A46D;
-  --off:#F8F7F5;
-  --bg:#EAE6DF;
-  --azul:#E8F1F5;
-  --azulb:#7EA0AD;
-  --vermelho:#A33;
-  --texto:#2F332E;
+--verde:#4F5B4A;
+--dourado:#C2A46D;
+--off:#F8F7F5;
+--off2:#EAE6DF;
+--texto:#2F332D;
 }
-*{box-sizing:border-box}
+
 body{
-  margin:0;
-  background:linear-gradient(180deg,var(--off),var(--bg));
-  font-family:'Montserrat',sans-serif;
-  color:var(--texto);
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:linear-gradient(180deg,var(--off),var(--off2));
+color:var(--texto);
 }
+
+.topbar{
+height:68px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border-bottom:1px solid rgba(194,164,109,.35);
+}
+
+.brand h1{
+margin:0;
+font-family:'Playfair Display',serif;
+color:var(--verde);
+font-size:24px;
+}
+
 .container{
-  max-width:920px;
-  margin:auto;
-  padding:42px 18px 60px;
+max-width:980px;
+margin:auto;
+padding:24px;
 }
-.header{text-align:center;margin-bottom:28px}
-.header h1{
-  font-family:'Playfair Display',serif;
-  color:var(--verde);
-  margin:0;
-  font-size:34px;
-}
-.header p{margin:8px 0 0;color:#666;font-size:14px}
-.beta{
-  display:inline-block;
-  margin-top:14px;
-  padding:7px 14px;
-  border-radius:999px;
-  background:var(--verde);
-  color:white;
-  font-size:12px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
+
 .card{
-  background:white;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 14px 34px rgba(0,0,0,.08);
-  border:1px solid rgba(194,164,109,.35);
-  margin-bottom:18px;
+background:#fff;
+border-radius:24px;
+padding:24px;
+margin-bottom:20px;
+border:1px solid rgba(194,164,109,.35);
 }
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
+}
+
 label{
-  display:block;
-  font-weight:500;
-  margin:0 0 6px;
-  color:var(--verde);
-  font-size:14px;
+display:block;
+margin-bottom:6px;
+color:var(--verde);
+font-size:12px;
+font-weight:600;
 }
-select,input{
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid #d8d5cf;
-  font-family:'Montserrat',sans-serif;
-  font-size:15px;
-  background:#fff;
-  margin-bottom:14px;
+
+input,select{
+width:100%;
+padding:14px;
+border-radius:14px;
+border:1px solid rgba(79,91,74,.25);
+font-family:'Montserrat',sans-serif;
 }
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-button{
-  width:100%;
-  padding:15px;
-  border-radius:14px;
-  border:2px solid var(--dourado);
-  background:white;
-  color:var(--verde);
-  font-weight:600;
-  font-size:15px;
-  cursor:pointer;
-}
-button:hover{background:var(--off)}
-.result{display:none}
-.result h2{
-  font-family:'Playfair Display',serif;
-  color:var(--verde);
-  margin:0 0 16px;
-  font-size:26px;
-}
-.box{
-  border:1px solid #e2ded6;
-  border-radius:16px;
-  padding:15px;
-  margin-bottom:12px;
-  background:#FCFBFA;
-}
-.box strong{
-  color:var(--verde);
-  display:block;
-  margin-bottom:5px;
-}
-.valor{
-  font-size:21px;
-  font-weight:600;
-  color:var(--verde);
-}
-.small{
-  font-size:13px;
-  color:#666;
-  line-height:1.55;
-}
-.alerta{
-  background:var(--azul);
-  border:1px solid var(--azulb);
-  border-left:6px solid var(--azulb);
-  color:#34464d;
-  border-radius:16px;
-  padding:16px;
-  font-size:13px;
-  line-height:1.55;
-  margin-bottom:18px;
-}
-.alerta strong{display:block;margin-bottom:6px;color:#263b42}
-.erro{
-  display:none;
-  background:#FFF1F1;
-  border:1px solid #E3A5A5;
-  border-left:6px solid var(--vermelho);
-  color:#7A1E1E;
-  border-radius:16px;
-  padding:14px;
-  margin-top:14px;
-  font-size:14px;
-}
-.footer{
-  text-align:center;
-  font-size:12px;
-  color:#777;
-  margin-top:28px;
-  line-height:1.5;
-}
-@media(max-width:560px){
-  .row{grid-template-columns:1fr}
-  .header h1{font-size:29px}
+
+.btn{
+width:100%;
+margin-top:14px;
+padding:15px;
+border-radius:16px;
+border:1px solid var(--verde);
+background:var(--verde);
+color:#fff;
+font-weight:700;
+cursor:pointer;
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <div class="header">
-    <h1>Calculadora Médica</h1>
-    <p>Dr. Felipe Dias Figueiredo</p>
-    <div class="beta">Produto em desenvolvimento · Versão beta</div>
-  </div>
+<header class="topbar">
+<div class="brand">
+<h1>Calculadora Médica</h1>
+</div>
+</header>
 
-  <div class="alerta">
-    <strong>Aviso técnico e legal</strong>
-    Esta página é destinada exclusivamente ao auxílio de profissionais médicos. Os cálculos apresentados têm finalidade de apoio, conferência e padronização, não substituindo avaliação clínica, julgamento médico, bula, protocolos institucionais ou individualização terapêutica. A decisão final sobre prescrição, dose, intervalo, via de administração, contraindicações, preparo, diluição, monitoramento e ajustes é sempre do médico assistente.
-    <br><br>
-    Produto em desenvolvimento, versão beta. Em caso de divergência, inconsistência ou sugestão de correção, comunique:
-    <strong>drfelipediasfigueiredo@gmail.com</strong>
-  </div>
+<main class="container">
 
-  <div class="card">
-    <label>Medicamento</label>
-    <select id="medicamento" onchange="carregarApresentacoes()">
-      <option value="">Selecione</option>
+<section class="card">
 
-      <optgroup label="Analgésicos e antitérmicos">
-        <option value="dipirona">Dipirona</option>
-        <option value="paracetamol">Paracetamol</option>
-      </optgroup>
+<h2>Calculadora de doses</h2>
 
-      <optgroup label="Anti-inflamatórios">
-        <option value="ibuprofeno">Ibuprofeno</option>
-      </optgroup>
+<div class="grid">
 
-      <optgroup label="Antibióticos beta-lactâmicos">
-        <option value="amoxicilina">Amoxicilina</option>
-        <option value="amoxicilina_clavulanato">Amoxicilina + Clavulanato</option>
-        <option value="ampicilina">Ampicilina</option>
-        <option value="oxacilina">Oxacilina</option>
-        <option value="penicilina_benzatina">Penicilina G Benzatina</option>
-      </optgroup>
-
-      <optgroup label="Cefalosporinas">
-        <option value="cefalexina">Cefalexina</option>
-        <option value="cefaclor">Cefaclor</option>
-        <option value="cefdinir">Cefdinir</option>
-        <option value="cefuroxima">Cefuroxima</option>
-        <option value="ceftriaxona">Ceftriaxona</option>
-        <option value="cefepime">Cefepime</option>
-      </optgroup>
-
-      <optgroup label="Macrolídeos">
-        <option value="azitromicina">Azitromicina</option>
-        <option value="claritromicina">Claritromicina</option>
-      </optgroup>
-
-      <optgroup label="Sulfonamidas">
-        <option value="sulfametoxazol_trimetoprima">Sulfametoxazol + Trimetoprima</option>
-      </optgroup>
-
-      <optgroup label="Nitroimidazólicos">
-        <option value="metronidazol">Metronidazol</option>
-      </optgroup>
-
-      <optgroup label="Aminoglicosídeos">
-        <option value="gentamicina">Gentamicina</option>
-      </optgroup>
-
-      <optgroup label="Glicopeptídeos">
-        <option value="vancomicina">Vancomicina</option>
-      </optgroup>
-
-      <optgroup label="Corticoides">
-        <option value="prednisolona">Prednisolona</option>
-        <option value="dexametasona">Dexametasona</option>
-        <option value="hidrocortisona">Hidrocortisona</option>
-        <option value="metilprednisolona">Metilprednisolona</option>
-      </optgroup>
-
-      <optgroup label="Anti-histamínicos">
-        <option value="loratadina">Loratadina</option>
-        <option value="desloratadina">Desloratadina</option>
-        <option value="hidroxizina">Hidroxizina</option>
-      </optgroup>
-
-      <optgroup label="Antieméticos e antivertiginosos">
-        <option value="ondansetrona">Ondansetrona</option>
-        <option value="bromoprida">Bromoprida</option>
-        <option value="metoclopramida">Metoclopramida</option>
-        <option value="dimenidrinato">Dimenidrinato</option>
-        <option value="dimenidrinato_dl">Dimenidrinato DL</option>
-      </optgroup>
-
-      <optgroup label="Antiespasmódicos">
-        <option value="escopolamina">Escopolamina</option>
-        <option value="escopolamina_dipirona">Escopolamina + Dipirona</option>
-      </optgroup>
-
-      <optgroup label="Sedação e analgesia em BIC">
-        <option value="fentanil_bic">Fentanil BIC</option>
-        <option value="midazolam_bic">Midazolam BIC</option>
-      </optgroup>
-    </select>
-
-    <label>Apresentação</label>
-    <select id="apresentacao">
-      <option value="">Selecione o medicamento primeiro</option>
-    </select>
-
-    <div class="row">
-      <div>
-        <label>Peso do paciente</label>
-        <input id="peso" type="number" step="0.1" placeholder="Ex.: 18">
-      </div>
-      <div>
-        <label>Idade</label>
-        <input id="idade" type="number" step="0.1" placeholder="Ex.: 4">
-      </div>
-    </div>
-
-    <button onclick="calcular()">Calcular dose</button>
-    <div id="erro" class="erro"></div>
-  </div>
-
-  <div id="resultado" class="card result">
-    <h2>Resultado</h2>
-
-    <div class="box">
-      <strong>Medicação</strong>
-      <div id="rMed" class="valor"></div>
-      <div id="rClasse" class="small"></div>
-    </div>
-
-    <div class="box">
-      <strong>Dose</strong>
-      <div id="rDose" class="valor"></div>
-      <div id="rDoseInfo" class="small"></div>
-    </div>
-
-    <div class="box">
-      <strong>Volume indicado</strong>
-      <div id="rVolume" class="valor"></div>
-      <div id="rUnidade" class="small"></div>
-    </div>
-
-    <div class="box">
-      <strong>Intervalo</strong>
-      <div id="rIntervalo" class="valor"></div>
-    </div>
-
-    <div class="box">
-      <strong>Via</strong>
-      <div id="rVia" class="valor"></div>
-    </div>
-
-    <div class="box">
-      <strong>Alertas e observações</strong>
-      <div id="rObs" class="small"></div>
-    </div>
-  </div>
-
-  <div class="footer">
-    Calculadora médica beta · Uso auxiliar · Conferência obrigatória pelo médico prescritor.
-  </div>
+<div>
+<label>Peso do paciente (kg)</label>
+<input type="number" id="peso">
 </div>
 
-<script>
-const apresentacoes = {
-  dipirona:[
-    {nome:"Dipirona 500 mg/mL gotas", classe:"Analgésico e antitérmico", via:"VO", intervalo:"6/6 h ou até 4 vezes/dia", tipo:"dipirona", conc:500, gotas:true, obs:"Pediatria acima de 3 meses e ≥5 kg: 10–15 mg/kg/dose VO. Adultos/adolescentes >15 anos: 500–1000 mg/dose. 20 gotas = 1 mL."},
-    {nome:"Dipirona 50 mg/mL solução oral", classe:"Analgésico e antitérmico", via:"VO", intervalo:"6/6 h ou até 4 vezes/dia", tipo:"dipirona", conc:50, gotas:false, obs:"Solução oral. Pode conter excipientes/corantes conforme fabricante. Conferir bula."},
-    {nome:"Dipirona 500 mg/mL injetável", classe:"Analgésico e antitérmico", via:"EV/IM", intervalo:"6/6 h ou até 4 vezes/dia", tipo:"dipirona_ev", conc:500, gotas:false, obs:"Pediatria EV: 20–25 mg/kg/dose a cada 6 h. Adultos: 1000–2500 mg EV/IM até 4 vezes/dia. Diluir conforme protocolo; infusão EV máxima 500 mg/min. Risco de hipotensão."},
-    {nome:"Dipirona 300 mg supositório infantil", classe:"Analgésico e antitérmico", via:"VR", intervalo:"Até 4 vezes/dia", tipo:"dipirona_sup", conc:null, gotas:false, obs:"Dose usual: 300 mg por dose VR em pediatria quando indicado. Crianças <12 anos não devem receber supositório adulto."}
-  ],
-
-  paracetamol:[
-    {nome:"Paracetamol 200 mg/mL gotas", classe:"Analgésico e antitérmico", via:"VO", intervalo:"6/6 h", tipo:"mgkgdose", conc:200, doseMin:10, doseMax:15, teto:750, gotas:true, obs:"Dose usual: 10–15 mg/kg/dose. Teto por dose nesta calculadora: 750 mg. 20 gotas = 1 mL."}
-  ],
-
-  ibuprofeno:[
-    {nome:"Ibuprofeno 50 mg/mL gotas", classe:"Anti-inflamatório não esteroidal", via:"VO", intervalo:"6/6 h a 8/8 h", tipo:"mgkgdose", conc:50, doseMin:5, doseMax:10, teto:300, gotas:true, obs:"Dose usual: 5–10 mg/kg/dose. Teto por dose nesta calculadora: 300 mg. Evitar em desidratação, insuficiência renal, sangramento digestivo e contraindicações a AINE."},
-    {nome:"Ibuprofeno 100 mg/mL gotas", classe:"Anti-inflamatório não esteroidal", via:"VO", intervalo:"6/6 h a 8/8 h", tipo:"mgkgdose", conc:100, doseMin:5, doseMax:10, teto:300, gotas:true, obs:"Dose usual: 5–10 mg/kg/dose. Teto por dose nesta calculadora: 300 mg. 20 gotas = 1 mL."}
-  ],
-
-  amoxicilina:[
-    {nome:"Amoxicilina 250 mg/5 mL", classe:"Penicilina / beta-lactâmico", via:"VO", intervalo:"Dividir em 8/8 h ou 12/12 h", tipo:"mgkgdia", conc:50, doseMin:25, doseMax:50, teto:4000, obs:"Faixa usual: 25–50 mg/kg/dia. Ajustar conforme foco, gravidade, sensibilidade e função renal."},
-    {nome:"Amoxicilina 400 mg/5 mL", classe:"Penicilina / beta-lactâmico", via:"VO", intervalo:"12/12 h", tipo:"mgkgdia", conc:80, doseMin:25, doseMax:45, teto:4000, obs:"Apresentação de 400 mg/5 mL usualmente usada 12/12 h. Faixa de bula habitual: 25–45 mg/kg/dia conforme infecção."},
-    {nome:"Amoxicilina 500 mg cápsula/comprimido", classe:"Penicilina / beta-lactâmico", via:"VO", intervalo:"8/8 h ou 12/12 h", tipo:"adulto_fixo", doseTexto:"500 mg por dose", volumeTexto:"1 cápsula/comprimido", obs:"Uso adulto/adolescente conforme indicação. Conferir dose máxima diária e função renal."}
-  ],
-
-  amoxicilina_clavulanato:[
-    {nome:"Amoxicilina + Clavulanato 250 + 62,5 mg/5 mL", classe:"Beta-lactâmico + inibidor de beta-lactamase", via:"VO", intervalo:"8/8 h", tipo:"mgkgdia", conc:50, doseMin:25, doseMax:45, teto:4000, obs:"Cálculo pelo componente amoxicilina. Atenção à dose de clavulanato e tolerância gastrointestinal."},
-    {nome:"Amoxicilina + Clavulanato 400 + 57 mg/5 mL", classe:"Beta-lactâmico + inibidor de beta-lactamase", via:"VO", intervalo:"12/12 h", tipo:"mgkgdia", conc:80, doseMin:25, doseMax:45, teto:4000, obs:"Cálculo pelo componente amoxicilina. Para dose alta, avaliar formulações e limite de clavulanato."}
-  ],
-
-  ampicilina:[
-    {nome:"Ampicilina injetável", classe:"Penicilina / beta-lactâmico", via:"EV", intervalo:"Dividir em 6/6 h", tipo:"mgkgdia_inj", doseMin:100, doseMax:200, teto:12000, obs:"Cálculo diário. Ajustar conforme foco infeccioso, idade, função renal e protocolo local."}
-  ],
-
-  oxacilina:[
-    {nome:"Oxacilina injetável", classe:"Penicilina antiestafilocócica", via:"EV", intervalo:"Dividir em 6/6 h", tipo:"mgkgdia_inj", doseMin:100, doseMax:200, teto:12000, obs:"Cálculo diário. Ajustar conforme infecção, peso, função renal/hepática e protocolo."}
-  ],
-
-  penicilina_benzatina:[
-    {nome:"Penicilina G Benzatina", classe:"Penicilina", via:"IM", intervalo:"Dose única ou conforme indicação", tipo:"penbenz", obs:"Referência prática: <27 kg: 600.000 UI IM; ≥27 kg: 1.200.000 UI IM. Conferir indicação específica."}
-  ],
-
-  cefalexina:[
-    {nome:"Cefalexina 250 mg/5 mL", classe:"Cefalosporina de primeira geração", via:"VO", intervalo:"Dividir em 6/6 h", tipo:"mgkgdia", conc:50, doseMin:25, doseMax:50, teto:4000, obs:"Cálculo diário. Ajustar conforme foco e gravidade."}
-  ],
-
-  cefaclor:[
-    {nome:"Cefaclor 250 mg/5 mL", classe:"Cefalosporina de segunda geração", via:"VO", intervalo:"Dividir em 8/8 h", tipo:"mgkgdia", conc:50, doseMin:20, doseMax:40, teto:1000, obs:"Cálculo diário. Conferir limite por bula e indicação."},
-    {nome:"Cefaclor 375 mg/5 mL", classe:"Cefalosporina de segunda geração", via:"VO", intervalo:"Dividir em 8/8 h", tipo:"mgkgdia", conc:75, doseMin:20, doseMax:40, teto:1000, obs:"Cálculo diário. Conferir limite por bula e indicação."}
-  ],
-
-  cefdinir:[
-    {nome:"Cefdinir 250 mg/5 mL", classe:"Cefalosporina de terceira geração oral", via:"VO", intervalo:"1x/dia ou dividir em 12/12 h", tipo:"mgkgdia", conc:50, doseMin:14, doseMax:14, teto:600, obs:"Cálculo diário. Dose usual pediátrica: 14 mg/kg/dia."}
-  ],
-
-  cefuroxima:[
-    {nome:"Cefuroxima 250 mg/5 mL", classe:"Cefalosporina de segunda geração", via:"VO", intervalo:"12/12 h", tipo:"mgkgdia", conc:50, doseMin:20, doseMax:30, teto:1000, obs:"Cálculo diário. Conferir apresentação e indicação."}
-  ],
-
-  ceftriaxona:[
-    {nome:"Ceftriaxona 500 mg", classe:"Cefalosporina de terceira geração", via:"EV/IM", intervalo:"1x/dia ou 12/12 h", tipo:"mgkgdia_inj", doseMin:50, doseMax:100, teto:4000, obs:"Cálculo diário. Preparar conforme apresentação e protocolo local."},
-    {nome:"Ceftriaxona 1 g", classe:"Cefalosporina de terceira geração", via:"EV/IM", intervalo:"1x/dia ou 12/12 h", tipo:"mgkgdia_inj", doseMin:50, doseMax:100, teto:4000, obs:"Cálculo diário. Evitar associação com cálcio EV em neonatos. Conferir contraindicações."}
-  ],
-
-  cefepime:[
-    {nome:"Cefepime injetável", classe:"Cefalosporina de quarta geração", via:"EV", intervalo:"8/8 h ou 12/12 h", tipo:"mgkgdose_inj", doseMin:50, doseMax:50, teto:2000, obs:"Cálculo por dose. Ajustar obrigatoriamente à função renal."}
-  ],
-
-  azitromicina:[
-    {nome:"Azitromicina 200 mg/5 mL", classe:"Macrolídeo", via:"VO", intervalo:"1x/dia", tipo:"mgkgdia", conc:40, doseMin:10, doseMax:10, teto:500, obs:"Cálculo diário. Esquema e duração variam conforme indicação."}
-  ],
-
-  claritromicina:[
-    {nome:"Claritromicina injetável", classe:"Macrolídeo", via:"EV", intervalo:"12/12 h", tipo:"mgkgdia_inj", doseMin:15, doseMax:15, teto:1000, obs:"Cálculo diário. Ajustar em insuficiência renal conforme protocolo/bula."}
-  ],
-
-  sulfametoxazol_trimetoprima:[
-    {nome:"Sulfametoxazol + Trimetoprima 400 + 80 mg/5 mL", classe:"Sulfonamida + trimetoprima", via:"VO", intervalo:"12/12 h", tipo:"mgkgdia", conc:16, doseMin:8, doseMax:12, teto:320, obs:"Cálculo pelo componente trimetoprima. Dose e teto dependem da indicação."}
-  ],
-
-  metronidazol:[
-    {nome:"Metronidazol 40 mg/mL solução oral", classe:"Nitroimidazólico", via:"VO", intervalo:"8/8 h", tipo:"mgkgdia", conc:40, doseMin:30, doseMax:50, teto:2250, obs:"Cálculo diário. Ajustar conforme foco, gravidade e protocolo."},
-    {nome:"Metronidazol injetável", classe:"Nitroimidazólico", via:"EV", intervalo:"8/8 h", tipo:"mgkgdose_inj", doseMin:7.5, doseMax:10, teto:500, obs:"Cálculo por dose. Infundir conforme protocolo institucional."}
-  ],
-
-  gentamicina:[
-    {nome:"Gentamicina injetável", classe:"Aminoglicosídeo", via:"EV/IM", intervalo:"1x/dia ou conforme protocolo", tipo:"mgkgdia_inj", doseMin:5, doseMax:7.5, teto:500, obs:"Monitorar função renal e níveis séricos quando indicado. Ajuste obrigatório em insuficiência renal."}
-  ],
-
-  vancomicina:[
-    {nome:"Vancomicina injetável", classe:"Glicopeptídeo", via:"EV", intervalo:"6/6 h, 8/8 h ou 12/12 h conforme protocolo", tipo:"mgkgdia_inj", doseMin:40, doseMax:60, teto:4000, obs:"Monitorar função renal e níveis séricos/AUC conforme protocolo. Infusão lenta pelo risco de reação infusional."}
-  ],
-
-  prednisolona:[
-    {nome:"Prednisolona 3 mg/mL", classe:"Corticosteroide", via:"VO", intervalo:"1x/dia ou conforme indicação", tipo:"mgkgdia", conc:3, doseMin:1, doseMax:2, teto:60, obs:"Cálculo diário. Ajustar conforme indicação."},
-    {nome:"Prednisolona 11 mg/mL", classe:"Corticosteroide", via:"VO", intervalo:"1x/dia ou conforme indicação", tipo:"mgkgdia", conc:11, doseMin:1, doseMax:2, teto:60, obs:"Cálculo diário. Conferir concentração da apresentação disponível."}
-  ],
-
-  dexametasona:[
-    {nome:"Dexametasona 0,5 mg/5 mL solução oral", classe:"Corticosteroide", via:"VO", intervalo:"Conforme indicação", tipo:"mgkgdose", conc:0.1, doseMin:0.15, doseMax:0.6, teto:16, obs:"Faixa ampla dependente da indicação clínica."},
-    {nome:"Dexametasona injetável", classe:"Corticosteroide", via:"EV/IM", intervalo:"Conforme indicação", tipo:"mgkgdose_inj", doseMin:0.15, doseMax:0.6, teto:16, obs:"Faixa ampla dependente da indicação clínica."}
-  ],
-
-  hidrocortisona:[
-    {nome:"Hidrocortisona ataque", classe:"Corticosteroide", via:"EV", intervalo:"Dose de ataque", tipo:"mgkgdose_inj", doseMin:2, doseMax:4, teto:100, obs:"Titular conforme indicação clínica."},
-    {nome:"Hidrocortisona manutenção", classe:"Corticosteroide", via:"EV", intervalo:"6/6 h", tipo:"mgkgdia_inj", doseMin:8, doseMax:10, teto:300, obs:"Cálculo diário. Dividir em 6/6 h."}
-  ],
-
-  metilprednisolona:[
-    {nome:"Metilprednisolona injetável", classe:"Corticosteroide", via:"EV/IM", intervalo:"Conforme indicação", tipo:"mgkgdose_inj", doseMin:1, doseMax:2, teto:60, obs:"Dose usual anti-inflamatória. Para pulsoterapia, usar protocolo específico."}
-  ],
-
-  loratadina:[
-    {nome:"Loratadina 1 mg/mL", classe:"Anti-histamínico H1 de segunda geração", via:"VO", intervalo:"1x/dia", tipo:"idade_loratadina", conc:1, obs:"2–5 anos: 5 mg/dia. ≥6 anos: 10 mg/dia."}
-  ],
-
-  desloratadina:[
-    {nome:"Desloratadina 0,5 mg/mL", classe:"Anti-histamínico H1 de segunda geração", via:"VO", intervalo:"1x/dia", tipo:"idade_desloratadina", conc:0.5, obs:"1–5 anos: 1,25 mg/dia. 6–11 anos: 2,5 mg/dia. ≥12 anos: 5 mg/dia."}
-  ],
-
-  hidroxizina:[
-    {nome:"Hidroxizina 2 mg/mL", classe:"Anti-histamínico H1 de primeira geração", via:"VO", intervalo:"6/6 h a 8/8 h", tipo:"mgkgdia", conc:2, doseMin:1, doseMax:2, teto:100, obs:"Cálculo diário. Pode causar sedação. Atenção a prolongamento de QT e contraindicações."}
-  ],
-
-  ondansetrona:[
-    {nome:"Ondansetrona 4 mg/5 mL solução oral", classe:"Antiemético antagonista 5-HT3", via:"VO", intervalo:"8/8 h ou conforme indicação", tipo:"ondansetrona_oral", conc:0.8, obs:"Solução oral 4 mg/5 mL. Dose pediátrica varia por indicação. Esta calculadora usa referência prática de 0,15 mg/kg/dose, teto 8 mg/dose, e exibe alternativa fixa 4 mg quando aplicável."},
-    {nome:"Ondansetrona 2 mg/mL injetável", classe:"Antiemético antagonista 5-HT3", via:"EV/IM", intervalo:"8/8 h ou conforme indicação", tipo:"mgkgdose", conc:2, doseMin:0.15, doseMax:0.15, teto:8, obs:"Cálculo por dose: 0,15 mg/kg/dose. Teto usual por dose nesta calculadora: 8 mg. Atenção a QT longo e interações."}
-  ],
-
-  bromoprida:[
-    {nome:"Bromoprida 4 mg/mL", classe:"Antiemético / procinético", via:"VO/EV/IM", intervalo:"8/8 h", tipo:"mgkgdose", conc:4, doseMin:0.03, doseMax:0.1, teto:10, obs:"Titular conforme indicação. Atenção a reações extrapiramidais."}
-  ],
-
-  metoclopramida:[
-    {nome:"Metoclopramida 4 mg/mL", classe:"Antiemético / procinético", via:"VO/EV/IM", intervalo:"8/8 h", tipo:"mgkgdose", conc:4, doseMin:0.1, doseMax:0.15, teto:10, obs:"Atenção a sintomas extrapiramidais, distonias e contraindicações."}
-  ],
-
-  dimenidrinato:[
-    {nome:"Dimenidrinato 25 mg/mL gotas", classe:"Antiemético / antivertiginoso anti-histamínico", via:"VO", intervalo:"6/6 h a 8/8 h", tipo:"dimenidrinato_gotas", conc:25, gotas:true, obs:"Referência prática: 1 gota/kg/dose VO, considerando 20 gotas = 1 mL. Conferir teto por faixa etária em bula."}
-  ],
-
-  dimenidrinato_dl:[
-    {nome:"Dimenidrinato DL injetável", classe:"Antiemético / antivertiginoso anti-histamínico", via:"EV", intervalo:"6/6 h a 8/8 h ou conforme indicação", tipo:"dimenidrinato_dl_ev", conc:null, obs:"Referência pediátrica acima de 2 anos: 1,25 mg/kg de dimenidrinato EV, diluído em 10 mL de SF 0,9%, administração lenta, mínimo 2 minutos. Conferir formulação exata disponível."}
-  ],
-
-  escopolamina:[
-    {nome:"Escopolamina 10 mg/mL", classe:"Antiespasmódico anticolinérgico", via:"VO/EV/IM", intervalo:"8/8 h", tipo:"mgkgdose", conc:10, doseMin:0.3, doseMax:0.6, teto:20, obs:"Atenção a contraindicações anticolinérgicas: glaucoma de ângulo fechado, retenção urinária, íleo paralítico e outras."}
-  ],
-
-  escopolamina_dipirona:[
-    {nome:"Escopolamina + Dipirona 6,67 + 333,4 mg/mL", classe:"Antiespasmódico + analgésico", via:"VO/EV/IM", intervalo:"6/6 h a 8/8 h", tipo:"dipirona_combo", conc:333.4, obs:"Cálculo orientativo pelo componente dipirona. Conferir apresentação, dose de escopolamina e contraindicações."}
-  ],
-
-  fentanil_bic:[
-    {nome:"Fentanil 10 mL 50 mcg/mL + SF 0,9% 40 mL", classe:"Opioide analgésico", via:"EV em BIC", intervalo:"Contínuo", tipo:"fentanil_bic", conc:10, obs:"Solução final: 500 mcg em 50 mL = 10 mcg/mL. Sugestão: indução 1–2 mcg/kg; manutenção inicial 0,5–2 mcg/kg/h, titular conforme analgesia/sedação e protocolo."}
-  ],
-
-  midazolam_bic:[
-    {nome:"Midazolam 20 mL 5 mg/mL + SF 0,9% 80 mL", classe:"Benzodiazepínico sedativo", via:"EV em BIC", intervalo:"Contínuo", tipo:"midazolam_bic", conc:1, obs:"Solução final: 100 mg em 100 mL = 1 mg/mL. Sugestão de manutenção: 0,03–0,1 mg/kg/h, titular ao alvo de sedação."}
-  ]
-};
-
-function carregarApresentacoes(){
-  const med = document.getElementById("medicamento").value;
-  const select = document.getElementById("apresentacao");
-  select.innerHTML = "";
-
-  if(!med || !apresentacoes[med]){
-    select.innerHTML = '<option value="">Selecione o medicamento primeiro</option>';
-    return;
-  }
-
-  apresentacoes[med].forEach((item,index)=>{
-    const opt = document.createElement("option");
-    opt.value = index;
-    opt.textContent = item.nome;
-    select.appendChild(opt);
-  });
-}
-
-function arred(v){
-  return Math.round(v * 100) / 100;
-}
-
-function mostrar(item,dose,doseInfo,volume,unidade,obsExtra){
-  document.getElementById("rMed").innerHTML = item.nome;
-  document.getElementById("rClasse").innerHTML = item.classe;
-  document.getElementById("rDose").innerHTML = dose;
-  document.getElementById("rDoseInfo").innerHTML = doseInfo || "";
-  document.getElementById("rVolume").innerHTML = volume || "—";
-  document.getElementById("rUnidade").innerHTML = unidade || "";
-  document.getElementById("rIntervalo").innerHTML = item.intervalo;
-  document.getElementById("rVia").innerHTML = item.via;
-  document.getElementById("rObs").innerHTML = item.obs + (obsExtra ? "<br><br>" + obsExtra : "");
-  document.getElementById("resultado").style.display = "block";
-}
-
-function mostrarErro(msg){
-  const erro = document.getElementById("erro");
-  erro.innerHTML = msg;
-  erro.style.display = "block";
-}
-
-function tetoDipirona(peso){
-  if(peso < 5) return {teto:0, texto:"Contraindicado em menores de 5 kg."};
-  if(peso <= 8) return {teto:500, texto:"Dose máxima diária 5–8 kg: 500 mg/dia."};
-  if(peso <= 15) return {teto:1000, texto:"Dose máxima diária 9–15 kg: 1000 mg/dia."};
-  if(peso <= 23) return {teto:1500, texto:"Dose máxima diária 16–23 kg: 1500 mg/dia."};
-  if(peso <= 30) return {teto:2000, texto:"Dose máxima diária 24–30 kg: 2000 mg/dia."};
-  if(peso <= 45) return {teto:3000, texto:"Dose máxima diária 31–45 kg: 3000 mg/dia."};
-  if(peso <= 53) return {teto:3500, texto:"Dose máxima diária 46–53 kg: 3500 mg/dia."};
-  return {teto:5000, texto:"Dose máxima diária adulto: 5000 mg/dia."};
-}
-
-function calcular(){
-  document.getElementById("erro").style.display = "none";
-  document.getElementById("resultado").style.display = "none";
-
-  const med = document.getElementById("medicamento").value;
-  const apIndex = document.getElementById("apresentacao").value;
-  const peso = parseFloat(document.getElementById("peso").value);
-  const idade = parseFloat(document.getElementById("idade").value);
-
-  if(!med){
-    mostrarErro("Selecione um medicamento.");
-    return;
-  }
-
-  const item = apresentacoes[med][apIndex];
-
-  if(!item){
-    mostrarErro("Selecione uma apresentação.");
-    return;
-  }
-
-  if(item.tipo === "adulto_fixo"){
-    mostrar(item,item.doseTexto,"Dose fixa usual para adulto/adolescente conforme indicação.",item.volumeTexto,"","Conferir peso, idade, função renal, indicação e bula.");
-    return;
-  }
-
-  if(item.tipo === "idade_loratadina"){
-    if(!idade){ mostrarErro("Informe a idade."); return; }
-    let dose = 0;
-    if(idade >= 2 && idade < 6) dose = 5;
-    else if(idade >= 6) dose = 10;
-    else { mostrarErro("Faixa etária fora da referência cadastrada para loratadina."); return; }
-
-    mostrar(item,dose+" mg/dia","Dose por faixa etária.",arred(dose/item.conc)+" mL/dia","","Conferir idade mínima, contraindicações e bula.");
-    return;
-  }
-
-  if(item.tipo === "idade_desloratadina"){
-    if(!idade){ mostrarErro("Informe a idade."); return; }
-    let dose = 0;
-    if(idade >= 1 && idade < 6) dose = 1.25;
-    else if(idade >= 6 && idade < 12) dose = 2.5;
-    else if(idade >= 12) dose = 5;
-    else { mostrarErro("Faixa etária fora da referência cadastrada para desloratadina."); return; }
-
-    mostrar(item,dose+" mg/dia","Dose por faixa etária.",arred(dose/item.conc)+" mL/dia","","Conferir idade mínima, contraindicações e bula.");
-    return;
-  }
-
-  if(item.tipo === "penbenz"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-    const dose = peso < 27 ? 600000 : 1200000;
-    mostrar(item,dose.toLocaleString("pt-BR")+" UI","Dose por faixa de peso.",dose.toLocaleString("pt-BR")+" UI IM","","Conferir indicação, alergia a beta-lactâmicos e protocolo local.");
-    return;
-  }
-
-  if(item.tipo === "fentanil_bic"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-
-    const inducaoMin = peso * 1;
-    const inducaoMax = peso * 2;
-    const manutMin = peso * 0.5;
-    const manutMax = peso * 2;
-
-    const mlIndMin = inducaoMin / item.conc;
-    const mlIndMax = inducaoMax / item.conc;
-    const mlhMin = manutMin / item.conc;
-    const mlhMax = manutMax / item.conc;
-
-    mostrar(
-      item,
-      "Indução: " + arred(inducaoMin) + " a " + arred(inducaoMax) + " mcg",
-      "Manutenção: " + arred(manutMin) + " a " + arred(manutMax) + " mcg/h.",
-      "Indução: " + arred(mlIndMin) + " a " + arred(mlIndMax) + " mL. BIC: " + arred(mlhMin) + " a " + arred(mlhMax) + " mL/h",
-      "Fórmula: mL/h = peso × dose mcg/kg/h ÷ 10.",
-      "Monitorar ventilação, sedação, analgesia, pressão arterial, bradicardia e rigidez torácica. Titular conforme resposta clínica."
-    );
-    return;
-  }
-
-  if(item.tipo === "midazolam_bic"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-
-    const manutMin = peso * 0.03;
-    const manutMax = peso * 0.1;
-
-    mostrar(
-      item,
-      arred(manutMin) + " a " + arred(manutMax) + " mg/h",
-      "Manutenção sugerida: 0,03–0,1 mg/kg/h.",
-      "BIC: " + arred(manutMin / item.conc) + " a " + arred(manutMax / item.conc) + " mL/h",
-      "Fórmula: mL/h = peso × dose mg/kg/h, pois solução final = 1 mg/mL.",
-      "Titular ao alvo de sedação. Monitorar ventilação, nível de consciência, pressão arterial, acúmulo em uso prolongado e função hepática/renal."
-    );
-    return;
-  }
-
-  if(item.tipo === "dimenidrinato_gotas"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-    const gotas = Math.round(peso);
-    const ml = gotas / 20;
-    const mg = ml * item.conc;
-
-    mostrar(
-      item,
-      arred(mg) + " mg/dose",
-      "Referência prática: 1 gota/kg/dose.",
-      arred(ml) + " mL/dose",
-      gotas + " gotas/dose",
-      "Conferir teto por faixa etária, sedação, interação com depressores do SNC, glaucoma e retenção urinária."
-    );
-    return;
-  }
-
-  if(item.tipo === "dimenidrinato_dl_ev"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-    const dose = peso * 1.25;
-
-    mostrar(
-      item,
-      arred(dose) + " mg de dimenidrinato por dose",
-      "Referência pediátrica acima de 2 anos: 1,25 mg/kg/dose EV.",
-      "Diluir em 10 mL de SF 0,9% e administrar lentamente",
-      "Tempo mínimo sugerido: 2 minutos.",
-      "Conferir composição exata da apresentação disponível. Monitorar sedação e efeitos anticolinérgicos."
-    );
-    return;
-  }
-
-  if(item.tipo === "ondansetrona_oral"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-    let dose = peso * 0.15;
-    if(dose > 8) dose = 8;
-    const ml = dose / item.conc;
-
-    mostrar(
-      item,
-      arred(dose) + " mg/dose",
-      "Referência prática: 0,15 mg/kg/dose, teto 8 mg/dose. Em algumas indicações pediátricas pode-se usar dose fixa de 4 mg conforme faixa etária/contexto.",
-      arred(ml) + " mL/dose",
-      "",
-      "Atenção a QT longo, distúrbios hidroeletrolíticos e interações. Conferir indicação e bula."
-    );
-    return;
-  }
-
-  if(item.tipo === "dipirona" || item.tipo === "dipirona_ev" || item.tipo === "dipirona_combo"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-
-    if(idade && idade < 0.25){
-      mostrarErro("Não administrar dipirona em crianças menores de 3 meses.");
-      return;
-    }
-
-    const teto = tetoDipirona(peso);
-    if(teto.teto === 0){
-      mostrarErro(teto.texto);
-      return;
-    }
-
-    let doseMin, doseMax, info;
-
-    if(item.tipo === "dipirona_ev"){
-      if((idade && idade < 1) || peso < 9){
-        mostrarErro("Dipirona EV não deve ser administrada em crianças entre 3 e 11 meses ou com peso menor que 9 kg.");
-        return;
-      }
-      doseMin = peso * 20;
-      doseMax = peso * 25;
-      info = "Pediatria EV: 20–25 mg/kg/dose a cada 6 h.";
-    } else {
-      doseMin = peso * 10;
-      doseMax = peso * 15;
-      info = "Pediatria VO: 10–15 mg/kg/dose até 4 vezes/dia.";
-    }
-
-    const tetoPorDose = teto.teto / 4;
-    if(doseMin > tetoPorDose) doseMin = tetoPorDose;
-    if(doseMax > tetoPorDose) doseMax = tetoPorDose;
-
-    const mlMin = doseMin / item.conc;
-    const mlMax = doseMax / item.conc;
-
-    mostrar(
-      item,
-      arred(doseMin) + " a " + arred(doseMax) + " mg/dose",
-      info,
-      arred(mlMin) + " a " + arred(mlMax) + " mL/dose",
-      item.gotas ? arred(mlMin * 20) + " a " + arred(mlMax * 20) + " gotas/dose" : "",
-      teto.texto + " Adultos: dose máxima diária 5000 mg/dia. Desaconselha-se alta dose em insuficiência renal/hepática. Risco de hipotensão com forma injetável."
-    );
-    return;
-  }
-
-  if(item.tipo === "dipirona_sup"){
-    if(!peso){ mostrarErro("Informe o peso."); return; }
-
-    const teto = tetoDipirona(peso);
-    if(teto.teto === 0){
-      mostrarErro(teto.texto);
-      return;
-    }
-
-    mostrar(
-      item,
-      "300 mg/dose",
-      "Dose por apresentação.",
-      "1 supositório infantil por dose",
-      "",
-      teto.texto + " Não utilizar supositório adulto em menores de 12 anos. Evitar associação com clorpromazina pelo risco de hipotermia grave."
-    );
-    return;
-  }
-
-  if(!peso){
-    mostrarErro("Informe o peso.");
-    return;
-  }
-
-  if(item.tipo === "mgkgdose" || item.tipo === "mgkgdose_inj"){
-    let doseMin = peso * item.doseMin;
-    let doseMax = peso * item.doseMax;
-
-    if(doseMin > item.teto) doseMin = item.teto;
-    if(doseMax > item.teto) doseMax = item.teto;
-
-    let volume = "Preparar conforme apresentação/protocolo institucional.";
-    let unidade = "";
-
-    if(item.conc){
-      volume = arred(doseMin / item.conc) + " a " + arred(doseMax / item.conc) + " mL/dose";
-      if(item.gotas){
-        unidade = arred((doseMin / item.conc) * 20) + " a " + arred((doseMax / item.conc) * 20) + " gotas/dose";
-      }
-    }
-
-    mostrar(
-      item,
-      arred(doseMin) + " a " + arred(doseMax) + " mg/dose",
-      "Cálculo em mg/kg/dose.",
-      volume,
-      unidade,
-      "Teto aplicado: " + item.teto + " mg por dose. Conferir dose máxima diária, função renal/hepática e protocolo institucional."
-    );
-    return;
-  }
-
-  if(item.tipo === "mgkgdia" || item.tipo === "mgkgdia_inj"){
-    let doseMin = peso * item.doseMin;
-    let doseMax = peso * item.doseMax;
-
-    if(doseMin > item.teto) doseMin = item.teto;
-    if(doseMax > item.teto) doseMax = item.teto;
-
-    let volume = "Preparar conforme apresentação/protocolo institucional.";
-
-    if(item.conc){
-      volume = arred(doseMin / item.conc) + " a " + arred(doseMax / item.conc) + " mL/dia total";
-    }
-
-    mostrar(
-      item,
-      arred(doseMin) + " a " + arred(doseMax) + " mg/dia",
-      "Cálculo em mg/kg/dia.",
-      volume,
-      "",
-      "Teto diário aplicado: " + item.teto + " mg/dia. Dividir conforme intervalo. Conferir função renal/hepática, indicação e protocolo institucional."
-    );
-    return;
-  }
-}
-</script>
+<div>
+<label>Medicamento</label>
+<select id="medicamento">
+<option>Dipirona</option>
+<option>Paracetamol</option>
+<option>Ibuprofeno</option>
+<option>Ondansetrona</option>
+<option>Midazolam intranasal</option>
+<option>Atropina</option>
+<option>Etomidato</option>
+<option>Cetamina</option>
+<option>Fentanil</option>
+<option>Suxametônio</option>
+<option>Rocurônio</option>
+</select>
+</div>
+
+</div>
+
+<button class="btn">
+Calcular dose
+</button>
+
+</section>
+
+<section class="card">
+
+<h2>Holliday-Segar / Montagem de solução</h2>
+
+<div class="grid">
+
+<div>
+<label>Peso (kg)</label>
+<input type="number" id="pesoHid">
+</div>
+
+<div>
+<label>% da hidratação</label>
+<select>
+<option>50%</option>
+<option>60%</option>
+<option>70%</option>
+<option>80%</option>
+<option>90%</option>
+<option selected>100%</option>
+<option>120%</option>
+<option>150%</option>
+</select>
+</div>
+
+<div>
+<label>% de sódio</label>
+<input type="number" value="40">
+</div>
+
+<div>
+<label>% de potássio</label>
+<input type="number" value="20">
+</div>
+
+<div>
+<label>Fonte de sódio</label>
+<select>
+<option>NaCl 10%</option>
+<option>NaCl 20%</option>
+</select>
+</div>
+
+<div>
+<label>Fonte de potássio</label>
+<select>
+<option>KCl 19,1%</option>
+<option>KCl 10%</option>
+</select>
+</div>
+
+</div>
+
+<button class="btn">
+Calcular solução
+</button>
+
+</section>
+
+</main>
 
 </body>
 </html>
