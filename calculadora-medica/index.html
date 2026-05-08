@@ -366,7 +366,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
 </style>
 </head>
 
-<body class="">
+<body>
 
 <div class="modal" id="termsModal" style="display: none;">
   <div class="modal-box">
@@ -431,7 +431,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
   Doses críticas exigem dupla checagem.
 </div>
 
-<section id="calc" class="section">
+<section id="calc" class="section active">
   <div class="card">
     <h2>Calculadora de doses</h2>
 
@@ -457,17 +457,48 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div>
         <label>Medicamento</label>
         <input id="buscaMedicamento" type="text" placeholder="Buscar por princípio ativo ou nome comercial" oninput="filtrarMedicamentos()">
-        <select id="medicamento" size="9"><optgroup label="Analgésicos, antitérmicos e AINEs"><option value="3">Cetoprofeno — AINE</option><option value="71">Cetorolaco — AINE / anti-inflamatório</option><option value="80">Colchicina — AINE / anti-inflamatório</option><option value="0">Dipirona — Analgésico / antitérmico</option><option value="93">Escopolamina + dipirona — Outros medicamentos úteis</option><option value="2">Ibuprofeno — AINE</option><option value="4">Naproxeno — AINE</option><option value="1">Paracetamol — Analgésico / antitérmico</option><option value="154">Paracetamol + codeína — Opioide / analgesia forte</option><option value="155">Parecoxibe — AINE / anti-inflamatório</option><option value="171">Tenoxicam — AINE / anti-inflamatório</option><option value="176">Tramadol + paracetamol — Opioide / analgesia forte</option></optgroup><optgroup label="Antieméticos e procinéticos"><option value="27">Bromoprida — Antiemético / procinético</option><option value="6">Dimenidrinato — Antiemético / antivertiginoso</option><option value="29">Domperidona — Antiemético / procinético</option><option value="109">Granisetrona — Antiemético / procinético</option><option value="28">Metoclopramida — Antiemético / procinético</option><option value="5">Ondansetrona — Antiemético</option><option value="30">Prometazina — Anti-histamínico 1ª geração sedativo</option></optgroup><optgroup label="Antialérgicos e anti-histamínicos"><option value="38">Cetirizina — Anti-histamínico 2ª geração</option><option value="37">Desloratadina — Anti-histamínico 2ª geração</option><option value="39">Dexclorfeniramina — Anti-histamínico 1ª geração</option><option value="83">Difenidramina — Anti-histamínico</option><option value="99">Fexofenadina — Anti-histamínico</option><option value="40">Hidroxizina — Anti-histamínico sedativo</option><option value="189">Levocetirizina — Anti-histamínico</option><option value="36">Loratadina — Anti-histamínico 2ª geração</option></optgroup><optgroup label="Antibióticos"><option value="54">Amicacina — Antibiótico</option><option value="7">Amoxicilina — Antibiótico penicilina</option><option value="8">Amoxicilina + Clavulanato — Antibiótico beta-lactâmico</option><option value="56">Ampicilina — Antibiótico</option><option value="57">Ampicilina + sulbactam — Antibiótico</option><option value="10">Azitromicina — Macrolídeo</option><option value="58">Benzilpenicilina / Penicilina G — Antibiótico</option><option value="64">Cefadroxil — Antibiótico</option><option value="9">Cefalexina — Cefalosporina 1ª geração</option><option value="65">Cefalotina — Antibiótico</option><option value="66">Cefazolina — Antibiótico</option><option value="67">Cefepima — Antibiótico</option><option value="68">Cefotaxima — Antibiótico</option><option value="69">Ceftazidima — Antibiótico</option><option value="11">Ceftriaxona — Cefalosporina 3ª geração</option><option value="70">Cefuroxima — Antibiótico</option><option value="72">Ciprofloxacino — Antibiótico</option><option value="74">Claritromicina — Antibiótico</option><option value="75">Clindamicina — Antibiótico</option><option value="87">Doxiciclina — Antibiótico</option><option value="91">Ertapenem — Antibiótico</option><option value="102">Fosfomicina — Antibiótico</option><option value="105">Gentamicina — Antibiótico</option><option value="121">Levofloxacino — Antibiótico</option><option value="125">Linezolida — Antibiótico</option><option value="130">Meropenem — Antibiótico</option><option value="134">Metronidazol — Antibiótico</option><option value="144">Nitrofurantoína — Antibiótico</option><option value="150">Oxacilina — Antibiótico</option><option value="156">Penicilina G potássica — Antibiótico</option><option value="157">Piperacilina + tazobactam — Antibiótico</option><option value="158">Polimixina B — Antibiótico</option><option value="169">Sulfametoxazol + trimetoprima — Antibiótico</option><option value="179">Vancomicina — Antibiótico</option></optgroup><optgroup label="Corticoides"><option value="43">Budesonida nebulização — Corticoide inalatório</option><option value="13">Dexametasona — Corticoide</option><option value="81">Dexametasona colírio — Corticoide</option><option value="42">Hidrocortisona — Corticoide sistêmico EV</option><option value="132">Metilprednisolona — Corticoide</option><option value="12">Prednisolona — Corticoide sistêmico</option><option value="41">Prednisona — Corticoide sistêmico</option></optgroup><optgroup label="Respiratórios e broncodilatadores"><option value="98">Fenoterol — Respiratório / broncodilatador</option><option value="15">Ipratrópio — Anticolinérgico inalatório</option><option value="116">Ipratrópio + fenoterol — Respiratório / broncodilatador</option><option value="14">Salbutamol — Beta-2 agonista</option></optgroup><optgroup label="Tosse, mucolíticos e expectorantes"><option value="34">Acetilcisteína — Mucolítico</option><option value="35">Ambroxol — Mucolítico / expectorante</option><option value="33">Dextrometorfano — Antitussígeno central</option><option value="32">Dropropizina — Antitussígeno</option><option value="110">Guaifenesina — Mucolítico / expectorante</option><option value="31">Levodropropizina — Antitussígeno periférico</option><option value="140">N-acetilcisteína — Mucolítico / expectorante</option></optgroup><optgroup label="Fitoterápicos e produtos tradicionais"><option value="188">Camomila — Fitoterápico / probiótico</option><option value="187">Cassia angustifolia / Senna — Fitoterápico / probiótico</option><option value="45">Guaco — Fitoterápico expectorante/bronco­dilatador leve</option><option value="16">Hedera helix — Fitoterápico expectorante</option><option value="44">Kaloba — Fitoterápico — Pelargonium sidoides</option><option value="184">Kaloba / Pelargonium sidoides — Fitoterápico / probiótico</option><option value="185">Probióticos Lactobacillus/Bifidobacterium — Fitoterápico / probiótico</option><option value="47">Própolis — Fitoterápico / produto apícola</option><option value="186">Psyllium / Plantago — Fitoterápico / probiótico</option><option value="167">Saccharomyces boulardii — Fitoterápico / probiótico</option><option value="46">Sambucus nigra — Fitoterápico / produto tradicional</option></optgroup><optgroup label="Neurológicos, convulsão e sedação"><option value="76">Clonazepam — Neurológico / sedação</option><option value="18">Diazepam — Benzodiazepínico</option><option value="127">Lorazepam — Neurológico / sedação</option><option value="17">Midazolam intranasal — Benzodiazepínico</option><option value="136">Midazolam oral — Neurológico / sedação</option></optgroup><optgroup label="Opioides e analgesia forte"><option value="22">Fentanil — Opioide</option><option value="131">Metadona — Opioide / analgesia forte</option><option value="23">Morfina — Opioide</option><option value="141">Nalbufina — Opioide / analgesia forte</option><option value="152">Oxicodona — Opioide / analgesia forte</option><option value="164">Remifentanil — Opioide / analgesia forte</option></optgroup><optgroup label="Indução anestésica e sedação"><option value="21">Cetamina — Anestésico dissociativo</option><option value="20">Etomidato — Hipnótico para indução</option><option value="24">Propofol — Hipnótico sedativo</option></optgroup><optgroup label="Bloqueadores neuromusculares / IOT"><option value="73">Cisatracúrio — Anestesia / IOT</option><option value="26">Rocurônio — Bloqueador neuromuscular não despolarizante</option><option value="25">Suxametônio — Bloqueador neuromuscular despolarizante</option></optgroup><optgroup label="Emergência cardiovascular e antiarrítmicos"><option value="51">Adenosina — Cardiovascular / vasoativo</option><option value="19">Atropina — Anticolinérgico</option><option value="90">Epinefrina — Cardiovascular / vasoativo</option><option value="124">Lidocaína + epinefrina — Cardiovascular / vasoativo</option><option value="147">Noradrenalina — Cardiovascular / vasoativo</option></optgroup><optgroup label="Hemostasia, anticoagulação e trombose"><option value="50">Ácido tranexâmico — Hemostasia / anticoagulação</option><option value="89">Enoxaparina — Hemostasia / anticoagulação</option><option value="112">Heparina — Hemostasia / anticoagulação</option><option value="165">Rivaroxabana — Hemostasia / anticoagulação</option><option value="180">Varfarina — Hemostasia / anticoagulação</option></optgroup><optgroup label="Antídotos e intoxicações"><option value="63">Carvão ativado — Antídoto / intoxicação</option><option value="101">Flumazenil — Antídoto / intoxicação</option><option value="142">Naloxona — Antídoto / intoxicação</option></optgroup><optgroup label="Outros medicamentos úteis"><option value="48">Aciclovir — Antiviral</option><option value="49">Ácido acetilsalicílico — Hemostasia / anticoagulação</option><option value="52">Albendazol — Antiparasitário</option><option value="53">Albumina — Eletrólitos / metabólicos</option><option value="55">Aminofilina — Respiratório / broncodilatador</option><option value="59">Bicarbonato de sódio — Eletrólitos / metabólicos</option><option value="60">Biperideno — Neurológico / sedação</option><option value="61">Bisacodil — Gastrointestinal</option><option value="62">Bupivacaína — Anestesia / IOT</option><option value="77">Clonidina — Outros medicamentos úteis</option><option value="78">Clopidogrel — Hemostasia / anticoagulação</option><option value="79">Cloreto de cálcio — Eletrólitos / metabólicos</option><option value="82">Dexmedetomidina — Neurológico / sedação</option><option value="84">Digoxina — Cardiovascular / vasoativo</option><option value="85">Dobutamina — Cardiovascular / vasoativo</option><option value="86">Dopamina — Cardiovascular / vasoativo</option><option value="88">Efedrina — Cardiovascular / vasoativo</option><option value="92">Escopolamina — Outros medicamentos úteis</option><option value="94">Esmolol — Cardiovascular / vasoativo</option><option value="95">Esomeprazol — Gastrointestinal</option><option value="163">Famotidina — Gastrointestinal</option><option value="96">Fenitoína — Neurológico / sedação</option><option value="97">Fenobarbital — Neurológico / sedação</option><option value="100">Fluconazol — Antifúngico</option><option value="103">Furosemida — Eletrólitos / metabólicos</option><option value="104">Gabapentina — Neurológico / sedação</option><option value="106">Glicose — Eletrólitos / metabólicos</option><option value="107">Glucagon — Eletrólitos / metabólicos</option><option value="108">Gluconato de cálcio — Eletrólitos / metabólicos</option><option value="111">Haloperidol — Neurológico / sedação</option><option value="113">Hidralazina — Cardiovascular / vasoativo</option><option value="114">Hidrato de cloral — Neurológico / sedação</option><option value="115">Hidroclorotiazida — Eletrólitos / metabólicos</option><option value="117">Ivermectina — Antiparasitário</option><option value="118">Lactulose — Gastrointestinal</option><option value="119">Lamotrigina — Neurológico / sedação</option><option value="120">Levetiracetam — Neurológico / sedação</option><option value="122">Levomepromazina — Neurológico / sedação</option><option value="123">Lidocaína — Anestesia / IOT</option><option value="126">Loperamida — Gastrointestinal</option><option value="128">Losartana — Cardiovascular / vasoativo</option><option value="129">Manitol — Eletrólitos / metabólicos</option><option value="133">Metoprolol — Cardiovascular / vasoativo</option><option value="135">Micafungina — Antifúngico</option><option value="137">Milrinona — Cardiovascular / vasoativo</option><option value="138">Montelucaste — Respiratório / broncodilatador</option><option value="139">Mupirocina — Tópico / dermatológico</option><option value="143">Nitazoxanida — Antiparasitário</option><option value="145">Nitroglicerina — Cardiovascular / vasoativo</option><option value="146">Nitroprussiato — Cardiovascular / vasoativo</option><option value="148">Omeprazol — Gastrointestinal</option><option value="149">Oseltamivir — Antiviral</option><option value="151">Oxcarbazepina — Neurológico / sedação</option><option value="153">Pantoprazol — Gastrointestinal</option><option value="159">Propranolol — Cardiovascular / vasoativo</option><option value="160">Protamina — Hemostasia / anticoagulação</option><option value="161">Racecadotril — Gastrointestinal</option><option value="162">Ranitidina — Gastrointestinal</option><option value="166">Ropivacaína — Anestesia / IOT</option><option value="168">Simeticona — Gastrointestinal</option><option value="170">Sulfato de magnésio — Eletrólitos / metabólicos</option><option value="172">Terbutalina — Respiratório / broncodilatador</option><option value="173">Tiamina — Eletrólitos / metabólicos</option><option value="174">Tiopental — Anestesia / IOT</option><option value="175">Tirofibana — Hemostasia / anticoagulação</option><option value="177">Valaciclovir — Antiviral</option><option value="178">Valproato de sódio — Neurológico / sedação</option><option value="181">Vasopressina — Cardiovascular / vasoativo</option><option value="182">Verapamil — Cardiovascular / vasoativo</option><option value="183">Vitamina K / Fitomenadiona — Eletrólitos / metabólicos</option></optgroup></select>
+        <select id="medicamento" size="9"><optgroup label="Opioides e analgesia forte"><option value="23">Morfina — Opioide</option></optgroup></select>
         <span class="small">Digite para filtrar. Lista organizada por classe farmacológica.</span>
       </div>
     </div>
 
     <button class="btn primary" onclick="calcularDose()">Calcular dose</button>
 
-    <div id="resultadoDose"></div>
+    <div id="resultadoDose">
+    <div class="result">
+      <h4>Morfina</h4>
+      <p><strong>Classe:</strong> Opioide</p>
+      <p><strong>Dose base:</strong> 0.1 mg/kg/dose</p>
+      <p><strong>Intervalo:</strong> 4/4h ou titulado conforme dor</p>
+      <p><strong>Via:</strong> EV / SC / VO conforme apresentação</p>
+      <div class="dose-box">
+        <strong>Dose calculada:</strong> 2.00 mg<br>
+        <strong>Dose final sugerida:</strong> 2.00 mg
+        
+      </div>
+  
+      <div class="dose-box">
+        <strong>Ampola 10 mg/mL</strong><br>
+        Volume: 0.20 mL
+        
+      </div>
+      <div class="dose-box">
+        <strong>Solução oral gotas 10 mg/mL</strong><br>
+        Volume: 0.20 mL
+        <br>Gotas: 6 gotas <span class="small">(32 gotas = 1 mL; 32 gotas = 1 mL; 1 gota ≈ 0,31 mg)</span>
+      </div>
+      <div class="dose-box">
+        <strong>Comprimido 10 mg</strong><br>
+        Equivalência aproximada: 0.20 unidade(s).<br>
+        <span class="small">Na prática, ajustar à apresentação segura mais próxima e ao teto clínico.</span>
+      </div><div class="alert"><strong>Avisos específicos:</strong><br>• Risco de depressão respiratória, náusea, hipotensão, retenção urinária.<br>• Ajustar em DRC e fragilidade.</div></div></div>
 
     <div class="note">
       Regra aplicada: quando a dose por peso ultrapassa o teto por dose, a calculadora reduz automaticamente para o teto e exibe alerta.
+    </div>
+    <div class="note">
+      <strong>Fator de gotas:</strong> medicamentos em gotas usam o fator específico da apresentação quando disponível.
+      Alguns fabricantes variam; conferir bula/frasco antes da prescrição.
     </div>
   </div>
 </section>
@@ -539,7 +570,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
 </section>
 
 
-<section id="tig" class="section active">
+<section id="tig" class="section">
   <div class="card">
     <h3>TIG / Soluções Glicosadas</h3>
 
@@ -581,74 +612,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     </div>
 
     <button class="btn primary" onclick="calcularTIG()">Calcular TIG e montar solução</button>
-    <div id="resultadoTIG">
-    <div class="result">
-      <h4>TIG / Montagem de solução glicosada</h4>
-      <div class="dose-box">
-        <strong>Peso:</strong> 3.0 kg<br>
-        <strong>TIG desejada:</strong> 7.0 mg/kg/min<br>
-        <strong>Volume diário usado:</strong> 300 mL (Holliday-Segar 100%)<br>
-        <strong>Concentração final necessária:</strong> 10.08%<br>
-        <strong>Estratégia de mistura:</strong> SG 10% + SG 25%
-      </div>
-
-      <div class="dose-box">
-        <strong>TIG aproximada se usasse solução pura no mesmo volume diário:</strong><br>
-        SG5%: 3.47 mg/kg/min<br>
-        SG10%: 6.94 mg/kg/min<br>
-        SG25%: 17.36 mg/kg/min<br>
-        SG50%: 34.72 mg/kg/min
-      </div>
-
-      
-      <div class="dose-box">
-        <strong>Solução para 24 horas</strong><br>
-        Volume total: <strong>300 mL</strong><br>
-        SG 10%: <strong>298 mL</strong><br>SG 25%: <strong>2 mL</strong><br>
-        Glicose no período: <strong>30240 mg</strong><br>
-        Vazão em BIC: <strong>12.5 mL/h</strong><br>
-        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
-      </div>
-    
-      
-      <div class="dose-box">
-        <strong>Solução para 12 horas</strong><br>
-        Volume total: <strong>150 mL</strong><br>
-        SG 10%: <strong>149 mL</strong><br>SG 25%: <strong>1 mL</strong><br>
-        Glicose no período: <strong>15120 mg</strong><br>
-        Vazão em BIC: <strong>12.5 mL/h</strong><br>
-        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
-      </div>
-    
-      
-      <div class="dose-box">
-        <strong>Solução para 8 horas</strong><br>
-        Volume total: <strong>100 mL</strong><br>
-        SG 10%: <strong>99 mL</strong><br>SG 25%: <strong>1 mL</strong><br>
-        Glicose no período: <strong>10080 mg</strong><br>
-        Vazão em BIC: <strong>12.5 mL/h</strong><br>
-        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
-      </div>
-    
-      
-      <div class="dose-box">
-        <strong>Solução para 6 horas</strong><br>
-        Volume total: <strong>75 mL</strong><br>
-        SG 10%: <strong>75 mL</strong><br>SG 25%: <strong>0 mL</strong><br>
-        Glicose no período: <strong>7560 mg</strong><br>
-        Vazão em BIC: <strong>12.5 mL/h</strong><br>
-        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
-      </div>
-    
-
-      
-
-      <div class="note">
-        Soluções consideradas: SG 5%, SG 10%, SG 25%, SG 50% e diluentes sem glicose quando necessário.
-        A montagem usa regra de mistura proporcional. Conferir disponibilidade real, via de acesso, compatibilidade e rotina local.
-      </div>
-    </div>
-  </div>
+    <div id="resultadoTIG"></div>
 
     <div class="note">
       Fórmula utilizada: TIG = [volume diário × concentração (%) × 10] ÷ [peso × 1440].
@@ -1090,7 +1054,7 @@ const meds = [
   pesoMin:5,
   vias:"VO / EV / IM",
   apresentacoes:[
-    {nome:"Gotas 500 mg/mL", conc:500, tipo:"gotas"},
+    {nome:"Gotas 500 mg/mL", conc:500, tipo:"gotas", gotasPorMl:20, obsGotas:"20 gotas = 1 mL; 1 gota = 25 mg"},
     {nome:"Solução oral 50 mg/mL", conc:50, tipo:"mL"},
     {nome:"Comprimido 500 mg", fixo:500, tipo:"comprimido"},
     {nome:"Comprimido 1 g", fixo:1000, tipo:"comprimido"}
@@ -1108,7 +1072,7 @@ const meds = [
   pesoMin:0,
   vias:"VO",
   apresentacoes:[
-    {nome:"Gotas 200 mg/mL", conc:200, tipo:"gotas"},
+    {nome:"Gotas 200 mg/mL", conc:200, tipo:"gotas", gotasPorMl:15, obsGotas:"15 gotas = 1 mL; 1 gota ≈ 13,3 mg"},
     {nome:"Suspensão 32 mg/mL", conc:32, tipo:"mL"},
     {nome:"Comprimido 500 mg", fixo:500, tipo:"comprimido"},
     {nome:"Comprimido 750 mg", fixo:750, tipo:"comprimido"}
@@ -1126,8 +1090,8 @@ const meds = [
   pesoMin:5,
   vias:"VO",
   apresentacoes:[
-    {nome:"Gotas 50 mg/mL", conc:50, tipo:"gotas"},
-    {nome:"Gotas 100 mg/mL", conc:100, tipo:"gotas"},
+    {nome:"Gotas 50 mg/mL", conc:50, tipo:"gotas", gotasPorMl:10, obsGotas:"10 gotas = 1 mL; 1 gota = 5 mg"},
+    {nome:"Gotas 100 mg/mL", conc:100, tipo:"gotas", gotasPorMl:10, obsGotas:"10 gotas = 1 mL; 1 gota = 10 mg"},
     {nome:"Suspensão 100 mg/5 mL", conc:20, tipo:"mL"},
     {nome:"Comprimido 300 mg", fixo:300, tipo:"comprimido"},
     {nome:"Comprimido 400 mg", fixo:400, tipo:"comprimido"}
@@ -1145,7 +1109,7 @@ const meds = [
   pesoMin:0,
   vias:"VO / IM / EV conforme apresentação",
   apresentacoes:[
-    {nome:"Gotas 20 mg/mL", conc:20, tipo:"gotas"},
+    {nome:"Gotas 20 mg/mL", conc:20, tipo:"gotas", gotasPorMl:20, obsGotas:"20 gotas = 1 mL; 1 gota = 1 mg"},
     {nome:"Comprimido 50 mg", fixo:50, tipo:"comprimido"},
     {nome:"Comprimido/Cápsula 100 mg", fixo:100, tipo:"comprimido"},
     {nome:"Ampola IM 100 mg/2 mL", conc:50, tipo:"mL"},
@@ -1477,7 +1441,7 @@ const meds = [
   vias:"EV / SC / VO conforme apresentação",
   apresentacoes:[
     {nome:"Ampola 10 mg/mL", conc:10, tipo:"mL"},
-    {nome:"Solução oral 10 mg/mL", conc:10, tipo:"mL"},
+    {nome:"Solução oral gotas 10 mg/mL", conc:10, tipo:"gotas", gotasPorMl:32, obsGotas:"32 gotas = 1 mL; 1 gota ≈ 0,31 mg"},
     {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
   ],
   alertas:["Risco de depressão respiratória, náusea, hipotensão, retenção urinária.","Ajustar em DRC e fragilidade."]
@@ -1539,7 +1503,7 @@ const meds = [
   pesoMin:0,
   vias:"VO / EV / IM",
   apresentacoes:[
-    {nome:"Gotas 4 mg/mL", conc:4, tipo:"gotas"},
+    {nome:"Gotas 4 mg/mL", conc:4, tipo:"gotas", gotasPorMl:24, obsGotas:"24 gotas = 1 mL; 1 gota ≈ 0,167 mg"},
     {nome:"Solução oral 1 mg/mL", conc:1, tipo:"mL"},
     {nome:"Ampola 5 mg/mL", conc:5, tipo:"mL"},
     {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
@@ -1557,7 +1521,7 @@ const meds = [
   pesoMin:0,
   vias:"VO / EV / IM",
   apresentacoes:[
-    {nome:"Gotas 4 mg/mL", conc:4, tipo:"gotas"},
+    {nome:"Gotas 4 mg/mL", conc:4, tipo:"gotas", gotasPorMl:20, obsGotas:"20 gotas = 1 mL; 1 gota = 0,2 mg"},
     {nome:"Ampola 5 mg/mL", conc:5, tipo:"mL"},
     {nome:"Comprimido 10 mg", fixo:10, tipo:"comprimido"}
   ],
@@ -1607,7 +1571,7 @@ const meds = [
   vias:"VO",
   apresentacoes:[
     {nome:"Xarope 6 mg/mL", conc:6, tipo:"mL"},
-    {nome:"Gotas 30 mg/mL", conc:30, tipo:"gotas"}
+    {nome:"Gotas 30 mg/mL", conc:30, tipo:"gotas", gotasPorMl:20, obsGotas:"20 gotas = 1 mL; conferir fabricante"}
   ],
   alertas:["Indicado apenas para tosse seca/irritativa; evitar em tosse produtiva com secreção importante.","Conferir idade mínima e bula da apresentação disponível."]
 },
@@ -1816,7 +1780,7 @@ const meds = [
   pesoMin:0,
   vias:"VO",
   apresentacoes:[
-    {nome:"Solução oral 825 mg/mL", conc:825, tipo:"gotas"},
+    {nome:"Solução oral 825 mg/mL", conc:825, tipo:"gotas", gotasPorMl:21, obsGotas:"21 gotas = 1 mL"},
     {nome:"Comprimido revestido", fixo:1, tipo:"comprimido"}
   ],
   alertas:["1–5 anos: 10 gotas 8/8h. 6–12 anos: 20 gotas 8/8h. >12 anos/adultos: 30 gotas 8/8h.","Comprimidos usualmente para maiores de 12 anos.","Duração média 5–7 dias; não exceder conforme bula."]
@@ -1862,7 +1826,7 @@ const meds = [
   pesoMin:0,
   vias:"VO / tópico conforme produto",
   apresentacoes:[
-    {nome:"Extrato/gotas/spray — concentração variável", conc:0, tipo:"gotas"}
+    {nome:"Extrato/gotas/spray — concentração variável", conc:0, tipo:"gotas", gotasPorMl:20, obsGotas:"20 gotas = 1 mL como referência; pode variar por fabricante"}
   ],
   alertas:["Risco de alergia, especialmente em pacientes com alergia a produtos apícolas/pólen.","Concentrações variam; usar bula do produto."]
 },
@@ -3670,14 +3634,14 @@ const meds = [
   nome:"Simeticona",
   classe:"Gastrointestinal",
   dose:0,
-  unidade:"dose por protocolo/bula",
+  unidade:"dose fixa por idade/protocolo",
   intervalo:"Conforme indicação",
   teto:0,
   idadeMinMeses:0,
   pesoMin:0,
-  vias:"Conforme apresentação",
+  vias:"VO",
   apresentacoes:[
-    {nome:"Apresentações disponíveis no Brasil variam por fabricante — conferir bula/estoque local", fixo:0, tipo:"referência"}
+    {nome:"Gotas 75 mg/mL", conc:75, tipo:"gotas", gotasPorMl:25, obsGotas:"25 gotas = 1 mL; 1 gota = 3 mg"}
   ],
   alertas:["Conferir apresentação disponível no Brasil, bula, dose por indicação, idade mínima, função renal/hepática e protocolo institucional.", "Não substituir investigação de abdome agudo, sangramento, desidratação grave ou sinais de alarme."]
 },
@@ -4303,6 +4267,9 @@ function montarListaMedicamentos(filtro = ""){
 }
 
 function init(){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  const calcSection = document.getElementById("calc");
+  if(calcSection) calcSection.classList.add("active");
   montarListaMedicamentos("");
 }
 
@@ -4380,14 +4347,27 @@ function calcularDose(){
   }
 
   if(m.dose === 0){
+    let apresHtml = "";
+    if(m.apresentacoes && m.apresentacoes.length){
+      m.apresentacoes.forEach(a=>{
+        apresHtml += `<div class="dose-box"><strong>${a.nome}</strong>`;
+        if(a.conc && a.tipo==="gotas"){
+          const mgGota = a.conc / (a.gotasPorMl || 20);
+          apresHtml += `<br>Concentração: ${a.conc} mg/mL<br>Equivalência: ${a.gotasPorMl || 20} gotas = 1 mL<br>1 gota ≈ ${mgGota.toFixed(2)} mg`;
+          if(a.obsGotas) apresHtml += `<br><span class="small">${a.obsGotas}</span>`;
+        }
+        apresHtml += `</div>`;
+      });
+    }
     out.innerHTML = `
     <div class="result">
       <h4>${m.nome}</h4>
       <p><strong>Classe:</strong> ${m.classe}</p>
       <p><strong>Via:</strong> ${m.vias}</p>
       <div class="dose-box">
-        <strong>Dose:</strong> apresentação com concentração variável ou dose fixa por bula. Conferir produto específico.
+        <strong>Dose:</strong> dose fixa por idade/protocolo ou apresentação com concentração variável. Conferir produto específico.
       </div>
+      ${apresHtml}
       <div class="alert"><strong>Avisos específicos:</strong><br>${alertas.map(x=>"• "+x).join("<br>")}</div>
     </div>`;
     return;
@@ -4414,12 +4394,13 @@ function calcularDose(){
   m.apresentacoes.forEach(a=>{
     if(a.conc && a.conc > 0){
       let vol = doseFinal / a.conc;
-      let gotas = vol * 20;
+      let fatorGotas = a.gotasPorMl || 20;
+      let gotas = vol * fatorGotas;
       html += `
       <div class="dose-box">
         <strong>${a.nome}</strong><br>
         Volume: ${vol.toFixed(2)} mL
-        ${a.tipo==="gotas" ? `<br>Gotas: ${Math.round(gotas)} gotas <span class="small">(20 gotas = 1 mL)</span>` : ``}
+        ${a.tipo==="gotas" ? `<br>Gotas: ${Math.round(gotas)} gotas <span class="small">(${fatorGotas} gotas = 1 mL${a.obsGotas ? "; " + a.obsGotas : ""})</span>` : ``}
       </div>`;
     }
     if(a.fixo){
@@ -5028,6 +5009,7 @@ function denyTerms(){
 window.onload = function(){
   init();
   if(typeof filtrarMedicamentos === "function") filtrarMedicamentos();
+  goSection("calc");
   document.getElementById("termsModal").style.display="flex";
 };
 
