@@ -402,19 +402,12 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     <p class="nav-title">Calculadoras</p>
     <button class="nav-item" onclick="goSection('calc')">Calculadora de doses <span>›</span></button>
     <button class="nav-item" onclick="goSection('hidratacao')">Holliday-Segar / Solução <span>›</span></button>
-    <button class="nav-item" onclick="goSection('opioides')">Equivalência de opioides <span>›</span></button>
     <button class="nav-item" onclick="goSection('emergencia')">Emergência / Drogas críticas <span>›</span></button>
     <button class="nav-item" onclick="goSection('iam')">IAM com supra <span>›</span></button>
     <button class="nav-item" onclick="goSection('avc')">AVC isquêmico <span>›</span></button>
     <button class="nav-item" onclick="goSection('vacinas')">Vacinas / Profilaxia <span>›</span></button>
-    <button class="nav-item" onclick="goSection('sinais')">Sinais vitais pediátricos <span>›</span></button>
-  </div>
-
-  <div class="nav-section">
-    <p class="nav-title">Algoritmos</p>
-    <button class="nav-item" onclick="goSection('pals')">PALS pediátrico <span>›</span></button>
-    <button class="nav-item" onclick="goSection('acls')">ACLS adulto <span>›</span></button>
-    <button class="nav-item" onclick="goSection('atls')">ATLS / Trauma <span>›</span></button>
+    <button class="nav-item" onclick="goSection('sinais')">Sinais Vitais Pediátricos <span>›</span></button>
+    <button class="nav-item" onclick="goSection('opioides')">Equivalência de opióides <span>›</span></button>
   </div>
 
   <button class="close-drawer" onclick="toggleMenu(false)">Fechar menu</button>
@@ -644,20 +637,23 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div>
         <label>Droga</label>
         <select id="drogaEmerg">
-          <option value="adrenalina_pcr">Adrenalina PCR IV/IO 0,1 mg/mL</option>
-          <option value="adrenalina_anafilaxia">Adrenalina IM anafilaxia 1 mg/mL</option>
-          <option value="atropina">Atropina bradicardia</option>
           <option value="adenosina1">Adenosina 1ª dose</option>
           <option value="adenosina2">Adenosina 2ª dose</option>
+          <option value="adrenalina_anafilaxia">Adrenalina IM anafilaxia 1 mg/mL</option>
+          <option value="adrenalina_pcr">Adrenalina PCR IV/IO 0,1 mg/mL</option>
           <option value="amiodarona">Amiodarona PCR</option>
-          <option value="midazolam_in">Midazolam intranasal</option>
-          <option value="etomidato">Etomidato IOT</option>
+          <option value="atropina">Atropina bradicardia</option>
           <option value="cetamina">Cetamina IOT</option>
-          <option value="suxametonio">Suxametônio</option>
-          <option value="rocuronio">Rocurônio RSI</option>
+          <option value="diazepam_convulsao">Diazepam crise convulsiva</option>
+          <option value="etomidato">Etomidato IOT</option>
           <option value="fentanil_bolus">Fentanil bolus</option>
-          <option value="nacl3">NaCl 3% hiponatremia sintomática</option>
+          <option value="fentanil_manutencao">Fentanil manutenção</option>
           <option value="glicose10">Glicose 10% hipoglicemia pediátrica</option>
+          <option value="midazolam_in">Midazolam intranasal</option>
+          <option value="midazolam_manutencao">Midazolam manutenção</option>
+          <option value="nacl3">NaCl 3% hiponatremia sintomática</option>
+          <option value="rocuronio">Rocurônio RSI</option>
+          <option value="suxametonio">Suxametônio</option>
         </select>
       </div>
     </div>
@@ -666,61 +662,6 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     <div id="resultadoEmerg"></div>
   </div>
 </section>
-
-<section id="pals" class="section">
-  <div class="card">
-    <h3>PALS — fluxograma pediátrico</h3>
-    <div class="flow">
-      <div class="flow-step"><strong>1. Reconhecer gravidade</strong><br>Responsividade, respiração, pulso, perfusão, monitorização e glicemia.</div>
-      <div class="flow-step"><strong>2. ABCDE</strong><br>Via aérea, ventilação/oxigênio, circulação/acesso IV-IO, neurologia e exposição.</div>
-      <div class="flow-step">
-        <strong>3. Definir cenário</strong>
-        <div class="flow-branch">
-          <div class="dose-box"><strong>PCR</strong><br>RCP alta qualidade, monitor/desfibrilador, adrenalina, choque se ritmo chocável.</div>
-          <div class="dose-box"><strong>Instabilidade com pulso</strong><br>Bradicardia, taquicardia, choque, insuficiência respiratória.</div>
-        </div>
-      </div>
-      <div class="flow-step"><strong>4. PCR</strong><br>Adrenalina 0,01 mg/kg IV/IO. FV/TV sem pulso: desfibrilar 2 J/kg, depois 4 J/kg, considerar amiodarona 5 mg/kg.</div>
-      <div class="flow-step"><strong>5. Causas reversíveis</strong><br>Hipóxia, hipovolemia, H+, hipo/hipercalemia, hipotermia, tensão no tórax, tamponamento, toxinas, trombose.</div>
-    </div>
-  </div>
-</section>
-
-<section id="acls" class="section">
-  <div class="card">
-    <h3>ACLS — fluxograma adulto</h3>
-    <div class="flow">
-      <div class="flow-step"><strong>1. Avaliação inicial</strong><br>Responsividade, respiração, pulso, monitor/desfibrilador, acesso IV/IO e oxigênio se indicado.</div>
-      <div class="flow-step">
-        <strong>2. Ritmo</strong>
-        <div class="flow-branch">
-          <div class="dose-box"><strong>Chocável</strong><br>FV/TV sem pulso: choque, RCP, adrenalina, amiodarona.</div>
-          <div class="dose-box"><strong>Não chocável</strong><br>AESP/assistolia: RCP, adrenalina precoce, causas reversíveis.</div>
-        </div>
-      </div>
-      <div class="flow-step"><strong>3. Bradicardia sintomática</strong><br>Atropina 1 mg IV a cada 3–5 min, máximo 3 mg. Se refratária: marcapasso, dopamina ou adrenalina.</div>
-      <div class="flow-step"><strong>4. Taquicardia com pulso</strong><br>Instável: cardioversão sincronizada. Estável: QRS estreito/largo, adenosina se regular estreito, antiarrítmico conforme caso.</div>
-      <div class="flow-step"><strong>5. Pós-ROSC</strong><br>Oxigenação, ventilação, PA, ECG, temperatura, glicemia, causa base e transferência.</div>
-    </div>
-  </div>
-</section>
-
-<section id="atls" class="section">
-  <div class="card">
-    <h3>ATLS / Trauma — fluxograma inicial</h3>
-    <div class="flow">
-      <div class="flow-step"><strong>1. Preparação e segurança</strong><br>Equipe, EPI, mecanismo, cinemática, aquecimento e acionamento de recursos.</div>
-      <div class="flow-step"><strong>2. A — Airway + cervical</strong><br>Via aérea pérvia com proteção cervical. Considerar IOT se rebaixamento, falência ventilatória ou proteção inadequada.</div>
-      <div class="flow-step"><strong>3. B — Breathing</strong><br>Ventilação, ausculta, pneumotórax hipertensivo, ferida aberta, tórax instável e oxigênio.</div>
-      <div class="flow-step"><strong>4. C — Circulation</strong><br>Controle de hemorragia, pulso, pele, PA, acesso calibroso/IO, hemoderivados conforme choque.</div>
-      <div class="flow-step"><strong>5. D — Disability</strong><br>Glasgow, pupilas, glicemia, lateralização, convulsão e sinais de hipertensão intracraniana.</div>
-      <div class="flow-step"><strong>6. E — Exposure</strong><br>Exposição completa, prevenção de hipotermia, reavaliação contínua e secondary survey após estabilização.</div>
-    </div>
-  </div>
-</section>
-
-
-
 
 <section id="iam" class="section">
   <div class="card">
@@ -3946,11 +3887,14 @@ const emerg = {
   adenosina2:{nome:"Adenosina 2ª dose", dose:0.2, unidade:"mg/kg", teto:12, conc:3, obs:"Flush rápido imediatamente após. Monitorização."},
   amiodarona:{nome:"Amiodarona PCR", dose:5, unidade:"mg/kg", teto:300, conc:50, obs:"FV/TV sem pulso refratária. Monitorar ritmo e pressão."},
   midazolam_in:{nome:"Midazolam intranasal", dose:0.2, unidade:"mg/kg", teto:10, conc:5, obs:"Dividir entre narinas. Risco de depressão respiratória."},
+  midazolam_manutencao:{nome:"Midazolam manutenção", tipo:"bic", droga:"midazolam", doseInicial:0.05, doseMin:0.05, doseMax:0.2, unidade:"mg/kg/h", concFinal:1, montagem:"20 mL de midazolam 5 mg/mL + 80 mL de soro fisiológico = 100 mL com 100 mg. Concentração final: 1 mg/mL.", obs:"Sedação contínua em BIC. Titular conforme alvo clínico, escala de sedação, hemodinâmica e ventilação. Monitorização obrigatória."},
+  diazepam_convulsao:{nome:"Diazepam crise convulsiva", dose:0.2, unidade:"mg/kg", teto:10, conc:5, obs:"Ampola usual 10 mg/2 mL = 5 mg/mL. Para pediatria, dose máxima solicitada: 1,0 mL. A partir de 12 anos: ampola toda, 2,0 mL."},
   etomidato:{nome:"Etomidato", dose:0.3, unidade:"mg/kg", teto:20, conc:2, obs:"Indução IOT. Não é analgésico."},
   cetamina:{nome:"Cetamina", dose:1.5, unidade:"mg/kg", teto:150, conc:50, obs:"Indução/sedação. Preparar via aérea."},
   suxametonio:{nome:"Suxametônio", dose:1.5, unidade:"mg/kg", teto:150, conc:20, obs:"Bloqueador. Contraindicações críticas: hipercalemia, queimadura tardia, doença neuromuscular."},
   rocuronio:{nome:"Rocurônio RSI", dose:1, unidade:"mg/kg", teto:100, conc:10, obs:"Bloqueador. Não sedativo."},
   fentanil_bolus:{nome:"Fentanil bolus", dose:1, unidade:"mcg/kg", teto:100, conc:50, obs:"Concentração 50 mcg/mL. Infundir lentamente."},
+  fentanil_manutencao:{nome:"Fentanil manutenção", tipo:"bic", droga:"fentanil", doseInicial:1, doseMin:1, doseMax:5, unidade:"mcg/kg/h", concFinal:10, montagem:"10 mL de fentanil 50 mcg/mL + 40 mL de soro fisiológico = 50 mL com 500 mcg. Concentração final: 10 mcg/mL.", obs:"Analgesia/sedação contínua em BIC. Titular conforme dor, sedação, ventilação e hemodinâmica. Monitorização obrigatória."},
   nacl3:{nome:"NaCl 3%", dose:3, unidade:"mL/kg", teto:150, conc:null, obs:"Hiponatremia sintomática/hipertensão intracraniana conforme protocolo. Monitorar sódio."},
   glicose10:{nome:"Glicose 10%", dose:5, unidade:"mL/kg", teto:250, conc:null, obs:"Hipoglicemia pediátrica. Rechecar glicemia."}
 };
@@ -3971,6 +3915,29 @@ const opioides = {
   nalbufina_ev:{nome:"Nalbufina EV/IM/SC", fator:1, unidade:"mg/dia", alerta:"Agonista-antagonista; pode precipitar abstinência em dependência de opioide puro."},
   petidina_ev:{nome:"Petidina/Meperidina EV/IM", fator:0.1, unidade:"mg/dia", alerta:"Evitar uso rotineiro; metabólito neurotóxico, maior risco em DRC e idosos."}
 };
+
+
+function normalizar(texto){
+  return String(texto || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s+./%-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function textoBuscaMedicamento(m){
+  return normalizar([
+    m?.nome,
+    m?.classe,
+    m?.vias,
+    m?.unidade,
+    m?.intervalo,
+    ...(m?.alertas || []),
+    ...((m?.apresentacoes || []).map(a => a.nome || ""))
+  ].join(" "));
+}
 
 function grupoMedicamento(m){
   const nome = m.nome.toLowerCase();
@@ -4140,8 +4107,12 @@ function grupoMedicamento(m){
   return "Outros medicamentos úteis";
 }
 
-function init(){
+function montarListaMedicamentos(filtro = ""){
   const sel = document.getElementById("medicamento");
+  if(!sel) return;
+
+  const valorAnterior = sel.value;
+  const q = normalizar(filtro);
   sel.innerHTML = "";
 
   const ordem = [
@@ -4167,10 +4138,16 @@ function init(){
   ordem.forEach(g => grupos[g] = []);
 
   meds.forEach((m,i)=>{
+    const texto = textoBuscaMedicamento(m);
+    if(q && !texto.includes(q)) return;
+
     const grupo = grupoMedicamento(m);
     if(!grupos[grupo]) grupos[grupo] = [];
     grupos[grupo].push({m,i});
   });
+
+  let primeiroValor = "";
+  let manteveAnterior = false;
 
   ordem.forEach(grupo=>{
     if(!grupos[grupo] || grupos[grupo].length === 0) return;
@@ -4182,13 +4159,33 @@ function init(){
       .sort((a,b)=>a.m.nome.localeCompare(b.m.nome, "pt-BR"))
       .forEach(({m,i})=>{
         const opt = document.createElement("option");
-        opt.value = i;
+        opt.value = String(i);
         opt.textContent = m.nome + " — " + m.classe;
         optgroup.appendChild(opt);
+
+        if(!primeiroValor) primeiroValor = String(i);
+        if(String(i) === valorAnterior) manteveAnterior = true;
       });
 
     sel.appendChild(optgroup);
   });
+
+  if(manteveAnterior){
+    sel.value = valorAnterior;
+  }else if(primeiroValor){
+    sel.value = primeiroValor;
+  }
+
+  if(!primeiroValor){
+    const opt = document.createElement("option");
+    opt.value = "";
+    opt.textContent = "Nenhum medicamento encontrado";
+    sel.appendChild(opt);
+  }
+}
+
+function init(){
+  montarListaMedicamentos("");
 }
 
 function toggleMenu(open){
@@ -4219,6 +4216,11 @@ function calcularDose(){
   const idadeM = idadeMeses();
   const m = meds[parseInt(document.getElementById("medicamento").value)];
   const out = document.getElementById("resultadoDose");
+
+  if(!m){
+    out.innerHTML = `<div class="alert">Selecione um medicamento válido.</div>`;
+    return;
+  }
 
   if(!peso || peso<=0){
     out.innerHTML = `<div class="alert">Informe um peso válido.</div>`;
@@ -4330,6 +4332,37 @@ function calcularEmergencia(){
     return;
   }
 
+  if(d.tipo === "bic"){
+    const doseInicial = peso * d.doseInicial;
+    const doseMin = peso * d.doseMin;
+    const doseMax = peso * d.doseMax;
+    const vazaoInicial = doseInicial / d.concFinal;
+    const vazaoMin = doseMin / d.concFinal;
+    const vazaoMax = doseMax / d.concFinal;
+
+    out.innerHTML = `
+      <div class="result">
+        <h4>${d.nome}</h4>
+        <div class="dose-box">
+          <strong>Montagem sugerida:</strong><br>
+          ${d.montagem}
+        </div>
+        <div class="dose-box">
+          <strong>Dose inicial sugerida:</strong> ${d.doseInicial} ${d.unidade}<br>
+          <strong>Dose calculada pelo peso:</strong> ${doseInicial.toFixed(2)} ${d.unidade.includes("mcg") ? "mcg/h" : "mg/h"}<br>
+          <strong>Vazão inicial em BIC:</strong> ${vazaoInicial.toFixed(2)} mL/h
+        </div>
+        <div class="dose-box">
+          <strong>Faixa usual para titulação:</strong> ${d.doseMin}–${d.doseMax} ${d.unidade}<br>
+          <strong>Faixa calculada:</strong> ${doseMin.toFixed(2)}–${doseMax.toFixed(2)} ${d.unidade.includes("mcg") ? "mcg/h" : "mg/h"}<br>
+          <strong>Vazão correspondente:</strong> ${vazaoMin.toFixed(2)}–${vazaoMax.toFixed(2)} mL/h
+        </div>
+        <div class="alert">${d.obs}</div>
+      </div>
+    `;
+    return;
+  }
+
   let doseCalc = peso * d.dose;
   let doseFinal = Math.min(doseCalc, d.teto);
   let obsExtra = "";
@@ -4339,8 +4372,17 @@ function calcularEmergencia(){
     obsExtra = "Dose limitada a 0,3 mL por idade até 11 anos.";
   }
 
+  if(key === "diazepam_convulsao"){
+    const tetoDiazepam = idadeM >= 144 ? 10 : 5;
+    doseFinal = Math.min(doseCalc, tetoDiazepam);
+    obsExtra = idadeM >= 144
+      ? "A partir de 12 anos: limitado à ampola toda, 2,0 mL."
+      : "Pediatria abaixo de 12 anos: limitado a 1,0 mL.";
+  }
+
   let unidadeFinal = d.unidade.includes("mcg") ? "mcg" : d.unidade.includes("mL") ? "mL" : "mg";
   let volume = d.conc ? doseFinal / d.conc : null;
+  if(d.unidade.includes("mL/kg")){ volume = doseFinal; }
 
   out.innerHTML = `
     <div class="result">
@@ -4358,15 +4400,16 @@ function calcularEmergencia(){
 
 function calcularHidratacao(){
   const peso = parseFloat(document.getElementById("pesoHid").value);
-  const perc = parseFloat(document.getElementById("percHid").value) / 100;
-  const naNec = parseFloat(document.getElementById("naNecessidade").value);
-  const naPct = parseFloat(document.getElementById("naPercentual").value);
+  const perc = parseFloat(document.getElementById("percHid").value || 100);
+
+  const naNec = parseFloat(document.getElementById("naNecessidade").value || 3);
+  const naPerc = parseFloat(document.getElementById("naPercentual").value || 40);
   const naFonte = parseFloat(document.getElementById("naFonte").value);
-  const naFonteTexto = document.getElementById("naFonte").options[document.getElementById("naFonte").selectedIndex].text;
-  const kNec = parseFloat(document.getElementById("kNecessidade").value);
-  const kPct = parseFloat(document.getElementById("kPercentual").value);
+
+  const kNec = parseFloat(document.getElementById("kNecessidade").value || 2);
+  const kPerc = parseFloat(document.getElementById("kPercentual").value || 20);
   const kFonte = parseFloat(document.getElementById("kFonte").value);
-  const kFonteTexto = document.getElementById("kFonte").options[document.getElementById("kFonte").selectedIndex].text;
+
   const out = document.getElementById("resultadoHid");
 
   if(!peso || peso<=0){
@@ -4374,72 +4417,69 @@ function calcularHidratacao(){
     return;
   }
 
-  if(!perc || perc<=0 || !naNec || !naPct || !kNec || !kPct){
-    out.innerHTML = `<div class="alert">Informe valores válidos para hidratação, sódio e potássio.</div>`;
-    return;
+  let base = 0;
+  if(peso <= 10){
+    base = peso * 100;
+  }else if(peso <= 20){
+    base = 1000 + (peso - 10) * 50;
+  }else{
+    base = 1500 + (peso - 20) * 20;
   }
 
-  let manutencao = 0;
-  if(peso <= 10) manutencao = peso*100;
-  else if(peso <= 20) manutencao = 1000 + (peso-10)*50;
-  else manutencao = 1500 + (peso-20)*20;
+  const volume24 = base * (perc / 100);
+  const vazao24 = volume24 / 24;
 
-  const volumeFinal = manutencao * perc;
-  const velocidade = volumeFinal / 24;
+  const na24 = peso * naNec * (naPerc / 100);
+  const naMl24 = na24 / naFonte;
 
-  const naTotalDia = peso * naNec;
-  const naPrescrito = naTotalDia * (naPct/100);
-  const naVolume = naPrescrito / naFonte;
+  const k24 = peso * kNec * (kPerc / 100);
+  const kMl24 = k24 / kFonte;
 
-  const kTotalDia = peso * kNec;
-  const kPrescrito = kTotalDia * (kPct/100);
-  const kVolume = kPrescrito / kFonte;
+  function blocoPeriodo(horas){
+    const fator = horas / 24;
+    const volume = volume24 * fator;
+    const vazao = volume / horas;
+    const na = na24 * fator;
+    const naMl = naMl24 * fator;
+    const k = k24 * fator;
+    const kMl = kMl24 * fator;
 
-  const volumeEletr = naVolume + kVolume;
-  const volumeBase = Math.max(volumeFinal - volumeEletr, 0);
-
-  const kConcFinal = kPrescrito / (volumeFinal/1000);
-  const naConcFinal = naPrescrito / (volumeFinal/1000);
+    return `
+      <div class="dose-box">
+        <strong>Solução para correr em ${horas} horas</strong><br>
+        Volume total: <strong>${volume.toFixed(0)} mL</strong><br>
+        Vazão em BIC/equipo: <strong>${vazao.toFixed(1)} mL/h</strong><br>
+        Sódio no período: <strong>${na.toFixed(1)} mEq</strong> → <strong>${naMl.toFixed(1)} mL</strong> da fonte selecionada<br>
+        Potássio no período: <strong>${k.toFixed(1)} mEq</strong> → <strong>${kMl.toFixed(1)} mL</strong> da fonte selecionada
+      </div>
+    `;
+  }
 
   out.innerHTML = `
     <div class="result">
-      <h4>Prescrição de manutenção pela regra de Holliday-Segar</h4>
+      <h4>Holliday-Segar / Solução de manutenção</h4>
 
       <div class="dose-box">
-        <strong>Manutenção 100%:</strong> ${manutencao.toFixed(0)} mL/dia<br>
-        <strong>Percentual digitado:</strong> ${(perc*100).toFixed(0)}%<br>
-        <strong>Volume final da solução:</strong> ${volumeFinal.toFixed(0)} mL/24h<br>
-        <strong>Velocidade:</strong> ${velocidade.toFixed(1)} mL/h
+        <strong>Necessidade basal em 24 horas:</strong> ${base.toFixed(0)} mL/dia<br>
+        <strong>Percentual prescrito:</strong> ${perc.toFixed(0)}%<br>
+        <strong>Volume final em 24 horas:</strong> ${volume24.toFixed(0)} mL<br>
+        <strong>Vazão em 24 horas:</strong> ${vazao24.toFixed(1)} mL/h
       </div>
 
       <div class="dose-box">
-        <strong>Sódio diário considerado:</strong> ${naTotalDia.toFixed(1)} mEq/dia (${naNec} mEq/kg/dia)<br>
-        <strong>Sódio prescrito:</strong> ${naPrescrito.toFixed(1)} mEq (${naPct}% da necessidade diária)<br>
-        <strong>Fonte:</strong> ${naFonteTexto}<br>
-        <strong>Volume de NaCl:</strong> ${naVolume.toFixed(2)} mL<br>
-        <strong>Concentração final de sódio:</strong> ${naConcFinal.toFixed(1)} mEq/L
+        <strong>Eletrólitos totais para 24 horas</strong><br>
+        Sódio: <strong>${na24.toFixed(1)} mEq</strong> → <strong>${naMl24.toFixed(1)} mL</strong> da fonte selecionada<br>
+        Potássio: <strong>${k24.toFixed(1)} mEq</strong> → <strong>${kMl24.toFixed(1)} mL</strong> da fonte selecionada
       </div>
 
-      <div class="dose-box">
-        <strong>Potássio diário considerado:</strong> ${kTotalDia.toFixed(1)} mEq/dia (${kNec} mEq/kg/dia)<br>
-        <strong>Potássio prescrito:</strong> ${kPrescrito.toFixed(1)} mEq (${kPct}% da necessidade diária)<br>
-        <strong>Fonte:</strong> ${kFonteTexto}<br>
-        <strong>Volume de KCl:</strong> ${kVolume.toFixed(2)} mL<br>
-        <strong>Concentração final de potássio:</strong> ${kConcFinal.toFixed(1)} mEq/L
-      </div>
-
-      <div class="dose-box">
-        <strong>Montagem sugerida da solução em 24h</strong><br>
-        Solução base: ${volumeBase.toFixed(0)} mL<br>
-        + NaCl selecionado: ${naVolume.toFixed(2)} mL<br>
-        + KCl selecionado: ${kVolume.toFixed(2)} mL<br>
-        <strong>Volume total aproximado:</strong> ${volumeFinal.toFixed(0)} mL
-      </div>
+      ${blocoPeriodo(24)}
+      ${blocoPeriodo(12)}
+      ${blocoPeriodo(8)}
+      ${blocoPeriodo(6)}
 
       <div class="alert">
-        Não adicionar potássio sem diurese adequada ou em insuficiência renal/hipercalemia. 
-        Conferir sódio sérico, potássio sérico, glicemia, perdas, hidratação real desejada e protocolo institucional.
-        Atenção à osmolaridade e concentração final de KCl, especialmente em acesso periférico.
+        Conferir sódio sérico, potássio sérico, diurese, função renal, hidratação, perdas, risco de SIADH e protocolo institucional.
+        Potássio deve ser utilizado com cautela e, em geral, apenas após confirmação de diurese adequada.
       </div>
     </div>
   `;
@@ -4637,27 +4677,8 @@ function calcularRaiva(){
 }
 
 function filtrarMedicamentos(){
-  const q = normalizar(document.getElementById("buscaMedicamento").value || "");
-  const sel = document.getElementById("medicamento");
-  let primeiro = null;
-
-  Array.from(sel.children).forEach(group=>{
-    if(group.tagName !== "OPTGROUP") return;
-    let algum = false;
-    Array.from(group.children).forEach(opt=>{
-      const m = meds[parseInt(opt.value)];
-      const texto = normalizar([opt.textContent, m?.nome, m?.classe, ...(m?.alertas || [])].join(" "));
-      const mostrar = !q || texto.includes(q);
-      opt.hidden = !mostrar;
-      if(mostrar){
-        algum = true;
-        if(primeiro === null) primeiro = opt;
-      }
-    });
-    group.hidden = !algum;
-  });
-
-  if(primeiro) sel.value = primeiro.value;
+  const campo = document.getElementById("buscaMedicamento");
+  montarListaMedicamentos(campo ? campo.value : "");
 }
 
 function calcularIAM(){
@@ -4779,13 +4800,6 @@ window.onload = function(){
   document.getElementById("termsModal").style.display="flex";
 };
 
-
-
-
-
-
-
-buildDoseOptions();
 </script>
 
 </body>
