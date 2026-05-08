@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Calculadora Médica</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -368,9 +366,9 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
 </style>
 </head>
 
-<body>
+<body class="">
 
-<div class="modal" id="termsModal">
+<div class="modal" id="termsModal" style="display: none;">
   <div class="modal-box">
     <h2>Termo de uso e responsabilidade médica</h2>
     <p>
@@ -402,6 +400,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     <p class="nav-title">Calculadoras</p>
     <button class="nav-item" onclick="goSection('calc')">Calculadora de doses <span>›</span></button>
     <button class="nav-item" onclick="goSection('hidratacao')">Holliday-Segar / Solução <span>›</span></button>
+    <button class="nav-item" onclick="goSection('tig')">TIG / Soluções Glicosadas <span>›</span></button>
     <button class="nav-item" onclick="goSection('emergencia')">Emergência / Drogas críticas <span>›</span></button>
     <button class="nav-item" onclick="goSection('iam')">IAM com supra <span>›</span></button>
     <button class="nav-item" onclick="goSection('avc')">AVC isquêmico <span>›</span></button>
@@ -432,7 +431,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
   Doses críticas exigem dupla checagem.
 </div>
 
-<section id="calc" class="section active">
+<section id="calc" class="section">
   <div class="card">
     <h2>Calculadora de doses</h2>
 
@@ -458,7 +457,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div>
         <label>Medicamento</label>
         <input id="buscaMedicamento" type="text" placeholder="Buscar por princípio ativo ou nome comercial" oninput="filtrarMedicamentos()">
-        <select id="medicamento" size="9"></select>
+        <select id="medicamento" size="9"><optgroup label="Analgésicos, antitérmicos e AINEs"><option value="3">Cetoprofeno — AINE</option><option value="71">Cetorolaco — AINE / anti-inflamatório</option><option value="80">Colchicina — AINE / anti-inflamatório</option><option value="0">Dipirona — Analgésico / antitérmico</option><option value="93">Escopolamina + dipirona — Outros medicamentos úteis</option><option value="2">Ibuprofeno — AINE</option><option value="4">Naproxeno — AINE</option><option value="1">Paracetamol — Analgésico / antitérmico</option><option value="154">Paracetamol + codeína — Opioide / analgesia forte</option><option value="155">Parecoxibe — AINE / anti-inflamatório</option><option value="171">Tenoxicam — AINE / anti-inflamatório</option><option value="176">Tramadol + paracetamol — Opioide / analgesia forte</option></optgroup><optgroup label="Antieméticos e procinéticos"><option value="27">Bromoprida — Antiemético / procinético</option><option value="6">Dimenidrinato — Antiemético / antivertiginoso</option><option value="29">Domperidona — Antiemético / procinético</option><option value="109">Granisetrona — Antiemético / procinético</option><option value="28">Metoclopramida — Antiemético / procinético</option><option value="5">Ondansetrona — Antiemético</option><option value="30">Prometazina — Anti-histamínico 1ª geração sedativo</option></optgroup><optgroup label="Antialérgicos e anti-histamínicos"><option value="38">Cetirizina — Anti-histamínico 2ª geração</option><option value="37">Desloratadina — Anti-histamínico 2ª geração</option><option value="39">Dexclorfeniramina — Anti-histamínico 1ª geração</option><option value="83">Difenidramina — Anti-histamínico</option><option value="99">Fexofenadina — Anti-histamínico</option><option value="40">Hidroxizina — Anti-histamínico sedativo</option><option value="189">Levocetirizina — Anti-histamínico</option><option value="36">Loratadina — Anti-histamínico 2ª geração</option></optgroup><optgroup label="Antibióticos"><option value="54">Amicacina — Antibiótico</option><option value="7">Amoxicilina — Antibiótico penicilina</option><option value="8">Amoxicilina + Clavulanato — Antibiótico beta-lactâmico</option><option value="56">Ampicilina — Antibiótico</option><option value="57">Ampicilina + sulbactam — Antibiótico</option><option value="10">Azitromicina — Macrolídeo</option><option value="58">Benzilpenicilina / Penicilina G — Antibiótico</option><option value="64">Cefadroxil — Antibiótico</option><option value="9">Cefalexina — Cefalosporina 1ª geração</option><option value="65">Cefalotina — Antibiótico</option><option value="66">Cefazolina — Antibiótico</option><option value="67">Cefepima — Antibiótico</option><option value="68">Cefotaxima — Antibiótico</option><option value="69">Ceftazidima — Antibiótico</option><option value="11">Ceftriaxona — Cefalosporina 3ª geração</option><option value="70">Cefuroxima — Antibiótico</option><option value="72">Ciprofloxacino — Antibiótico</option><option value="74">Claritromicina — Antibiótico</option><option value="75">Clindamicina — Antibiótico</option><option value="87">Doxiciclina — Antibiótico</option><option value="91">Ertapenem — Antibiótico</option><option value="102">Fosfomicina — Antibiótico</option><option value="105">Gentamicina — Antibiótico</option><option value="121">Levofloxacino — Antibiótico</option><option value="125">Linezolida — Antibiótico</option><option value="130">Meropenem — Antibiótico</option><option value="134">Metronidazol — Antibiótico</option><option value="144">Nitrofurantoína — Antibiótico</option><option value="150">Oxacilina — Antibiótico</option><option value="156">Penicilina G potássica — Antibiótico</option><option value="157">Piperacilina + tazobactam — Antibiótico</option><option value="158">Polimixina B — Antibiótico</option><option value="169">Sulfametoxazol + trimetoprima — Antibiótico</option><option value="179">Vancomicina — Antibiótico</option></optgroup><optgroup label="Corticoides"><option value="43">Budesonida nebulização — Corticoide inalatório</option><option value="13">Dexametasona — Corticoide</option><option value="81">Dexametasona colírio — Corticoide</option><option value="42">Hidrocortisona — Corticoide sistêmico EV</option><option value="132">Metilprednisolona — Corticoide</option><option value="12">Prednisolona — Corticoide sistêmico</option><option value="41">Prednisona — Corticoide sistêmico</option></optgroup><optgroup label="Respiratórios e broncodilatadores"><option value="98">Fenoterol — Respiratório / broncodilatador</option><option value="15">Ipratrópio — Anticolinérgico inalatório</option><option value="116">Ipratrópio + fenoterol — Respiratório / broncodilatador</option><option value="14">Salbutamol — Beta-2 agonista</option></optgroup><optgroup label="Tosse, mucolíticos e expectorantes"><option value="34">Acetilcisteína — Mucolítico</option><option value="35">Ambroxol — Mucolítico / expectorante</option><option value="33">Dextrometorfano — Antitussígeno central</option><option value="32">Dropropizina — Antitussígeno</option><option value="110">Guaifenesina — Mucolítico / expectorante</option><option value="31">Levodropropizina — Antitussígeno periférico</option><option value="140">N-acetilcisteína — Mucolítico / expectorante</option></optgroup><optgroup label="Fitoterápicos e produtos tradicionais"><option value="188">Camomila — Fitoterápico / probiótico</option><option value="187">Cassia angustifolia / Senna — Fitoterápico / probiótico</option><option value="45">Guaco — Fitoterápico expectorante/bronco­dilatador leve</option><option value="16">Hedera helix — Fitoterápico expectorante</option><option value="44">Kaloba — Fitoterápico — Pelargonium sidoides</option><option value="184">Kaloba / Pelargonium sidoides — Fitoterápico / probiótico</option><option value="185">Probióticos Lactobacillus/Bifidobacterium — Fitoterápico / probiótico</option><option value="47">Própolis — Fitoterápico / produto apícola</option><option value="186">Psyllium / Plantago — Fitoterápico / probiótico</option><option value="167">Saccharomyces boulardii — Fitoterápico / probiótico</option><option value="46">Sambucus nigra — Fitoterápico / produto tradicional</option></optgroup><optgroup label="Neurológicos, convulsão e sedação"><option value="76">Clonazepam — Neurológico / sedação</option><option value="18">Diazepam — Benzodiazepínico</option><option value="127">Lorazepam — Neurológico / sedação</option><option value="17">Midazolam intranasal — Benzodiazepínico</option><option value="136">Midazolam oral — Neurológico / sedação</option></optgroup><optgroup label="Opioides e analgesia forte"><option value="22">Fentanil — Opioide</option><option value="131">Metadona — Opioide / analgesia forte</option><option value="23">Morfina — Opioide</option><option value="141">Nalbufina — Opioide / analgesia forte</option><option value="152">Oxicodona — Opioide / analgesia forte</option><option value="164">Remifentanil — Opioide / analgesia forte</option></optgroup><optgroup label="Indução anestésica e sedação"><option value="21">Cetamina — Anestésico dissociativo</option><option value="20">Etomidato — Hipnótico para indução</option><option value="24">Propofol — Hipnótico sedativo</option></optgroup><optgroup label="Bloqueadores neuromusculares / IOT"><option value="73">Cisatracúrio — Anestesia / IOT</option><option value="26">Rocurônio — Bloqueador neuromuscular não despolarizante</option><option value="25">Suxametônio — Bloqueador neuromuscular despolarizante</option></optgroup><optgroup label="Emergência cardiovascular e antiarrítmicos"><option value="51">Adenosina — Cardiovascular / vasoativo</option><option value="19">Atropina — Anticolinérgico</option><option value="90">Epinefrina — Cardiovascular / vasoativo</option><option value="124">Lidocaína + epinefrina — Cardiovascular / vasoativo</option><option value="147">Noradrenalina — Cardiovascular / vasoativo</option></optgroup><optgroup label="Hemostasia, anticoagulação e trombose"><option value="50">Ácido tranexâmico — Hemostasia / anticoagulação</option><option value="89">Enoxaparina — Hemostasia / anticoagulação</option><option value="112">Heparina — Hemostasia / anticoagulação</option><option value="165">Rivaroxabana — Hemostasia / anticoagulação</option><option value="180">Varfarina — Hemostasia / anticoagulação</option></optgroup><optgroup label="Antídotos e intoxicações"><option value="63">Carvão ativado — Antídoto / intoxicação</option><option value="101">Flumazenil — Antídoto / intoxicação</option><option value="142">Naloxona — Antídoto / intoxicação</option></optgroup><optgroup label="Outros medicamentos úteis"><option value="48">Aciclovir — Antiviral</option><option value="49">Ácido acetilsalicílico — Hemostasia / anticoagulação</option><option value="52">Albendazol — Antiparasitário</option><option value="53">Albumina — Eletrólitos / metabólicos</option><option value="55">Aminofilina — Respiratório / broncodilatador</option><option value="59">Bicarbonato de sódio — Eletrólitos / metabólicos</option><option value="60">Biperideno — Neurológico / sedação</option><option value="61">Bisacodil — Gastrointestinal</option><option value="62">Bupivacaína — Anestesia / IOT</option><option value="77">Clonidina — Outros medicamentos úteis</option><option value="78">Clopidogrel — Hemostasia / anticoagulação</option><option value="79">Cloreto de cálcio — Eletrólitos / metabólicos</option><option value="82">Dexmedetomidina — Neurológico / sedação</option><option value="84">Digoxina — Cardiovascular / vasoativo</option><option value="85">Dobutamina — Cardiovascular / vasoativo</option><option value="86">Dopamina — Cardiovascular / vasoativo</option><option value="88">Efedrina — Cardiovascular / vasoativo</option><option value="92">Escopolamina — Outros medicamentos úteis</option><option value="94">Esmolol — Cardiovascular / vasoativo</option><option value="95">Esomeprazol — Gastrointestinal</option><option value="163">Famotidina — Gastrointestinal</option><option value="96">Fenitoína — Neurológico / sedação</option><option value="97">Fenobarbital — Neurológico / sedação</option><option value="100">Fluconazol — Antifúngico</option><option value="103">Furosemida — Eletrólitos / metabólicos</option><option value="104">Gabapentina — Neurológico / sedação</option><option value="106">Glicose — Eletrólitos / metabólicos</option><option value="107">Glucagon — Eletrólitos / metabólicos</option><option value="108">Gluconato de cálcio — Eletrólitos / metabólicos</option><option value="111">Haloperidol — Neurológico / sedação</option><option value="113">Hidralazina — Cardiovascular / vasoativo</option><option value="114">Hidrato de cloral — Neurológico / sedação</option><option value="115">Hidroclorotiazida — Eletrólitos / metabólicos</option><option value="117">Ivermectina — Antiparasitário</option><option value="118">Lactulose — Gastrointestinal</option><option value="119">Lamotrigina — Neurológico / sedação</option><option value="120">Levetiracetam — Neurológico / sedação</option><option value="122">Levomepromazina — Neurológico / sedação</option><option value="123">Lidocaína — Anestesia / IOT</option><option value="126">Loperamida — Gastrointestinal</option><option value="128">Losartana — Cardiovascular / vasoativo</option><option value="129">Manitol — Eletrólitos / metabólicos</option><option value="133">Metoprolol — Cardiovascular / vasoativo</option><option value="135">Micafungina — Antifúngico</option><option value="137">Milrinona — Cardiovascular / vasoativo</option><option value="138">Montelucaste — Respiratório / broncodilatador</option><option value="139">Mupirocina — Tópico / dermatológico</option><option value="143">Nitazoxanida — Antiparasitário</option><option value="145">Nitroglicerina — Cardiovascular / vasoativo</option><option value="146">Nitroprussiato — Cardiovascular / vasoativo</option><option value="148">Omeprazol — Gastrointestinal</option><option value="149">Oseltamivir — Antiviral</option><option value="151">Oxcarbazepina — Neurológico / sedação</option><option value="153">Pantoprazol — Gastrointestinal</option><option value="159">Propranolol — Cardiovascular / vasoativo</option><option value="160">Protamina — Hemostasia / anticoagulação</option><option value="161">Racecadotril — Gastrointestinal</option><option value="162">Ranitidina — Gastrointestinal</option><option value="166">Ropivacaína — Anestesia / IOT</option><option value="168">Simeticona — Gastrointestinal</option><option value="170">Sulfato de magnésio — Eletrólitos / metabólicos</option><option value="172">Terbutalina — Respiratório / broncodilatador</option><option value="173">Tiamina — Eletrólitos / metabólicos</option><option value="174">Tiopental — Anestesia / IOT</option><option value="175">Tirofibana — Hemostasia / anticoagulação</option><option value="177">Valaciclovir — Antiviral</option><option value="178">Valproato de sódio — Neurológico / sedação</option><option value="181">Vasopressina — Cardiovascular / vasoativo</option><option value="182">Verapamil — Cardiovascular / vasoativo</option><option value="183">Vitamina K / Fitomenadiona — Eletrólitos / metabólicos</option></optgroup></select>
         <span class="small">Digite para filtrar. Lista organizada por classe farmacológica.</span>
       </div>
     </div>
@@ -535,6 +534,125 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
     <div class="note">
       Holliday-Segar: 100 mL/kg para os primeiros 10 kg; 50 mL/kg para os próximos 10 kg;
       20 mL/kg acima de 20 kg. Ajustar conforme clínica, perdas, sódio, risco de SIADH e protocolo institucional.
+    </div>
+  </div>
+</section>
+
+
+<section id="tig" class="section active">
+  <div class="card">
+    <h3>TIG / Soluções Glicosadas</h3>
+
+    <div class="alert">
+      Calculadora para montagem de solução glicosada conforme peso, volume hídrico e TIG desejada.
+      Conferir protocolo institucional, idade, acesso venoso, glicemia seriada e risco de flebite/extravasamento.
+    </div>
+
+    <div class="grid-3">
+      <div>
+        <label>Peso, em kg</label>
+        <input id="pesoTIG" type="number" step="0.1" placeholder="Ex.: 10">
+      </div>
+      <div>
+        <label>TIG desejada, em mg/kg/min</label>
+        <input id="tigDesejada" type="number" step="0.1" placeholder="Ex.: 5">
+      </div>
+      <div>
+        <label>Percentual da hidratação</label>
+        <input id="percTIG" type="number" step="1" value="100">
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:12px">
+      <div>
+        <label>Volume diário manual, em mL — opcional</label>
+        <input id="volumeTIGManual" type="number" step="1" placeholder="Deixe vazio para Holliday-Segar">
+        <span class="small">Se preenchido, substitui o volume calculado por Holliday-Segar.</span>
+      </div>
+      <div>
+        <label>Diluente para TIG menor que 5%</label>
+        <select id="diluenteTIG">
+          <option value="SF 0,9%">SF 0,9%</option>
+          <option value="Ringer lactato">Ringer lactato</option>
+          <option value="Água destilada estéril">Água destilada estéril</option>
+        </select>
+        <span class="small">Usado apenas quando a concentração final necessária for menor que SG5%.</span>
+      </div>
+    </div>
+
+    <button class="btn primary" onclick="calcularTIG()">Calcular TIG e montar solução</button>
+    <div id="resultadoTIG">
+    <div class="result">
+      <h4>TIG / Montagem de solução glicosada</h4>
+      <div class="dose-box">
+        <strong>Peso:</strong> 3.0 kg<br>
+        <strong>TIG desejada:</strong> 7.0 mg/kg/min<br>
+        <strong>Volume diário usado:</strong> 300 mL (Holliday-Segar 100%)<br>
+        <strong>Concentração final necessária:</strong> 10.08%<br>
+        <strong>Estratégia de mistura:</strong> SG 10% + SG 25%
+      </div>
+
+      <div class="dose-box">
+        <strong>TIG aproximada se usasse solução pura no mesmo volume diário:</strong><br>
+        SG5%: 3.47 mg/kg/min<br>
+        SG10%: 6.94 mg/kg/min<br>
+        SG25%: 17.36 mg/kg/min<br>
+        SG50%: 34.72 mg/kg/min
+      </div>
+
+      
+      <div class="dose-box">
+        <strong>Solução para 24 horas</strong><br>
+        Volume total: <strong>300 mL</strong><br>
+        SG 10%: <strong>298 mL</strong><br>SG 25%: <strong>2 mL</strong><br>
+        Glicose no período: <strong>30240 mg</strong><br>
+        Vazão em BIC: <strong>12.5 mL/h</strong><br>
+        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
+      </div>
+    
+      
+      <div class="dose-box">
+        <strong>Solução para 12 horas</strong><br>
+        Volume total: <strong>150 mL</strong><br>
+        SG 10%: <strong>149 mL</strong><br>SG 25%: <strong>1 mL</strong><br>
+        Glicose no período: <strong>15120 mg</strong><br>
+        Vazão em BIC: <strong>12.5 mL/h</strong><br>
+        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
+      </div>
+    
+      
+      <div class="dose-box">
+        <strong>Solução para 8 horas</strong><br>
+        Volume total: <strong>100 mL</strong><br>
+        SG 10%: <strong>99 mL</strong><br>SG 25%: <strong>1 mL</strong><br>
+        Glicose no período: <strong>10080 mg</strong><br>
+        Vazão em BIC: <strong>12.5 mL/h</strong><br>
+        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
+      </div>
+    
+      
+      <div class="dose-box">
+        <strong>Solução para 6 horas</strong><br>
+        Volume total: <strong>75 mL</strong><br>
+        SG 10%: <strong>75 mL</strong><br>SG 25%: <strong>0 mL</strong><br>
+        Glicose no período: <strong>7560 mg</strong><br>
+        Vazão em BIC: <strong>12.5 mL/h</strong><br>
+        Gotas/min, equipo macro 20 gotas/mL: <strong>4.2</strong>
+      </div>
+    
+
+      
+
+      <div class="note">
+        Soluções consideradas: SG 5%, SG 10%, SG 25%, SG 50% e diluentes sem glicose quando necessário.
+        A montagem usa regra de mistura proporcional. Conferir disponibilidade real, via de acesso, compatibilidade e rotina local.
+      </div>
+    </div>
+  </div>
+
+    <div class="note">
+      Fórmula utilizada: TIG = [volume diário × concentração (%) × 10] ÷ [peso × 1440].
+      A concentração final necessária é calculada para atingir a TIG desejada e a montagem é feita por mistura proporcional entre soluções disponíveis.
     </div>
   </div>
 </section>
@@ -691,7 +809,7 @@ hr{border:0;border-top:1px solid rgba(194,164,109,.35);margin:18px 0}
       <div>
         <label>Fibrinolítico</label>
         <select id="iamLytic">
-          <option value="alteplase" selected>Alteplase (rt-PA)</option>
+          <option value="alteplase" selected="">Alteplase (rt-PA)</option>
           <option value="tenecteplase">Tenecteplase (TNK)</option>
         </select>
       </div>
@@ -4485,6 +4603,119 @@ function calcularHidratacao(){
   `;
 }
 
+
+function calcularTIG(){
+  const peso = parseFloat(document.getElementById("pesoTIG").value);
+  const tig = parseFloat(document.getElementById("tigDesejada").value);
+  const perc = parseFloat(document.getElementById("percTIG").value || 100);
+  const volManual = parseFloat(document.getElementById("volumeTIGManual").value || 0);
+  const diluente = document.getElementById("diluenteTIG").value;
+  const out = document.getElementById("resultadoTIG");
+
+  if(!peso || peso<=0 || !tig || tig<=0){
+    out.innerHTML = `<div class="alert">Informe peso e TIG desejada válidos.</div>`;
+    return;
+  }
+
+  let holliday = 0;
+  if(peso <= 10){
+    holliday = peso * 100;
+  }else if(peso <= 20){
+    holliday = 1000 + (peso - 10) * 50;
+  }else{
+    holliday = 1500 + (peso - 20) * 20;
+  }
+
+  const volume24 = volManual > 0 ? volManual : holliday * (perc / 100);
+  const concNec = (tig * peso * 1440) / (volume24 * 10);
+  const tigComSG5 = (volume24 * 5 * 10) / (peso * 1440);
+  const tigComSG10 = (volume24 * 10 * 10) / (peso * 1440);
+  const tigComSG25 = (volume24 * 25 * 10) / (peso * 1440);
+  const tigComSG50 = (volume24 * 50 * 10) / (peso * 1440);
+
+  let baixa = 0, alta = 5, nomeBaixa = diluente, nomeAlta = "SG 5%";
+  if(concNec <= 5){
+    baixa = 0; alta = 5; nomeBaixa = diluente; nomeAlta = "SG 5%";
+  }else if(concNec <= 10){
+    baixa = 5; alta = 10; nomeBaixa = "SG 5%"; nomeAlta = "SG 10%";
+  }else if(concNec <= 25){
+    baixa = 10; alta = 25; nomeBaixa = "SG 10%"; nomeAlta = "SG 25%";
+  }else if(concNec <= 50){
+    baixa = 25; alta = 50; nomeBaixa = "SG 25%"; nomeAlta = "SG 50%";
+  }
+
+  function mistura(volume){
+    if(concNec > 50){
+      return {vBaixa:0, vAlta:0};
+    }
+    const vAlta = volume * (concNec - baixa) / (alta - baixa);
+    const vBaixa = volume - vAlta;
+    return {vBaixa, vAlta};
+  }
+
+  function linhaPeriodo(horas){
+    const volume = volume24 * horas / 24;
+    const m = mistura(volume);
+    const vazao = volume / horas;
+    const gotas = vazao / 3;
+    const glicoseMg = volume * concNec * 10;
+    return `
+      <div class="dose-box">
+        <strong>Solução para ${horas} horas</strong><br>
+        Volume total: <strong>${volume.toFixed(0)} mL</strong><br>
+        ${concNec <= 50 ? `${nomeBaixa}: <strong>${m.vBaixa.toFixed(0)} mL</strong><br>${nomeAlta}: <strong>${m.vAlta.toFixed(0)} mL</strong><br>` : ``}
+        Glicose no período: <strong>${glicoseMg.toFixed(0)} mg</strong><br>
+        Vazão em BIC: <strong>${vazao.toFixed(1)} mL/h</strong><br>
+        Gotas/min, equipo macro 20 gotas/mL: <strong>${gotas.toFixed(1)}</strong>
+      </div>
+    `;
+  }
+
+  let alerta = "";
+  if(concNec > 12.5){
+    alerta += `<div class="alert"><strong>Atenção:</strong> concentração final acima de 12,5%. Avaliar acesso central, protocolo institucional, osmolaridade, risco de flebite e extravasamento.</div>`;
+  }
+  if(concNec > 50){
+    alerta += `<div class="alert"><strong>Atenção:</strong> a concentração necessária ultrapassa 50%. Não é possível montar apenas com SG50% como solução mais concentrada. Revise TIG, volume hídrico, estratégia de acesso e protocolo.</div>`;
+  }
+  if(tig > 8){
+    alerta += `<div class="alert"><strong>Atenção:</strong> TIG elevada. Monitorar hiperglicemia, glicosúria, osmolaridade, hidratação e necessidade de ajuste progressivo.</div>`;
+  }
+
+  out.innerHTML = `
+    <div class="result">
+      <h4>TIG / Montagem de solução glicosada</h4>
+      <div class="dose-box">
+        <strong>Peso:</strong> ${peso.toFixed(1)} kg<br>
+        <strong>TIG desejada:</strong> ${tig.toFixed(1)} mg/kg/min<br>
+        <strong>Volume diário usado:</strong> ${volume24.toFixed(0)} mL ${volManual > 0 ? "(manual)" : `(Holliday-Segar ${perc.toFixed(0)}%)`}<br>
+        <strong>Concentração final necessária:</strong> ${concNec.toFixed(2)}%<br>
+        <strong>Estratégia de mistura:</strong> ${concNec <= 50 ? `${nomeBaixa} + ${nomeAlta}` : "não montável com soluções até SG50%"}
+      </div>
+
+      <div class="dose-box">
+        <strong>TIG aproximada se usasse solução pura no mesmo volume diário:</strong><br>
+        SG5%: ${tigComSG5.toFixed(2)} mg/kg/min<br>
+        SG10%: ${tigComSG10.toFixed(2)} mg/kg/min<br>
+        SG25%: ${tigComSG25.toFixed(2)} mg/kg/min<br>
+        SG50%: ${tigComSG50.toFixed(2)} mg/kg/min
+      </div>
+
+      ${linhaPeriodo(24)}
+      ${linhaPeriodo(12)}
+      ${linhaPeriodo(8)}
+      ${linhaPeriodo(6)}
+
+      ${alerta}
+
+      <div class="note">
+        Soluções consideradas: SG 5%, SG 10%, SG 25%, SG 50% e diluentes sem glicose quando necessário.
+        A montagem usa regra de mistura proporcional. Conferir disponibilidade real, via de acesso, compatibilidade e rotina local.
+      </div>
+    </div>
+  `;
+}
+
 function calcularOpioide(){
   const origem = opioides[document.getElementById("opioideOrigem").value];
   const destino = opioides[document.getElementById("opioideDestino").value];
@@ -4802,5 +5033,5 @@ window.onload = function(){
 
 </script>
 
-</body>
-</html>
+
+</body></html>
